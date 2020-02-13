@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.scauly.SpringCloud.dao.RoleDao">
   <resultMap id="BaseResultMap" type="com.scauly.SpringCloud.entities.Role">
-    <id column="roleID" jdbcType="VARCHAR" property="roleid" />
+    <id column="roleID" jdbcType="BIGINT" property="roleid" />
     <result column="roleName" jdbcType="VARCHAR" property="rolename" />
     <result column="roleType" jdbcType="VARCHAR" property="roletype" />
     <result column="rolePassword" jdbcType="VARCHAR" property="rolepassword" />
@@ -82,15 +82,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from role
-    where roleID = #{roleid,jdbcType=VARCHAR}
+    where roleID = #{roleid,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from role
-    where roleID = #{roleid,jdbcType=VARCHAR}
+    where roleID = #{roleid,jdbcType=BIGINT}
   </delete>
   <delete id="deleteByExample" parameterType="com.scauly.SpringCloud.entities.RoleExample">
     delete from role
@@ -101,7 +101,7 @@
   <insert id="insert" parameterType="com.scauly.SpringCloud.entities.Role">
     insert into role (roleID, roleName, roleType, 
       rolePassword)
-    values (#{roleid,jdbcType=VARCHAR}, #{rolename,jdbcType=VARCHAR}, #{roletype,jdbcType=VARCHAR}, 
+    values (#{roleid,jdbcType=BIGINT}, #{rolename,jdbcType=VARCHAR}, #{roletype,jdbcType=VARCHAR}, 
       #{rolepassword,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.scauly.SpringCloud.entities.Role">
@@ -122,7 +122,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="roleid != null">
-        #{roleid,jdbcType=VARCHAR},
+        #{roleid,jdbcType=BIGINT},
       </if>
       <if test="rolename != null">
         #{rolename,jdbcType=VARCHAR},
@@ -145,7 +145,7 @@
     update role
     <set>
       <if test="record.roleid != null">
-        roleID = #{record.roleid,jdbcType=VARCHAR},
+        roleID = #{record.roleid,jdbcType=BIGINT},
       </if>
       <if test="record.rolename != null">
         roleName = #{record.rolename,jdbcType=VARCHAR},
@@ -163,7 +163,7 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update role
-    set roleID = #{record.roleid,jdbcType=VARCHAR},
+    set roleID = #{record.roleid,jdbcType=BIGINT},
       roleName = #{record.rolename,jdbcType=VARCHAR},
       roleType = #{record.roletype,jdbcType=VARCHAR},
       rolePassword = #{record.rolepassword,jdbcType=VARCHAR}
@@ -184,13 +184,13 @@
         rolePassword = #{rolepassword,jdbcType=VARCHAR},
       </if>
     </set>
-    where roleID = #{roleid,jdbcType=VARCHAR}
+    where roleID = #{roleid,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.scauly.SpringCloud.entities.Role">
     update role
     set roleName = #{rolename,jdbcType=VARCHAR},
       roleType = #{roletype,jdbcType=VARCHAR},
       rolePassword = #{rolepassword,jdbcType=VARCHAR}
-    where roleID = #{roleid,jdbcType=VARCHAR}
+    where roleID = #{roleid,jdbcType=BIGINT}
   </update>
 </mapper>

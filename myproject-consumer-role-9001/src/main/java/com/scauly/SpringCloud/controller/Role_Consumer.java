@@ -41,7 +41,7 @@ public class Role_Consumer {
 
     //根据ID查用户
     @RequestMapping(value = "consumer/role/get/{id}", method = RequestMethod.GET)
-    public @ResponseBody Role get(@PathVariable("id") String id){
+    public @ResponseBody Role get(@PathVariable("id") long id){
         return this.roleClientService.get(id);
 
     }

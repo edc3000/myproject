@@ -1,7 +1,7 @@
 package com.scauly.SpringCloud.entities;
 
 public class Role {
-    private String roleid;
+    private Long roleid;
 
     private String rolename;
 
@@ -9,12 +9,12 @@ public class Role {
 
     private String rolepassword;
 
-    public String getRoleid() {
+    public Long getRoleid() {
         return roleid;
     }
 
-    public void setRoleid(String roleid) {
-        this.roleid = roleid == null ? null : roleid.trim();
+    public void setRoleid(Long roleid) {
+        this.roleid = roleid;
     }
 
     public String getRolename() {

@@ -33,7 +33,7 @@ eureka:
 info:
   app.name: scauly-microservicecloud
   company.name: www.baidu.com
-  build.artifactId: $project.artifactId$
-  build.version: $project.version$
+  build.artifactId: myproject-provider-dept-8001
+  build.version: 1.0-SNAPSHOT
 
 

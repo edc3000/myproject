@@ -68,8 +68,10 @@ public class RoleServiceImpl implements RoleService {
         return roleDao.selectByExample(ex);
     }
 
+
+
     @Override
-    public Role get(String id) {
+    public Role get(Long id) {
         return roleDao.selectByPrimaryKey(id);
     }
 

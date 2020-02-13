@@ -16,7 +16,7 @@ public interface RoleService {
 
     public List<Role> selectrid(Role role);
 
-    public Role  get(String id);
+    public Role  get(Long id);
 
     public Role checkPassword(Role role) throws Exception;
 }

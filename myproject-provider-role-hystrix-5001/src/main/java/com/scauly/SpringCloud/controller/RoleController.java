@@ -33,7 +33,7 @@ public class RoleController {
 
     //根据id查询用户
     @RequestMapping(value="/role/get/{id}",method=RequestMethod.GET)
-    public @ResponseBody  Role get(@PathVariable("id") String id)
+    public @ResponseBody  Role get(@PathVariable("id") Long id)
     {
         return roleService.get(id);
     }

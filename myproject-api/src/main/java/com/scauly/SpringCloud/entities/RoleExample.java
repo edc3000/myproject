@@ -104,72 +104,62 @@ public class RoleExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
-        public Criteria andRoleidIsNull() {          //添加字段roleID为null的条件
+        public Criteria andRoleidIsNull() {
             addCriterion("roleID is null");
             return (Criteria) this;
         }
 
-        public Criteria andRoleidIsNotNull() {           //添加字段roleID不为null的条件
+        public Criteria andRoleidIsNotNull() {
             addCriterion("roleID is not null");
             return (Criteria) this;
         }
 
-        public Criteria andRoleidEqualTo(String value) {
+        public Criteria andRoleidEqualTo(Long value) {
             addCriterion("roleID =", value, "roleid");
             return (Criteria) this;
         }
 
-        public Criteria andRoleidNotEqualTo(String value) {
+        public Criteria andRoleidNotEqualTo(Long value) {
             addCriterion("roleID <>", value, "roleid");
             return (Criteria) this;
         }
 
-        public Criteria andRoleidGreaterThan(String value) {
+        public Criteria andRoleidGreaterThan(Long value) {
             addCriterion("roleID >", value, "roleid");
             return (Criteria) this;
         }
 
-        public Criteria andRoleidGreaterThanOrEqualTo(String value) {
+        public Criteria andRoleidGreaterThanOrEqualTo(Long value) {
             addCriterion("roleID >=", value, "roleid");
             return (Criteria) this;
         }
 
-        public Criteria andRoleidLessThan(String value) {
+        public Criteria andRoleidLessThan(Long value) {
             addCriterion("roleID <", value, "roleid");
             return (Criteria) this;
         }
 
-        public Criteria andRoleidLessThanOrEqualTo(String value) {
+        public Criteria andRoleidLessThanOrEqualTo(Long value) {
             addCriterion("roleID <=", value, "roleid");
             return (Criteria) this;
         }
 
-        public Criteria andRoleidLike(String value) {
-            addCriterion("roleID like", value, "roleid");
-            return (Criteria) this;
-        }
-
-        public Criteria andRoleidNotLike(String value) {
-            addCriterion("roleID not like", value, "roleid");
-            return (Criteria) this;
-        }
-
-        public Criteria andRoleidIn(List<String> values) {
+        public Criteria andRoleidIn(List<Long> values) {
             addCriterion("roleID in", values, "roleid");
             return (Criteria) this;
         }
 
-        public Criteria andRoleidNotIn(List<String> values) {
+        public Criteria andRoleidNotIn(List<Long> values) {
             addCriterion("roleID not in", values, "roleid");
             return (Criteria) this;
         }
 
-        public Criteria andRoleidBetween(String value1, String value2) {
+        public Criteria andRoleidBetween(Long value1, Long value2) {
             addCriterion("roleID between", value1, value2, "roleid");
             return (Criteria) this;
         }
 
-        public Criteria andRoleidNotBetween(String value1, String value2) {
+        public Criteria andRoleidNotBetween(Long value1, Long value2) {
             addCriterion("roleID not between", value1, value2, "roleid");
             return (Criteria) this;
         }

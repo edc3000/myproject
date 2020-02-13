@@ -117,7 +117,7 @@
              <version>5.0.4</version>
          </dependency>
     </dependencies>
-    <!-- <build>
+     <!--<build>
             <plugins>
                 &lt;!&ndash; mybatis-generator自动生成代码插件 &ndash;&gt;
                 <plugin>
@@ -151,5 +151,6 @@
                 </plugin>
             </plugins>
         </build>-->
+
 
 </project>
