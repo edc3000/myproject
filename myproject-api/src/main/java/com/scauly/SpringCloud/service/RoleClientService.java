@@ -16,7 +16,7 @@ public interface RoleClientService {
 
     //插入User
     @RequestMapping(value="/role/add",method= RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public int add(@RequestBody Role role);
+    public int add(@RequestBody Role role)throws Exception;
 
     //根据id查询用户
     @RequestMapping(value="/role/get/{id}",method=RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -29,4 +29,16 @@ public interface RoleClientService {
     //用户名查重
     @RequestMapping(value = "/role/findN", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE)
     public int findN(@RequestBody Role role);
+
+    //删除用户
+    @RequestMapping(value = "/role/delete", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public int delete(@RequestBody Role role);
+
+   /* //更新用户信息
+    @RequestMapping(value = "/role/updateall",method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public  int updateall(@RequestBody Role role);*/
+
+    //修改密码
+    @RequestMapping(value = "/role/update", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public int update(@RequestBody Role role) throws Exception;
 }

@@ -2,28 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ebb979e8-348f-4bd7-9fdd-2e7faa70a68a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myproject-api/src/main/java/com/scauly/SpringCloud/entities/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/myproject-api/src/main/java/com/scauly/SpringCloud/entities/Role.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myproject-api/src/main/java/com/scauly/SpringCloud/entities/RoleExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/myproject-api/src/main/java/com/scauly/SpringCloud/entities/RoleExample.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myproject-api/src/main/java/com/scauly/SpringCloud/service/RoleClientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/myproject-api/src/main/java/com/scauly/SpringCloud/service/RoleClientService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myproject-api/target/classes/com/scauly/SpringCloud/entities/Role.class" beforeDir="false" afterPath="$PROJECT_DIR$/myproject-api/target/classes/com/scauly/SpringCloud/entities/Role.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myproject-api/target/classes/com/scauly/SpringCloud/entities/RoleExample$Criteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/myproject-api/target/classes/com/scauly/SpringCloud/entities/RoleExample$Criteria.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myproject-api/target/classes/com/scauly/SpringCloud/entities/RoleExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/myproject-api/target/classes/com/scauly/SpringCloud/entities/RoleExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myproject-api/target/classes/com/scauly/SpringCloud/entities/RoleExample$GeneratedCriteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/myproject-api/target/classes/com/scauly/SpringCloud/entities/RoleExample$GeneratedCriteria.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myproject-api/target/classes/com/scauly/SpringCloud/service/RoleClientService.class" beforeDir="false" afterPath="$PROJECT_DIR$/myproject-api/target/classes/com/scauly/SpringCloud/service/RoleClientService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myproject-api/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/myproject-api/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myproject-api/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/myproject-api/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myproject-api/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/myproject-api/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myproject-api/target/myproject.jar" beforeDir="false" afterPath="$PROJECT_DIR$/myproject-api/target/myproject.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myproject-consumer-dept-80/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/myproject-consumer-dept-80/target/maven-archiver/pom.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myproject-consumer-dept-80/target/myproject.jar" beforeDir="false" afterPath="$PROJECT_DIR$/myproject-consumer-dept-80/target/myproject.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myproject-consumer-role-9001/src/main/java/com/scauly/SpringCloud/controller/Role_Consumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/myproject-consumer-role-9001/src/main/java/com/scauly/SpringCloud/controller/Role_Consumer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myproject-consumer-role-9001/target/classes/com/scauly/SpringCloud/controller/RoleController_Consumer.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/myproject-consumer-role-9001/target/classes/com/scauly/SpringCloud/controller/Role_Consumer.class" beforeDir="false" afterPath="$PROJECT_DIR$/myproject-consumer-role-9001/target/classes/com/scauly/SpringCloud/controller/Role_Consumer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myproject-consumer-role-9001/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/myproject-consumer-role-9001/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myproject-consumer-role-9001/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/myproject-consumer-role-9001/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myproject-consumer-role-9001/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/myproject-consumer-role-9001/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myproject-consumer-role-9001/target/myproject.jar" beforeDir="false" afterPath="$PROJECT_DIR$/myproject-consumer-role-9001/target/myproject.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myproject-eureka-7001/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/myproject-eureka-7001/target/maven-archiver/pom.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myproject-eureka-7001/target/myproject.jar" beforeDir="false" afterPath="$PROJECT_DIR$/myproject-eureka-7001/target/myproject.jar" afterDir="false" />
@@ -31,41 +19,20 @@
       <change beforePath="$PROJECT_DIR$/myproject-eureka-7002/target/myproject.jar" beforeDir="false" afterPath="$PROJECT_DIR$/myproject-eureka-7002/target/myproject.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myproject-eureka-7003/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/myproject-eureka-7003/target/maven-archiver/pom.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myproject-eureka-7003/target/myproject.jar" beforeDir="false" afterPath="$PROJECT_DIR$/myproject-eureka-7003/target/myproject.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myproject-provider-dept-8001/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/myproject-provider-dept-8001/target/classes/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myproject-provider-dept-8001/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/myproject-provider-dept-8001/target/maven-archiver/pom.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myproject-provider-dept-8001/target/myproject.jar" beforeDir="false" afterPath="$PROJECT_DIR$/myproject-provider-dept-8001/target/myproject.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myproject-provider-dept-hystrix-8001/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/myproject-provider-dept-hystrix-8001/target/maven-archiver/pom.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myproject-provider-dept-hystrix-8001/target/myproject.jar" beforeDir="false" afterPath="$PROJECT_DIR$/myproject-provider-dept-hystrix-8001/target/myproject.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myproject-provider-role-hystrix-5001/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myproject-provider-role-hystrix-5001/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myproject-provider-role-hystrix-5001/src/main/java/com/scauly/SpringCloud/controller/RoleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/myproject-provider-role-hystrix-5001/src/main/java/com/scauly/SpringCloud/controller/RoleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myproject-provider-role-hystrix-5001/src/main/java/com/scauly/SpringCloud/dao/RoleDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/myproject-provider-role-hystrix-5001/src/main/java/com/scauly/SpringCloud/dao/RoleDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myproject-provider-role-hystrix-5001/src/main/java/com/scauly/SpringCloud/service/RoleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/myproject-provider-role-hystrix-5001/src/main/java/com/scauly/SpringCloud/service/RoleService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myproject-provider-role-hystrix-5001/src/main/java/com/scauly/SpringCloud/service/impl/RoleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/myproject-provider-role-hystrix-5001/src/main/java/com/scauly/SpringCloud/service/impl/RoleServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myproject-provider-role-hystrix-5001/src/main/resources/generatorConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myproject-provider-role-hystrix-5001/src/main/resources/generatorConfig.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myproject-provider-role-hystrix-5001/src/main/resources/mybatis/mapper/RoleMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myproject-provider-role-hystrix-5001/src/main/resources/mybatis/mapper/RoleMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myproject-provider-role-hystrix-5001/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/myproject-provider-role-hystrix-5001/target/classes/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myproject-provider-role-hystrix-5001/target/classes/com/scauly/SpringCloud/controller/RoleController.class" beforeDir="false" afterPath="$PROJECT_DIR$/myproject-provider-role-hystrix-5001/target/classes/com/scauly/SpringCloud/controller/RoleController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myproject-provider-role-hystrix-5001/target/classes/com/scauly/SpringCloud/dao/RoleDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/myproject-provider-role-hystrix-5001/target/classes/com/scauly/SpringCloud/dao/RoleDao.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myproject-provider-role-hystrix-5001/target/classes/com/scauly/SpringCloud/service/RoleService.class" beforeDir="false" afterPath="$PROJECT_DIR$/myproject-provider-role-hystrix-5001/target/classes/com/scauly/SpringCloud/service/RoleService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myproject-provider-role-hystrix-5001/target/classes/com/scauly/SpringCloud/service/impl/RoleServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/myproject-provider-role-hystrix-5001/target/classes/com/scauly/SpringCloud/service/impl/RoleServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myproject-provider-role-hystrix-5001/target/classes/generatorConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myproject-provider-role-hystrix-5001/target/classes/generatorConfig.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myproject-provider-role-hystrix-5001/target/classes/mybatis/mapper/RoleMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myproject-provider-role-hystrix-5001/target/classes/mybatis/mapper/RoleMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myproject-provider-role-hystrix-5001/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/myproject-provider-role-hystrix-5001/target/maven-archiver/pom.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myproject-provider-role-hystrix-5001/target/myproject.jar" beforeDir="false" afterPath="$PROJECT_DIR$/myproject-provider-role-hystrix-5001/target/myproject.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myproject-zuul-gateway-9527/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/myproject-zuul-gateway-9527/target/maven-archiver/pom.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myproject-zuul-gateway-9527/target/myproject.jar" beforeDir="false" afterPath="$PROJECT_DIR$/myproject-zuul-gateway-9527/target/myproject.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/myproject.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/scauly/SpringCloud/controller/RoleController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/scauly/SpringCloud/dao/RoleDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/scauly/SpringCloud/dao/RoleMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/scauly/SpringCloud/entities/Role.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/scauly/SpringCloud/entities/RoleExample$Criteria.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/scauly/SpringCloud/entities/RoleExample$Criterion.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/scauly/SpringCloud/entities/RoleExample$GeneratedCriteria.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/scauly/SpringCloud/entities/RoleExample.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/scauly/SpringCloud/roleProvider5001_APP.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/scauly/SpringCloud/service/RoleService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/scauly/SpringCloud/service/impl/RoleServiceImpl.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -138,7 +105,7 @@
       <recent name="C:\Users\LEON\IdeaProjects\myproject\myproject-provider-dept-hystrix-8001\src" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.EurekaServer7001_App">
+  <component name="RunManager" selected="Spring Boot.RoleConsumer9001_App">
     <configuration name="myproject-provider-fund-hystrix-8001 [mybatis-generator:generate...]" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
       <MavenSettings>
         <option name="myGeneralSettings" />
@@ -269,7 +236,7 @@
       <workItem from="1581337607985" duration="9149000" />
       <workItem from="1581436956221" duration="4727000" />
       <workItem from="1581520975831" duration="5479000" />
-      <workItem from="1581570284588" duration="5613000" />
+      <workItem from="1581570284588" duration="19202000" />
     </task>
     <servers />
   </component>
@@ -296,10 +263,10 @@
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="756" y="359" key="#com.intellij.fileTypes.FileTypeChooser/0.0.2048.1112@0.0.2048.1112" timestamp="1580474000207" />
-    <state x="830" y="266" key="#com.intellij.ide.util.MemberChooser" timestamp="1581573798847">
+    <state x="830" y="266" key="#com.intellij.ide.util.MemberChooser" timestamp="1581608803438">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state x="830" y="266" key="#com.intellij.ide.util.MemberChooser/0.0.2048.1112@0.0.2048.1112" timestamp="1581573798847" />
+    <state x="830" y="266" key="#com.intellij.ide.util.MemberChooser/0.0.2048.1112@0.0.2048.1112" timestamp="1581608803438" />
     <state x="502" y="482" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1580535141144">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
@@ -316,38 +283,38 @@
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="805" y="312" key="FileChooserDialogImpl/0.0.2048.1112@0.0.2048.1112" timestamp="1580567843426" />
-    <state width="2005" height="305" key="GridCell.Tab.0.bottom" timestamp="1581575670924">
+    <state width="2005" height="305" key="GridCell.Tab.0.bottom" timestamp="1581616183544">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="305" key="GridCell.Tab.0.bottom/0.0.2048.1112@0.0.2048.1112" timestamp="1581575670924" />
-    <state width="2005" height="305" key="GridCell.Tab.0.center" timestamp="1581575670924">
+    <state width="2005" height="305" key="GridCell.Tab.0.bottom/0.0.2048.1112@0.0.2048.1112" timestamp="1581616183544" />
+    <state width="2005" height="305" key="GridCell.Tab.0.center" timestamp="1581616183544">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="305" key="GridCell.Tab.0.center/0.0.2048.1112@0.0.2048.1112" timestamp="1581575670924" />
-    <state width="2005" height="305" key="GridCell.Tab.0.left" timestamp="1581575670924">
+    <state width="2005" height="305" key="GridCell.Tab.0.center/0.0.2048.1112@0.0.2048.1112" timestamp="1581616183544" />
+    <state width="2005" height="305" key="GridCell.Tab.0.left" timestamp="1581616183544">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="305" key="GridCell.Tab.0.left/0.0.2048.1112@0.0.2048.1112" timestamp="1581575670924" />
-    <state width="2005" height="305" key="GridCell.Tab.0.right" timestamp="1581575670924">
+    <state width="2005" height="305" key="GridCell.Tab.0.left/0.0.2048.1112@0.0.2048.1112" timestamp="1581616183544" />
+    <state width="2005" height="305" key="GridCell.Tab.0.right" timestamp="1581616183544">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="305" key="GridCell.Tab.0.right/0.0.2048.1112@0.0.2048.1112" timestamp="1581575670924" />
-    <state width="2005" height="305" key="GridCell.Tab.1.bottom" timestamp="1581575670925">
+    <state width="2005" height="305" key="GridCell.Tab.0.right/0.0.2048.1112@0.0.2048.1112" timestamp="1581616183544" />
+    <state width="2005" height="305" key="GridCell.Tab.1.bottom" timestamp="1581616183544">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="305" key="GridCell.Tab.1.bottom/0.0.2048.1112@0.0.2048.1112" timestamp="1581575670925" />
-    <state width="2005" height="305" key="GridCell.Tab.1.center" timestamp="1581575670924">
+    <state width="2005" height="305" key="GridCell.Tab.1.bottom/0.0.2048.1112@0.0.2048.1112" timestamp="1581616183544" />
+    <state width="2005" height="305" key="GridCell.Tab.1.center" timestamp="1581616183544">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="305" key="GridCell.Tab.1.center/0.0.2048.1112@0.0.2048.1112" timestamp="1581575670924" />
-    <state width="2005" height="305" key="GridCell.Tab.1.left" timestamp="1581575670924">
+    <state width="2005" height="305" key="GridCell.Tab.1.center/0.0.2048.1112@0.0.2048.1112" timestamp="1581616183544" />
+    <state width="2005" height="305" key="GridCell.Tab.1.left" timestamp="1581616183544">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="305" key="GridCell.Tab.1.left/0.0.2048.1112@0.0.2048.1112" timestamp="1581575670924" />
-    <state width="2005" height="305" key="GridCell.Tab.1.right" timestamp="1581575670925">
+    <state width="2005" height="305" key="GridCell.Tab.1.left/0.0.2048.1112@0.0.2048.1112" timestamp="1581616183544" />
+    <state width="2005" height="305" key="GridCell.Tab.1.right" timestamp="1581616183544">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="305" key="GridCell.Tab.1.right/0.0.2048.1112@0.0.2048.1112" timestamp="1581575670925" />
+    <state width="2005" height="305" key="GridCell.Tab.1.right/0.0.2048.1112@0.0.2048.1112" timestamp="1581616183544" />
     <state x="555" y="212" key="Maven.ArtifactSearchDialog" timestamp="1581230326288">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>

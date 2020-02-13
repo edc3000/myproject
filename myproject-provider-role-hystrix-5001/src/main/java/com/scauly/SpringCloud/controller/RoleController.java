@@ -26,8 +26,7 @@ public class RoleController {
 
     //插入User
     @RequestMapping(value="/role/add",method= RequestMethod.POST)
-    public int add(@RequestBody Role role)
-    {
+    public int add(@RequestBody Role role) throws Exception {
         return roleService.add(role);
     }
 
@@ -53,4 +52,23 @@ public class RoleController {
         else
             return 0;
     }
+
+    //删除用户
+    @RequestMapping(value = "/role/delete", method = RequestMethod.GET)
+    public int delete(@RequestBody Role role){
+        return this.roleService.delete(role);
+    }
+
+   /* //更新用户信息
+    @RequestMapping(value = "/role/updateall",method = RequestMethod.GET)
+    public  int updateall(@RequestBody Role role){
+        return this.roleService.update(role);
+    }*/
+
+    //修改密码
+    @RequestMapping(value = "/role/update", method = RequestMethod.GET)
+    public int update(@RequestBody Role role) throws Exception{
+        return  this.roleService.updatepassword(role);
+    }
+
 }

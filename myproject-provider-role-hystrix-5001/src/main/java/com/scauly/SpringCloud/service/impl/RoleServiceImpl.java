@@ -37,7 +37,8 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
-    public int add(Role role) {
+    public int add(Role role) throws Exception {
+       role.setRolepassword( md5(role.getRolepassword(),"abcd4321"));
         return roleDao.insert(role);
     }
 
@@ -48,7 +49,15 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     public int delete(Role role) {
-        return roleDao.deleteByPrimaryKey(role.getRoleid());
+        List<Role> list = this.findName(role.getRolename());
+        if(list.isEmpty())
+            return 0;
+        else
+        {
+            Role role1 = list.get(0);
+            System.out.println(role1.getRoleid());
+            return roleDao.deleteByPrimaryKey(role1.getRoleid());
+        }
     }
 
     @Override
@@ -87,6 +96,26 @@ public class RoleServiceImpl implements RoleService {
             return new Role();
     }
 
+    @Override
+    public int updatepassword(Role role) throws Exception {
+        /*Role role1 = roleDao.selectByPrimaryKey(role.getRoleid());
+
+            role1.setRolepassword(md5(role.getRolepassword(),"abcd4321"));
+            System.out.println("修改密码");
+
+        return roleDao.updateByPrimaryKey(role1);*/
+        List<Role> list = this.findName(role.getRolename());
+        if(list.isEmpty())
+            return 0;
+        else
+        {
+            Role role1 = list.get(0);
+            System.out.println("1121212");
+            role1.setRolepassword(md5(role.getRolepassword(),"abcd4321"));
+            System.out.println("修改密码");
+            return roleDao.updateByPrimaryKey(role1);
+        }
+    }
 
 
 }

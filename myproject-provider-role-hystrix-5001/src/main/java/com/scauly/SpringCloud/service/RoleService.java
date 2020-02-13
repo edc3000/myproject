@@ -6,7 +6,7 @@ import java.util.List;
 
 
 public interface RoleService {
-    public int add(Role role);
+    public int add(Role role) throws Exception;
 
     public int update(Role role);
 
@@ -19,4 +19,6 @@ public interface RoleService {
     public Role  get(Long id);
 
     public Role checkPassword(Role role) throws Exception;
+
+    public int updatepassword(Role role) throws Exception;
 }

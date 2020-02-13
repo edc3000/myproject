@@ -35,7 +35,7 @@ public class Role_Consumer {
 
     //添加用户
     @RequestMapping(value = "consumer/role/add", method = RequestMethod.POST)
-    public int add(@RequestBody Role role){
+    public int add(@RequestBody Role role)throws Exception{
         return this.roleClientService.add(role);
     }
 
@@ -46,4 +46,21 @@ public class Role_Consumer {
 
     }
 
+    //注销用户
+    @RequestMapping(value = "consumer/role/delete", method = RequestMethod.GET)
+    public  int delete(@RequestBody Role role){
+        return this.roleClientService.delete(role);
+    }
+
+   /* //更新用户信息
+    @RequestMapping(value = "consumer/role/update",method = RequestMethod.GET)
+    public int updateall(@RequestBody Role role){
+        return this.roleClientService.updateall(role);
+    }*/
+
+    //根据用户名就可修改密码
+    @RequestMapping(value = "consumer/role/updatepwd", method = RequestMethod.GET)
+    public  int updatepwd(@RequestBody Role role) throws Exception{
+        return this.roleClientService.update(role);
+    }
 }
