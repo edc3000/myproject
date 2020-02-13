@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="ebb979e8-348f-4bd7-9fdd-2e7faa70a68a" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="myproject" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="Interface" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+        <option name="jdkForImporter" value="1.8" />
+        <option name="vmOptionsForImporter" value="-Xmx768m" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1WylolY0V2ytekXUBBYdhKhEL3N" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelOrder2" value="2" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RequestMappingsPanelWidth2" value="75" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/myproject-provider-role-hystrix-6001/src/main/resources" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.annotationProcessors" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.scauly.SpringCloud" />
+      <recent name="com.scauly.SpringCloud.controller" />
+      <recent name="com.scauly.SpringCloud.service.impl" />
+      <recent name="com.scauly.SpringCloud.service" />
+      <recent name="com.scauly.SpringCloud.dao" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\LEON\IdeaProjects\myproject\myproject-provider-role-hystrix-6001\src\main\resources" />
+      <recent name="C:\Users\LEON\IdeaProjects\myproject\myproject-consumer-role-9001\src\main\resources" />
+      <recent name="C:\Users\LEON\IdeaProjects\myproject\myproject-provider-role-hystrix-8001\src\main\resources" />
+      <recent name="C:\Users\LEON\IdeaProjects\myproject\myproject-provider-dept-hystrix-8001\src" />
+      <recent name="C:\Users\LEON\IdeaProjects\myproject\myproject-eureka-7003\src" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.RoleConsumer9001_App">
+    <configuration name="myproject-provider-fund-hystrix-8001 [mybatis-generator:generate...]" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="mybatis-generator:generate" />
+                <option value="-e" />
+              </list>
+            </option>
+            <option name="pomFileName" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$/myproject-provider-fund-hystrix-8001" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
+    <configuration name="EurekaServer7002_App" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="myproject-eureka-7002" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.scauly.SpringCloud.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.scauly.SpringCloud.EurekaServer7002_App" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EurekaServer7003_App" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="myproject-eureka-7003" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.scauly.SpringCloud.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.scauly.SpringCloud.EurekaServer7003_App" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RoleConsumer9001_App" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="myproject-consumer-role-9001" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.scauly.SpringCloud.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.scauly.SpringCloud.RoleConsumer9001_App" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="roleProvider5001_APP (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="myrpject-provider-role-hystrix-5001" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.scauly.SpringCloud.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.scauly.SpringCloud.roleProvider5001_APP" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="roleProvider5001_APP" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="myproject" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.scauly.SpringCloud.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.scauly.SpringCloud.roleProvider5001_APP" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Maven.myproject-provider-fund-hystrix-8001 [mybatis-generator:generate...]" />
+      <item itemvalue="Spring Boot.roleProvider5001_APP" />
+      <item itemvalue="Spring Boot.EurekaServer7002_App" />
+      <item itemvalue="Spring Boot.EurekaServer7003_App" />
+      <item itemvalue="Spring Boot.roleProvider5001_APP (1)" />
+      <item itemvalue="Spring Boot.RoleConsumer9001_App" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.RoleConsumer9001_App" />
+        <item itemvalue="Spring Boot.roleProvider5001_APP (1)" />
+        <item itemvalue="Spring Boot.roleProvider5001_APP" />
+        <item itemvalue="Spring Boot.EurekaServer7003_App" />
+        <item itemvalue="Spring Boot.EurekaServer7002_App" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ebb979e8-348f-4bd7-9fdd-2e7faa70a68a" name="Default Changelist" comment="" />
+      <created>1580129892156</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1580129892156</updated>
+      <workItem from="1580129897684" duration="3931000" />
+      <workItem from="1580134045370" duration="4672000" />
+      <workItem from="1580184308600" duration="16136000" />
+      <workItem from="1580472482653" duration="3133000" />
+      <workItem from="1580532482694" duration="12714000" />
+      <workItem from="1580904155627" duration="9387000" />
+      <workItem from="1581224320005" duration="10230000" />
+      <workItem from="1581234576691" duration="1438000" />
+      <workItem from="1581337607985" duration="9149000" />
+      <workItem from="1581436956221" duration="4727000" />
+      <workItem from="1581520975831" duration="5479000" />
+      <workItem from="1581570284588" duration="443000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="617" y="215" key="#Inspections" timestamp="1581231454460">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="617" y="215" key="#Inspections/0.0.2048.1112@0.0.2048.1112" timestamp="1581231454460" />
+    <state x="617" y="215" key="#Project_Structure" timestamp="1580904726627">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="617" y="215" key="#Project_Structure/0.0.2048.1112@0.0.2048.1112" timestamp="1580904726627" />
+    <state x="479" y="212" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1580471026463">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="479" y="212" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2048.1112@0.0.2048.1112" timestamp="1580471026463" />
+    <state x="756" y="359" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1580474000207">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="756" y="359" key="#com.intellij.fileTypes.FileTypeChooser/0.0.2048.1112@0.0.2048.1112" timestamp="1580474000207" />
+    <state x="830" y="266" key="#com.intellij.ide.util.MemberChooser" timestamp="1581430628486">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="830" y="266" key="#com.intellij.ide.util.MemberChooser/0.0.2048.1112@0.0.2048.1112" timestamp="1581430628486" />
+    <state x="502" y="482" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1580535141144">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="502" y="482" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.2048.1112@0.0.2048.1112" timestamp="1580535141144" />
+    <state x="665" y="415" width="717" height="291" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1580474486868">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="665" y="415" width="717" height="291" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.2048.1112@0.0.2048.1112" timestamp="1580474486868" />
+    <state x="755" y="303" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1581234177489">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="755" y="303" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.2048.1112@0.0.2048.1112" timestamp="1581234177489" />
+    <state x="805" y="312" key="FileChooserDialogImpl" timestamp="1580567843426">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="805" y="312" key="FileChooserDialogImpl/0.0.2048.1112@0.0.2048.1112" timestamp="1580567843426" />
+    <state width="2005" height="305" key="GridCell.Tab.0.bottom" timestamp="1581526481274">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="2005" height="305" key="GridCell.Tab.0.bottom/0.0.2048.1112@0.0.2048.1112" timestamp="1581526481274" />
+    <state width="2005" height="305" key="GridCell.Tab.0.center" timestamp="1581526481274">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="2005" height="305" key="GridCell.Tab.0.center/0.0.2048.1112@0.0.2048.1112" timestamp="1581526481274" />
+    <state width="2005" height="305" key="GridCell.Tab.0.left" timestamp="1581526481274">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="2005" height="305" key="GridCell.Tab.0.left/0.0.2048.1112@0.0.2048.1112" timestamp="1581526481274" />
+    <state width="2005" height="305" key="GridCell.Tab.0.right" timestamp="1581526481274">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="2005" height="305" key="GridCell.Tab.0.right/0.0.2048.1112@0.0.2048.1112" timestamp="1581526481274" />
+    <state width="2005" height="305" key="GridCell.Tab.1.bottom" timestamp="1581526481274">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="2005" height="305" key="GridCell.Tab.1.bottom/0.0.2048.1112@0.0.2048.1112" timestamp="1581526481274" />
+    <state width="2005" height="305" key="GridCell.Tab.1.center" timestamp="1581526481274">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="2005" height="305" key="GridCell.Tab.1.center/0.0.2048.1112@0.0.2048.1112" timestamp="1581526481274" />
+    <state width="2005" height="305" key="GridCell.Tab.1.left" timestamp="1581526481274">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="2005" height="305" key="GridCell.Tab.1.left/0.0.2048.1112@0.0.2048.1112" timestamp="1581526481274" />
+    <state width="2005" height="305" key="GridCell.Tab.1.right" timestamp="1581526481274">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="2005" height="305" key="GridCell.Tab.1.right/0.0.2048.1112@0.0.2048.1112" timestamp="1581526481274" />
+    <state x="555" y="212" key="Maven.ArtifactSearchDialog" timestamp="1581230326288">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="555" y="212" key="Maven.ArtifactSearchDialog/0.0.2048.1112@0.0.2048.1112" timestamp="1581230326288" />
+    <state x="526" y="199" key="SettingsEditor" timestamp="1581437135785">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="526" y="199" key="SettingsEditor/0.0.2048.1112@0.0.2048.1112" timestamp="1581437135785" />
+    <state x="705" y="381" key="com.intellij.ide.util.TipDialog" timestamp="1581570291751">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="705" y="381" key="com.intellij.ide.util.TipDialog/0.0.2048.1112@0.0.2048.1112" timestamp="1581570291751" />
+    <state x="800" y="182" width="642" height="801" key="find.popup" timestamp="1580463886918">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="800" y="182" width="642" height="801" key="find.popup/0.0.2048.1112@0.0.2048.1112" timestamp="1580463886918" />
+    <state x="613" y="259" key="new project wizard" timestamp="1581234641470">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="613" y="259" key="new project wizard/0.0.2048.1112@0.0.2048.1112" timestamp="1581234641470" />
+    <state x="681" y="210" width="670" height="676" key="search.everywhere.popup" timestamp="1581225878736">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="681" y="210" width="670" height="676" key="search.everywhere.popup/0.0.2048.1112@0.0.2048.1112" timestamp="1581225878736" />
+  </component>
+</project>

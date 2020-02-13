@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="myproject-eureka-7002" />
+        <module name="myproject-eureka-7001" />
+        <module name="myproject-provider-role-8001" />
+        <module name="myproject-provider-dept-8001" />
+        <module name="myproject-zuul-gateway-9527" />
+        <module name="myproject-provider-role-hystrix-6001" />
+        <module name="myproject-consumer-role-9001" />
+        <module name="mypropject-provider-role-hystrix-5001" />
+        <module name="myproject-provider-role-hystrix-5001" />
+        <module name="myproject-api" />
+        <module name="myproject-consumer-dept-80" />
+        <module name="myrpject-provider-role-hystrix-5001" />
+        <module name="myproject-provider-dept-hystrix-8001" />
+        <module name="myproject-eureka-7003" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="myproject" target="1.8" />
+      <module name="myproject-api" target="1.8" />
+      <module name="myproject-consumer-dept-80" target="1.8" />
+      <module name="myproject-consumer-role-9001" target="1.8" />
+      <module name="myproject-eureka-7001" target="1.8" />
+      <module name="myproject-eureka-7002" target="1.8" />
+      <module name="myproject-eureka-7003" target="1.8" />
+      <module name="myproject-provider-dept-8001" target="1.8" />
+      <module name="myproject-provider-dept-hystrix-8001" target="1.8" />
+      <module name="myproject-provider-fund-hystrix-8001" target="1.8" />
+      <module name="myproject-provider-role-8001" target="1.8" />
+      <module name="myproject-provider-role-hystrix-5001" target="1.8" />
+      <module name="myproject-provider-role-hystrix-6001" target="1.8" />
+      <module name="myproject-provider-role-hystrix-8001" target="1.8" />
+      <module name="myproject-zuul-gateway-9527" target="1.8" />
+      <module name="mypropject-provider-role-hystrix-5001" target="1.8" />
+      <module name="myrpject-provider-role-hystrix-5001" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

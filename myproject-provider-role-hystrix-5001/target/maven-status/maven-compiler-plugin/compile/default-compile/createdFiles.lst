@@ -1,0 +1,5 @@
+com\scauly\SpringCloud\dao\RoleDao.class
+com\scauly\SpringCloud\service\impl\RoleServiceImpl.class
+com\scauly\SpringCloud\controller\RoleController.class
+com\scauly\SpringCloud\service\RoleService.class
+com\scauly\SpringCloud\roleProvider5001_APP.class

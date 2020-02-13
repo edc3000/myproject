@@ -1,0 +1,5 @@
+com\scauly\SpringCloud\DeptProvider8001_Hystrix_App.class
+com\scauly\SpringCloud\dao\DeptDao.class
+com\scauly\SpringCloud\service\DeptService.class
+com\scauly\SpringCloud\controller\DeptController.class
+com\scauly\SpringCloud\service\impl\DeptServiceImpl.class
