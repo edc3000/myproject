@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/myproject.iml" filepath="$PROJECT_DIR$/myproject.iml" />
       <module fileurl="file://$PROJECT_DIR$/myproject-api/myproject-api.iml" filepath="$PROJECT_DIR$/myproject-api/myproject-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/myproject-comsumer-fund-9002/myproject-comsumer-fund-9002.iml" filepath="$PROJECT_DIR$/myproject-comsumer-fund-9002/myproject-comsumer-fund-9002.iml" />
       <module fileurl="file://$PROJECT_DIR$/myproject-consumer-dept-80/myproject-consumer-dept-80.iml" filepath="$PROJECT_DIR$/myproject-consumer-dept-80/myproject-consumer-dept-80.iml" />
       <module fileurl="file://$PROJECT_DIR$/myproject-consumer-role-9001/myproject-consumer-role-9001.iml" filepath="$PROJECT_DIR$/myproject-consumer-role-9001/myproject-consumer-role-9001.iml" />
       <module fileurl="file://$PROJECT_DIR$/myproject-eureka-7001/myproject-eureka-7001.iml" filepath="$PROJECT_DIR$/myproject-eureka-7001/myproject-eureka-7001.iml" />
@@ -11,6 +12,7 @@
       <module fileurl="file://$PROJECT_DIR$/myproject-eureka-7003/myproject-eureka-7003.iml" filepath="$PROJECT_DIR$/myproject-eureka-7003/myproject-eureka-7003.iml" />
       <module fileurl="file://$PROJECT_DIR$/myproject-provider-dept-8001/myproject-provider-dept-8001.iml" filepath="$PROJECT_DIR$/myproject-provider-dept-8001/myproject-provider-dept-8001.iml" />
       <module fileurl="file://$PROJECT_DIR$/myproject-provider-dept-hystrix-8001/myproject-provider-dept-hystrix-8001.iml" filepath="$PROJECT_DIR$/myproject-provider-dept-hystrix-8001/myproject-provider-dept-hystrix-8001.iml" />
+      <module fileurl="file://$PROJECT_DIR$/myproject-provider-fund-hystrix-5002/myproject-provider-fund-hystrix-5002.iml" filepath="$PROJECT_DIR$/myproject-provider-fund-hystrix-5002/myproject-provider-fund-hystrix-5002.iml" />
       <module fileurl="file://$PROJECT_DIR$/myproject-provider-role-hystrix-5001/myproject-provider-role-hystrix-5001.iml" filepath="$PROJECT_DIR$/myproject-provider-role-hystrix-5001/myproject-provider-role-hystrix-5001.iml" />
       <module fileurl="file://$PROJECT_DIR$/myproject-provider-role-hystrix-6001/myproject-provider-role-hystrix-6001.iml" filepath="$PROJECT_DIR$/myproject-provider-role-hystrix-6001/myproject-provider-role-hystrix-6001.iml" />
       <module fileurl="file://$PROJECT_DIR$/myproject-zuul-gateway-9527/myproject-zuul-gateway-9527.iml" filepath="$PROJECT_DIR$/myproject-zuul-gateway-9527/myproject-zuul-gateway-9527.iml" />

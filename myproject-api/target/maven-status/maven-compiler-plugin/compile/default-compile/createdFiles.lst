@@ -1,7 +1,13 @@
 com\scauly\SpringCloud\service\RoleClientService.class
 com\scauly\SpringCloud\entities\RoleExample$GeneratedCriteria.class
+com\scauly\SpringCloud\entities\FundExample$GeneratedCriteria.class
+com\scauly\SpringCloud\entities\RoleExample$Criterion.class
+com\scauly\SpringCloud\entities\FundExample$Criterion.class
+com\scauly\SpringCloud\entities\FundExample.class
+com\scauly\SpringCloud\service\FundClientService.class
+com\scauly\SpringCloud\entities\FundExample$Criteria.class
+com\scauly\SpringCloud\entities\Fund.class
 com\scauly\SpringCloud\entities\Dept.class
 com\scauly\SpringCloud\entities\RoleExample$Criteria.class
 com\scauly\SpringCloud\entities\Role.class
-com\scauly\SpringCloud\entities\RoleExample$Criterion.class
 com\scauly\SpringCloud\entities\RoleExample.class

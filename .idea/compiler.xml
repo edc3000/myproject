@@ -9,6 +9,8 @@
         <outputRelativeToContentRoot value="true" />
         <module name="myproject-eureka-7002" />
         <module name="myproject-eureka-7001" />
+        <module name="myproject-provider-fund-hystrix-5002" />
+        <module name="myproject-comsumer-fund-9002" />
         <module name="myproject-provider-role-8001" />
         <module name="myproject-provider-dept-8001" />
         <module name="myproject-zuul-gateway-9527" />
@@ -26,6 +28,7 @@
     <bytecodeTargetLevel>
       <module name="myproject" target="1.8" />
       <module name="myproject-api" target="1.8" />
+      <module name="myproject-comsumer-fund-9002" target="1.8" />
       <module name="myproject-consumer-dept-80" target="1.8" />
       <module name="myproject-consumer-role-9001" target="1.8" />
       <module name="myproject-eureka-7001" target="1.8" />
@@ -33,6 +36,7 @@
       <module name="myproject-eureka-7003" target="1.8" />
       <module name="myproject-provider-dept-8001" target="1.8" />
       <module name="myproject-provider-dept-hystrix-8001" target="1.8" />
+      <module name="myproject-provider-fund-hystrix-5002" target="1.8" />
       <module name="myproject-provider-fund-hystrix-8001" target="1.8" />
       <module name="myproject-provider-role-8001" target="1.8" />
       <module name="myproject-provider-role-hystrix-5001" target="1.8" />

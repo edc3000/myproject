@@ -1,0 +1,5 @@
+com\scauly\SpringCloud\controller\FundController.class
+com\scauly\SpringCloud\service\impl\FundServiceImpl.class
+com\scauly\SpringCloud\fundProvider5002_APP.class
+com\scauly\SpringCloud\dao\FundDao.class
+com\scauly\SpringCloud\service\FundService.class

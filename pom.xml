@@ -18,7 +18,8 @@
         <module>myproject-zuul-gateway-9527</module>
         <module>myproject-consumer-role-9001</module>
         <module>myproject-provider-role-hystrix-5001</module>
-
+        <module>myproject-provider-fund-hystrix-5002</module>
+        <module>myproject-comsumer-fund-9002</module>
 
 
     </modules>

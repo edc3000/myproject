@@ -3,6 +3,7 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/myproject-api/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/myproject-api/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/myproject-comsumer-fund-9002/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/myproject-consumer-dept-80/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/myproject-consumer-dept-80/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/myproject-consumer-role-9001/src/main/java" charset="UTF-8" />
@@ -13,6 +14,7 @@
     <file url="file://$PROJECT_DIR$/myproject-provider-dept-8001/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/myproject-provider-dept-8001/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/myproject-provider-dept-hystrix-8001/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/myproject-provider-fund-hystrix-5002/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/myproject-provider-role-hystrix-5001/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/myproject-zuul-gateway-9527/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
