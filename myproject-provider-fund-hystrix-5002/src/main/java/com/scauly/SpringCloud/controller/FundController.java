@@ -49,4 +49,8 @@ public class FundController {
     public @ResponseBody Fund get(@PathVariable("id") Long id){
         return fundService.get(id);
     }
+
+    //购买 库存-1
+    @RequestMapping(value = "fund/buy",method = RequestMethod.GET)
+    public int buy(@RequestBody Fund fund){ return  fundService.buy(fund);}
 }

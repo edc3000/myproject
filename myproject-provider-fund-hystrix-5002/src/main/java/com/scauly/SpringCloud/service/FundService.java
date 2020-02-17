@@ -20,4 +20,6 @@ public interface FundService {
     public  List<Fund> selectid(Fund fund);
 
     public  List<Fund> selectStatus(String status);
+
+    public  int buy(Fund fund);
 }

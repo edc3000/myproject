@@ -28,4 +28,7 @@ public interface FundClientService {
 
     @RequestMapping(value = "fund/get{id}", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody Fund get(@PathVariable("id") Long id);
+
+    @RequestMapping(value = "fund/buy",method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public int buy(@RequestBody Fund fund);
 }

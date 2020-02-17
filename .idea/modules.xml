@@ -13,11 +13,12 @@
       <module fileurl="file://$PROJECT_DIR$/myproject-provider-dept-8001/myproject-provider-dept-8001.iml" filepath="$PROJECT_DIR$/myproject-provider-dept-8001/myproject-provider-dept-8001.iml" />
       <module fileurl="file://$PROJECT_DIR$/myproject-provider-dept-hystrix-8001/myproject-provider-dept-hystrix-8001.iml" filepath="$PROJECT_DIR$/myproject-provider-dept-hystrix-8001/myproject-provider-dept-hystrix-8001.iml" />
       <module fileurl="file://$PROJECT_DIR$/myproject-provider-fund-hystrix-5002/myproject-provider-fund-hystrix-5002.iml" filepath="$PROJECT_DIR$/myproject-provider-fund-hystrix-5002/myproject-provider-fund-hystrix-5002.iml" />
+      <module fileurl="file://$PROJECT_DIR$/myproject-provider-order-hystrix-5003/myproject-provider-order-hystrix-5003.iml" filepath="$PROJECT_DIR$/myproject-provider-order-hystrix-5003/myproject-provider-order-hystrix-5003.iml" />
       <module fileurl="file://$PROJECT_DIR$/myproject-provider-role-hystrix-5001/myproject-provider-role-hystrix-5001.iml" filepath="$PROJECT_DIR$/myproject-provider-role-hystrix-5001/myproject-provider-role-hystrix-5001.iml" />
+      <module fileurl="file://$PROJECT_DIR$/myproject-provider-role-hystrix-5004/myproject-provider-role-hystrix-5004.iml" filepath="$PROJECT_DIR$/myproject-provider-role-hystrix-5004/myproject-provider-role-hystrix-5004.iml" />
       <module fileurl="file://$PROJECT_DIR$/myproject-provider-role-hystrix-6001/myproject-provider-role-hystrix-6001.iml" filepath="$PROJECT_DIR$/myproject-provider-role-hystrix-6001/myproject-provider-role-hystrix-6001.iml" />
       <module fileurl="file://$PROJECT_DIR$/myproject-zuul-gateway-9527/myproject-zuul-gateway-9527.iml" filepath="$PROJECT_DIR$/myproject-zuul-gateway-9527/myproject-zuul-gateway-9527.iml" />
       <module fileurl="file://$PROJECT_DIR$/myproject-provider-role-hystrix-5001/mypropject-provider-role-hystrix-5001.iml" filepath="$PROJECT_DIR$/myproject-provider-role-hystrix-5001/mypropject-provider-role-hystrix-5001.iml" />
-      <module fileurl="file://$PROJECT_DIR$/myproject-provider-role-hystrix-5001/myrpject-provider-role-hystrix-5001.iml" filepath="$PROJECT_DIR$/myproject-provider-role-hystrix-5001/myrpject-provider-role-hystrix-5001.iml" />
     </modules>
   </component>
 </project>

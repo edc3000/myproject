@@ -15,7 +15,8 @@
     <file url="file://$PROJECT_DIR$/myproject-provider-dept-8001/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/myproject-provider-dept-hystrix-8001/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/myproject-provider-fund-hystrix-5002/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/myproject-provider-role-hystrix-5001/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/myproject-provider-order-hystrix-5003/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/myproject-provider-role-hystrix-5004/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/myproject-zuul-gateway-9527/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />

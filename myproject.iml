@@ -8,7 +8,6 @@
       <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/myproject-provider-role-hystrix-6001/src/main/java" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/myproject-provider-role-hystrix-5001/src/main/java" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />

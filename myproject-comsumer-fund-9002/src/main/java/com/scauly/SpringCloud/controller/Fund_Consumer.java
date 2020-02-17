@@ -46,4 +46,7 @@ public class Fund_Consumer {
     public int update(@RequestBody Fund fund){
         return fundClientService.update(fund);
     }
+
+    @RequestMapping(value = "consumer/fund/buy", method = RequestMethod.GET)
+    public int buy(@RequestBody Fund fund){ return  fundClientService.buy(fund);}
 }

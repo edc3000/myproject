@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.scauly.SpringCloud.dao.WalletDao">
+  <resultMap id="BaseResultMap" type="com.scauly.SpringCloud.entities.Wallet">
+    <id column="walletID" jdbcType="BIGINT" property="walletid" />
+    <result column="walletMoney" jdbcType="BIGINT" property="walletmoney" />
+    <result column="ownerID" jdbcType="BIGINT" property="ownerid" />
+    <result column="rechargeStatus" jdbcType="VARCHAR" property="rechargestatus" />
+    <result column="withdrawStatus" jdbcType="VARCHAR" property="withdrawstatus" />
+    <result column="withdrawImage" jdbcType="VARCHAR" property="withdrawimage" />
+    <result column="reMoney" jdbcType="BIGINT" property="remoney" />
+    <result column="wdMoney" jdbcType="BIGINT" property="wdmoney" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    walletID, walletMoney, ownerID, rechargeStatus, withdrawStatus, withdrawImage, reMoney, 
+    wdMoney
+  </sql>
+  <select id="selectByExample" parameterType="com.scauly.SpringCloud.entities.WalletExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from wallet
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from wallet
+    where walletID = #{walletid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from wallet
+    where walletID = #{walletid,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.scauly.SpringCloud.entities.WalletExample">
+    delete from wallet
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.scauly.SpringCloud.entities.Wallet">
+    insert into wallet (walletID, walletMoney, ownerID, 
+      rechargeStatus, withdrawStatus, withdrawImage, 
+      reMoney, wdMoney)
+    values (#{walletid,jdbcType=BIGINT}, #{walletmoney,jdbcType=BIGINT}, #{ownerid,jdbcType=BIGINT}, 
+      #{rechargestatus,jdbcType=VARCHAR}, #{withdrawstatus,jdbcType=VARCHAR}, #{withdrawimage,jdbcType=VARCHAR}, 
+      #{remoney,jdbcType=BIGINT}, #{wdmoney,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.scauly.SpringCloud.entities.Wallet">
+    insert into wallet
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="walletid != null">
+        walletID,
+      </if>
+      <if test="walletmoney != null">
+        walletMoney,
+      </if>
+      <if test="ownerid != null">
+        ownerID,
+      </if>
+      <if test="rechargestatus != null">
+        rechargeStatus,
+      </if>
+      <if test="withdrawstatus != null">
+        withdrawStatus,
+      </if>
+      <if test="withdrawimage != null">
+        withdrawImage,
+      </if>
+      <if test="remoney != null">
+        reMoney,
+      </if>
+      <if test="wdmoney != null">
+        wdMoney,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="walletid != null">
+        #{walletid,jdbcType=BIGINT},
+      </if>
+      <if test="walletmoney != null">
+        #{walletmoney,jdbcType=BIGINT},
+      </if>
+      <if test="ownerid != null">
+        #{ownerid,jdbcType=BIGINT},
+      </if>
+      <if test="rechargestatus != null">
+        #{rechargestatus,jdbcType=VARCHAR},
+      </if>
+      <if test="withdrawstatus != null">
+        #{withdrawstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="withdrawimage != null">
+        #{withdrawimage,jdbcType=VARCHAR},
+      </if>
+      <if test="remoney != null">
+        #{remoney,jdbcType=BIGINT},
+      </if>
+      <if test="wdmoney != null">
+        #{wdmoney,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.scauly.SpringCloud.entities.WalletExample" resultType="java.lang.Long">
+    select count(*) from wallet
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update wallet
+    <set>
+      <if test="record.walletid != null">
+        walletID = #{record.walletid,jdbcType=BIGINT},
+      </if>
+      <if test="record.walletmoney != null">
+        walletMoney = #{record.walletmoney,jdbcType=BIGINT},
+      </if>
+      <if test="record.ownerid != null">
+        ownerID = #{record.ownerid,jdbcType=BIGINT},
+      </if>
+      <if test="record.rechargestatus != null">
+        rechargeStatus = #{record.rechargestatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.withdrawstatus != null">
+        withdrawStatus = #{record.withdrawstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.withdrawimage != null">
+        withdrawImage = #{record.withdrawimage,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remoney != null">
+        reMoney = #{record.remoney,jdbcType=BIGINT},
+      </if>
+      <if test="record.wdmoney != null">
+        wdMoney = #{record.wdmoney,jdbcType=BIGINT},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update wallet
+    set walletID = #{record.walletid,jdbcType=BIGINT},
+      walletMoney = #{record.walletmoney,jdbcType=BIGINT},
+      ownerID = #{record.ownerid,jdbcType=BIGINT},
+      rechargeStatus = #{record.rechargestatus,jdbcType=VARCHAR},
+      withdrawStatus = #{record.withdrawstatus,jdbcType=VARCHAR},
+      withdrawImage = #{record.withdrawimage,jdbcType=VARCHAR},
+      reMoney = #{record.remoney,jdbcType=BIGINT},
+      wdMoney = #{record.wdmoney,jdbcType=BIGINT}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.scauly.SpringCloud.entities.Wallet">
+    update wallet
+    <set>
+      <if test="walletmoney != null">
+        walletMoney = #{walletmoney,jdbcType=BIGINT},
+      </if>
+      <if test="ownerid != null">
+        ownerID = #{ownerid,jdbcType=BIGINT},
+      </if>
+      <if test="rechargestatus != null">
+        rechargeStatus = #{rechargestatus,jdbcType=VARCHAR},
+      </if>
+      <if test="withdrawstatus != null">
+        withdrawStatus = #{withdrawstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="withdrawimage != null">
+        withdrawImage = #{withdrawimage,jdbcType=VARCHAR},
+      </if>
+      <if test="remoney != null">
+        reMoney = #{remoney,jdbcType=BIGINT},
+      </if>
+      <if test="wdmoney != null">
+        wdMoney = #{wdmoney,jdbcType=BIGINT},
+      </if>
+    </set>
+    where walletID = #{walletid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.scauly.SpringCloud.entities.Wallet">
+    update wallet
+    set walletMoney = #{walletmoney,jdbcType=BIGINT},
+      ownerID = #{ownerid,jdbcType=BIGINT},
+      rechargeStatus = #{rechargestatus,jdbcType=VARCHAR},
+      withdrawStatus = #{withdrawstatus,jdbcType=VARCHAR},
+      withdrawImage = #{withdrawimage,jdbcType=VARCHAR},
+      reMoney = #{remoney,jdbcType=BIGINT},
+      wdMoney = #{wdmoney,jdbcType=BIGINT}
+    where walletID = #{walletid,jdbcType=BIGINT}
+  </update>
+</mapper>

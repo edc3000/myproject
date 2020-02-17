@@ -16,38 +16,37 @@ public class FundServiceImpl implements FundService {
     private FundDao fundDao;
 
     @Override
-    public int add(Fund fund)  {
+    public int add(Fund fund) {
         fund.setFundstatus("1");
         return fundDao.insert(fund);
     }
 
     @Override
-    public int update(Fund fund)  {
+    public int update(Fund fund) {
         List<Fund> list = this.findName(fund.getFundname());
-        if(list.isEmpty())
+        if (list.isEmpty())
             return 0;
-        else
-        {
+        else {
             Fund fund1 = list.get(0);
-            if(!fund1.getFundname().equals(fund.getFundname())&&fund.getFundname()!=null )
+            if (!fund1.getFundname().equals(fund.getFundname()) && fund.getFundname() != null)
                 fund1.setFundname(fund.getFundname());
 
-            if(!fund1.getFundbrief().equals(fund.getFundbrief())&&fund.getFundbrief()!=null )
+            if (!fund1.getFundbrief().equals(fund.getFundbrief()) && fund.getFundbrief() != null)
                 fund1.setFundbrief(fund.getFundbrief());
 
-            if(!fund1.getFundresponse().equals(fund.getFundresponse())&&fund.getFundresponse()!=null )
+            if (!fund1.getFundresponse().equals(fund.getFundresponse()) && fund.getFundresponse() != null)
                 fund1.setFundresponse(fund.getFundresponse());
 
-            if(!fund1.getFundmageurl().equals(fund.getFundmageurl())&&fund.getFundmageurl()!=null)
+            if (!fund1.getFundmageurl().equals(fund.getFundmageurl()) && fund.getFundmageurl() != null)
                 fund1.setFundmageurl(fund.getFundmageurl());
 
-            if(!fund1.getFundprice().equals(fund.getFundprice())&&fund.getFundprice()!=null )
+            if (!fund1.getFundprice().equals(fund.getFundprice()) && fund.getFundprice() != null)
                 fund1.setFundprice(fund.getFundprice());
 
-            if(!fund1.getFundsupply().equals(fund.getFundsupply())&&fund.getFundsupply()!=null)
+            if (!fund1.getFundsupply().equals(fund.getFundsupply()) && fund.getFundsupply() != null)
                 fund1.setFundsupply(fund.getFundsupply());
 
-            if(!fund1.getFundstatus().equals(fund.getFundstatus())&&fund.getFundstatus()!=null)
+            if (!fund1.getFundstatus().equals(fund.getFundstatus()) && fund.getFundstatus() != null)
                 fund1.setFundstatus(fund.getFundstatus());
 
             return fundDao.updateByPrimaryKey(fund1);
@@ -57,10 +56,9 @@ public class FundServiceImpl implements FundService {
     @Override
     public int delete(Fund fund) {
         List<Fund> list = this.findName(fund.getFundname());
-        if(list.isEmpty())
+        if (list.isEmpty())
             return 0;
-        else
-        {
+        else {
             Fund fund1 = list.get(0);
             return fundDao.deleteByPrimaryKey(fund1.getFundid());
         }
@@ -96,5 +94,22 @@ public class FundServiceImpl implements FundService {
         c.andFundstatusEqualTo(status);
 
         return fundDao.selectByExample(ex);
+    }
+
+    @Override
+    public int buy(Fund fund) {
+        List<Fund> list = this.findName(fund.getFundname());
+        if (list.isEmpty())
+            return 0;
+        else {
+            Fund fund1 = list.get(0);
+            if (fund1.getFundsupply() < 1)
+                return 0;
+            else {
+                fund1.setFundsupply((fund1.getFundsupply() - 1));
+                return fundDao.updateByPrimaryKey(fund1);
+            }
+        }
+
     }
 }
