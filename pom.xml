@@ -21,6 +21,7 @@
         <module>myproject-comsumer-fund-9002</module>
         <module>myproject-provider-order-hystrix-5003</module>
         <module>myproject-provider-role-hystrix-5004</module>
+        <module>myproject-consumer-ow-9003</module>
 
 
     </modules>

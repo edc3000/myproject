@@ -4,7 +4,10 @@ import com.scauly.SpringCloud.entities.Wallet;
 import com.scauly.SpringCloud.entities.WalletExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Mapper;
+import org.mybatis.spring.annotation.MapperScan;
 
+@Mapper
 public interface WalletDao {
     long countByExample(WalletExample example);
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.scauly.SpringCloud.dao.OrderDao">
-  <resultMap id="BaseResultMap" type="com.scauly.SpringCloud.entities.Order">
+<mapper namespace="com.scauly.SpringCloud.dao.FundorderDao">
+  <resultMap id="BaseResultMap" type="com.scauly.SpringCloud.entities.Fundorder">
     <id column="orderID" jdbcType="BIGINT" property="orderid" />
     <result column="buyerID" jdbcType="BIGINT" property="buyerid" />
     <result column="sellerID" jdbcType="BIGINT" property="sellerid" />
@@ -68,13 +68,13 @@
   <sql id="Base_Column_List">
     orderID, buyerID, sellerID, fundID
   </sql>
-  <select id="selectByExample" parameterType="com.scauly.SpringCloud.entities.OrderExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.scauly.SpringCloud.entities.FundorderExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from order
+    from fundorder
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -85,27 +85,27 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from order
+    from fundorder
     where orderID = #{orderid,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from order
+    delete from fundorder
     where orderID = #{orderid,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.scauly.SpringCloud.entities.OrderExample">
-    delete from order
+  <delete id="deleteByExample" parameterType="com.scauly.SpringCloud.entities.FundorderExample">
+    delete from fundorder
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.scauly.SpringCloud.entities.Order">
-    insert into order (orderID, buyerID, sellerID, 
+  <insert id="insert" parameterType="com.scauly.SpringCloud.entities.Fundorder">
+    insert into fundorder (orderID, buyerID, sellerID, 
       fundID)
     values (#{orderid,jdbcType=BIGINT}, #{buyerid,jdbcType=BIGINT}, #{sellerid,jdbcType=BIGINT}, 
       #{fundid,jdbcType=BIGINT})
   </insert>
-  <insert id="insertSelective" parameterType="com.scauly.SpringCloud.entities.Order">
-    insert into order
+  <insert id="insertSelective" parameterType="com.scauly.SpringCloud.entities.Fundorder">
+    insert into fundorder
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="orderid != null">
         orderID,
@@ -135,14 +135,14 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.scauly.SpringCloud.entities.OrderExample" resultType="java.lang.Long">
-    select count(*) from order
+  <select id="countByExample" parameterType="com.scauly.SpringCloud.entities.FundorderExample" resultType="java.lang.Long">
+    select count(*) from fundorder
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update order
+    update fundorder
     <set>
       <if test="record.orderid != null">
         orderID = #{record.orderid,jdbcType=BIGINT},
@@ -162,7 +162,7 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update order
+    update fundorder
     set orderID = #{record.orderid,jdbcType=BIGINT},
       buyerID = #{record.buyerid,jdbcType=BIGINT},
       sellerID = #{record.sellerid,jdbcType=BIGINT},
@@ -171,8 +171,8 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.scauly.SpringCloud.entities.Order">
-    update order
+  <update id="updateByPrimaryKeySelective" parameterType="com.scauly.SpringCloud.entities.Fundorder">
+    update fundorder
     <set>
       <if test="buyerid != null">
         buyerID = #{buyerid,jdbcType=BIGINT},
@@ -186,8 +186,8 @@
     </set>
     where orderID = #{orderid,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.scauly.SpringCloud.entities.Order">
-    update order
+  <update id="updateByPrimaryKey" parameterType="com.scauly.SpringCloud.entities.Fundorder">
+    update fundorder
     set buyerID = #{buyerid,jdbcType=BIGINT},
       sellerID = #{sellerid,jdbcType=BIGINT},
       fundID = #{fundid,jdbcType=BIGINT}
