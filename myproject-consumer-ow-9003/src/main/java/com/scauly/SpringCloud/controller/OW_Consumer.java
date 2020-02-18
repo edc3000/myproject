@@ -22,4 +22,12 @@ public class OW_Consumer {
     public int  add(@RequestBody Fundorder fundorder){
         return owClientService.add(fundorder);
     }
+
+    //查找所有订单
+    @RequestMapping(value = "consumer/ow/selectall", method = RequestMethod.GET)
+    public @ResponseBody List<Fundorder> selectall(){return owClientService.selectall();}
+
+    //查找自己的订单
+    @RequestMapping(value = "consumer/ow/selectorder/{id}",method = RequestMethod.GET)
+    public @ResponseBody List<Fundorder> selectorder(@PathVariable("id") Long id){return owClientService.selectorder(id);}
 }

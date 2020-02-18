@@ -6,6 +6,7 @@
     <result column="buyerID" jdbcType="BIGINT" property="buyerid" />
     <result column="sellerID" jdbcType="BIGINT" property="sellerid" />
     <result column="fundID" jdbcType="BIGINT" property="fundid" />
+    <result column="orderTime" jdbcType="VARCHAR" property="ordertime" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -66,7 +67,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    orderID, buyerID, sellerID, fundID
+    orderID, buyerID, sellerID, fundID, orderTime
   </sql>
   <select id="selectByExample" parameterType="com.scauly.SpringCloud.entities.FundorderExample" resultMap="BaseResultMap">
     select
@@ -100,9 +101,9 @@
   </delete>
   <insert id="insert" parameterType="com.scauly.SpringCloud.entities.Fundorder">
     insert into fundorder (orderID, buyerID, sellerID, 
-      fundID)
+      fundID, orderTime)
     values (#{orderid,jdbcType=BIGINT}, #{buyerid,jdbcType=BIGINT}, #{sellerid,jdbcType=BIGINT}, 
-      #{fundid,jdbcType=BIGINT})
+      #{fundid,jdbcType=BIGINT}, #{ordertime,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.scauly.SpringCloud.entities.Fundorder">
     insert into fundorder
@@ -119,6 +120,9 @@
       <if test="fundid != null">
         fundID,
       </if>
+      <if test="ordertime != null">
+        orderTime,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="orderid != null">
@@ -132,6 +136,9 @@
       </if>
       <if test="fundid != null">
         #{fundid,jdbcType=BIGINT},
+      </if>
+      <if test="ordertime != null">
+        #{ordertime,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -156,6 +163,9 @@
       <if test="record.fundid != null">
         fundID = #{record.fundid,jdbcType=BIGINT},
       </if>
+      <if test="record.ordertime != null">
+        orderTime = #{record.ordertime,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -166,7 +176,8 @@
     set orderID = #{record.orderid,jdbcType=BIGINT},
       buyerID = #{record.buyerid,jdbcType=BIGINT},
       sellerID = #{record.sellerid,jdbcType=BIGINT},
-      fundID = #{record.fundid,jdbcType=BIGINT}
+      fundID = #{record.fundid,jdbcType=BIGINT},
+      orderTime = #{record.ordertime,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -183,6 +194,9 @@
       <if test="fundid != null">
         fundID = #{fundid,jdbcType=BIGINT},
       </if>
+      <if test="ordertime != null">
+        orderTime = #{ordertime,jdbcType=VARCHAR},
+      </if>
     </set>
     where orderID = #{orderid,jdbcType=BIGINT}
   </update>
@@ -190,7 +204,8 @@
     update fundorder
     set buyerID = #{buyerid,jdbcType=BIGINT},
       sellerID = #{sellerid,jdbcType=BIGINT},
-      fundID = #{fundid,jdbcType=BIGINT}
+      fundID = #{fundid,jdbcType=BIGINT},
+      orderTime = #{ordertime,jdbcType=VARCHAR}
     where orderID = #{orderid,jdbcType=BIGINT}
   </update>
 </mapper>

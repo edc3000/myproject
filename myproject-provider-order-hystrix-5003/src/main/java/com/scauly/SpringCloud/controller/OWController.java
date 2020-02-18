@@ -18,6 +18,15 @@ public class OWController {
         return orderService.add(order);
     }
 
+    //查找所有订单
+    @RequestMapping(value = "order/selectall",method = RequestMethod.GET)
+    public @ResponseBody List<Fundorder> selectall(){
+        return orderService.selectall();
+    }
 
-
+    //查找所有订单
+    @RequestMapping(value = "order/selectorder/{id}",method = RequestMethod.GET)
+    public @ResponseBody List<Fundorder> selectorder(@PathVariable("id") Long id){
+        return orderService.selectorder(id);
+    }
 }

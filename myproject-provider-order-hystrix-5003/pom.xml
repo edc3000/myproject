@@ -117,9 +117,9 @@
             <version>5.0.4</version>
         </dependency>
     </dependencies>
-    <!--<build>
+    <build>
     <plugins>
-        &lt;!&ndash; mybatis-generator自动生成代码插件 &ndash;&gt;
+        <!-- mybatis-generator自动生成代码插件 -->
         <plugin>
             <groupId>org.mybatis.generator</groupId>
             <artifactId>mybatis-generator-maven-plugin</artifactId>
@@ -132,14 +132,14 @@
                 </dependency>
             </dependencies>
 
-            &lt;!&ndash; 配置generatorConfig.xml的路径和名称 &ndash;&gt;
+            <!-- 配置generatorConfig.xml的路径和名称 -->
             <configuration>
                 <configurationFile>
                     ${basedir}\src\main\resources\generatorConfig.xml
                 </configurationFile>
             </configuration>
 
-            &lt;!&ndash; 配置generator运行插件,使maven执行generator &ndash;&gt;
+            <!-- 配置generator运行插件,使maven执行generator -->
             <executions>
                 <execution>
                     <id>Generate MyBatis Artifacts</id>
@@ -150,6 +150,6 @@
             </executions>
         </plugin>
     </plugins>
-</build>-->
+</build>
 
 </project>

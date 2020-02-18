@@ -9,4 +9,8 @@ public interface OrderService {
 
     public Fundorder get(Long id);
 
+    public List<Fundorder> selectall();
+
+    public List<Fundorder> selectorder(Long id);
+
 }
