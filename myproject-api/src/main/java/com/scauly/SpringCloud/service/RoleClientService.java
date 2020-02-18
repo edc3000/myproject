@@ -41,4 +41,8 @@ public interface RoleClientService {
     //修改密码
     @RequestMapping(value = "/role/update", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE)
     public int update(@RequestBody Role role) throws Exception;
+
+    //查找所有用户
+    @RequestMapping(value = "role/selectall", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public @ResponseBody List<Role> selectall();
 }

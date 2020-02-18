@@ -21,4 +21,6 @@ public interface RoleService {
     public Role checkPassword(Role role) throws Exception;
 
     public int updatepassword(Role role) throws Exception;
+
+    public List<Role> selectall();
 }

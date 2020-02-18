@@ -10,6 +10,8 @@ import com.scauly.SpringCloud.service.RoleClientService;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @RestController
 public class Role_Consumer {
@@ -63,4 +65,9 @@ public class Role_Consumer {
     public  int updatepwd(@RequestBody Role role) throws Exception{
         return this.roleClientService.update(role);
     }
+
+    //查找所有用户
+    @RequestMapping(value = "consumer/role/selectall", method = RequestMethod.GET)
+    public @ResponseBody
+    List<Role> selectall(){return roleClientService.selectall();}
 }

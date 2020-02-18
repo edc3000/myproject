@@ -1,6 +1,8 @@
 com\scauly\SpringCloud\controller\OWController.class
+com\scauly\SpringCloud\service\impl\WalletServiceImpl.class
+com\scauly\SpringCloud\service\OrderService.class
 com\scauly\SpringCloud\dao\FundorderDao.class
 com\scauly\SpringCloud\dao\WalletDao.class
 com\scauly\SpringCloud\service\impl\OrderServiceImpl.class
-com\scauly\SpringCloud\service\OrderService.class
+com\scauly\SpringCloud\service\WalletService.class
 com\scauly\SpringCloud\OrderProvider5003_APP.class

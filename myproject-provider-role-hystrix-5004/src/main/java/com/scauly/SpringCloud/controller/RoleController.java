@@ -24,6 +24,10 @@ public class RoleController {
             return list.get(0);
     }
 
+    //查找所有用户
+    @RequestMapping(value = "role/selectall", method = RequestMethod.GET)
+    public @ResponseBody List<Role> selectall(){return roleService.selectall();}
+
     //插入User
     @RequestMapping(value="/role/add",method= RequestMethod.POST)
     public int add(@RequestBody Role role) throws Exception {

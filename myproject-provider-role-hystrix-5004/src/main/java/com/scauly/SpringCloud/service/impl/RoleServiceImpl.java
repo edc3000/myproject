@@ -117,5 +117,13 @@ public class RoleServiceImpl implements RoleService {
         }
     }
 
+    @Override
+    public List<Role> selectall() {
+        RoleExample ex = new RoleExample();
+        RoleExample.Criteria c = ex.createCriteria();
+        c.andRoleidIsNotNull();
+        return roleDao.selectByExample(ex);
+    }
+
 
 }
