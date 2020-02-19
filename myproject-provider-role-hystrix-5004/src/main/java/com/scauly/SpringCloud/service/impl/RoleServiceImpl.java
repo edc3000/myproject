@@ -4,6 +4,7 @@ import com.scauly.SpringCloud.entities.Role;
 import com.scauly.SpringCloud.entities.RoleExample;
 import com.scauly.SpringCloud.service.RoleService;
 import com.scauly.SpringCloud.dao.RoleDao;
+import com.scauly.SpringCloud.utils.Md5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
@@ -17,28 +18,10 @@ public class RoleServiceImpl implements RoleService {
     private RoleDao roleDao;
 
 
-    public static String md5(String text, String key) throws Exception {
-        //加密后的字符串
-        String encodeStr= DigestUtils.md5DigestAsHex((text + key).getBytes());
-        System.out.println("MD5加密后的字符串为:encodeStr="+encodeStr);
-        return encodeStr;
-    }
-
-    public static boolean verify(String text, String key, String md5) throws Exception {
-        //根据传入的密钥进行验证
-        String md5Text = md5(text, key);
-        if(md5Text.equalsIgnoreCase(md5))
-        {
-            System.out.println("MD5验证通过");
-            return true;
-        }
-
-        return false;
-    }
 
     @Override
     public int add(Role role) throws Exception {
-       role.setRolepassword( md5(role.getRolepassword(),"abcd4321"));
+       role.setRolepassword( Md5Util.md5(role.getRolepassword(),"abcd4321"));
         return roleDao.insert(role);
     }
 
@@ -90,7 +73,7 @@ public class RoleServiceImpl implements RoleService {
         if(list.isEmpty())
             return new Role();
         Role role1 = list.get(0);
-        if(verify(role.getRolepassword(),"abcd4321", role1.getRolepassword()))
+        if(Md5Util.verify(role.getRolepassword(),"abcd4321", role1.getRolepassword()))
             return role1;
         else
             return new Role();
@@ -111,7 +94,7 @@ public class RoleServiceImpl implements RoleService {
         {
             Role role1 = list.get(0);
             System.out.println("1121212");
-            role1.setRolepassword(md5(role.getRolepassword(),"abcd4321"));
+            role1.setRolepassword(Md5Util.md5(role.getRolepassword(),"abcd4321"));
             System.out.println("修改密码");
             return roleDao.updateByPrimaryKey(role1);
         }

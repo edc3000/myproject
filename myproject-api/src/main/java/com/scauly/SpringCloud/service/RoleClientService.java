@@ -1,6 +1,7 @@
 package com.scauly.SpringCloud.service;
 
 import com.scauly.SpringCloud.entities.Role;
+import com.scauly.SpringCloud.entities.RoleTO;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -24,7 +25,7 @@ public interface RoleClientService {
 
     //验证密码
     @RequestMapping(value= "/role/checkpwd", method= RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public @ResponseBody Role checkpwd(@RequestBody Role role );
+    public @ResponseBody RoleTO checkpwd(@RequestBody Role role );
 
     //用户名查重
     @RequestMapping(value = "/role/findN", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE)

@@ -4,7 +4,16 @@ server:
 spring:
   application:
     name: myspringcloud-zuul-gateway
-
+  redis:
+      host: 127.0.0.1
+      port: 6379
+      password:
+      pool:
+        max-active: 8
+        max-wait: -1
+        max-idle: 8
+        min-idle: 0
+      timeout: 30000
 eureka:
   client:
     service-url:
@@ -17,12 +26,16 @@ eureka:
 info:
   app.name: scauly-myspringcloud
   company.name: www.baidu.com
-  build.artifactId: myproject-zuul-gateway-9527
-  build.version: 1.0-SNAPSHOT
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
 
 zuul:
   prefix: /scauly
   ignored-services: "*"
   routes:
-    mydept.serviceId: myspringcloud
-    mydept.path: /mydept/**
+    role.serviceId: myspringcloud-role9001
+    role.path: /role/**
+    fund.serviceId: myspringcloud-fund9002
+    fund.path: /fund/**
+    ow.serviceId: myspringcloud-ow9003
+    ow.path: /ow/**

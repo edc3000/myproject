@@ -2,10 +2,13 @@ package com.scauly.SpringCloud.controller;
 
 import com.scauly.SpringCloud.service.RoleService;
 import com.scauly.SpringCloud.entities.Role;
+import com.scauly.SpringCloud.entities.RoleTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
+import com.scauly.SpringCloud.config.RedisUtils;
+import com.scauly.SpringCloud.utils.TokenUtil;
 import javax.xml.ws.RequestWrapper;
+import java.util.concurrent.TimeUnit;
 import java.util.List;
 
 @RestController
@@ -13,6 +16,9 @@ public class RoleController {
 
     @Autowired
     private RoleService roleService;
+
+    @Autowired
+    private RedisUtils redisUtils;
 
     //查找用户名返回ID
     @RequestMapping(value = "/role/selectid", method = RequestMethod.GET)
@@ -31,6 +37,8 @@ public class RoleController {
     //插入User
     @RequestMapping(value="/role/add",method= RequestMethod.POST)
     public int add(@RequestBody Role role) throws Exception {
+        //redisUtils.set(role.getRoleid().toString(), role, 10L, TimeUnit.MINUTES);
+        //redisUtils.set(role.getRolename(), role.getRoleid().toString(),10L,TimeUnit.MINUTES);
         return roleService.add(role);
     }
 
@@ -43,8 +51,17 @@ public class RoleController {
 
     //验证密码
     @RequestMapping(value= "/role/checkpwd", method= RequestMethod.GET)
-    public @ResponseBody Role checkpwd(@RequestBody Role role ) throws Exception{
-        return roleService.checkPassword(role);
+    public @ResponseBody RoleTO checkpwd(@RequestBody Role role ) throws Exception{
+        RoleTO roleto = new RoleTO();
+        Role role1 = roleService.checkPassword(role);
+        if(role1.getRoleid()!=null){
+
+            String token = TokenUtil.genUniqueKey(role1.getRolename());
+            redisUtils.set(token, role1.getRoleid().toString(), 30L, TimeUnit.MINUTES);
+            roleto.setToken(token);
+        }
+        roleto.setRole(role1);
+        return roleto;
     }
 
     //用户名查重

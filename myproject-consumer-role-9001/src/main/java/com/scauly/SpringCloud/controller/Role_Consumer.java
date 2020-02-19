@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 import com.scauly.SpringCloud.entities.Role;
+import com.scauly.SpringCloud.entities.RoleTO;
 import com.scauly.SpringCloud.service.RoleClientService;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -31,7 +32,7 @@ public class Role_Consumer {
 
     //用户密码验证
     @RequestMapping(value = "consumer/role/checkpwd", method = RequestMethod.GET)
-    public @ResponseBody Role checkpasswd(@RequestBody Role role){
+    public @ResponseBody RoleTO checkpasswd(@RequestBody Role role){
         return this.roleClientService.checkpwd(role);
     }
 
