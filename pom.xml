@@ -9,8 +9,6 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>myproject-api</module>
-        <module>myproject-provider-dept-8001</module>
-        <module>myproject-consumer-dept-80</module>
         <module>myproject-eureka-7001</module>
         <module>myproject-eureka-7002</module>
         <module>myproject-eureka-7003</module>
@@ -22,6 +20,7 @@
         <module>myproject-provider-order-hystrix-5003</module>
         <module>myproject-provider-role-hystrix-5004</module>
         <module>myproject-consumer-ow-9003</module>
+        <module>myproject-front-8578</module>
 
 
     </modules>

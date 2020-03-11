@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>登录</title>
+    <link rel="stylesheet" href="layui/css/layui.css" media="all">
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css"  rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="css/signin.css"  rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <!--<script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-2.1.4.min.js"></script>-->
+    <script src="http://cdn.bootcss.com/blueimp-md5/1.1.0/js/md5.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+    <script rel="stylesheet" src="layui/layui.js"></script>
+    <style>
+        img{
+            width: 300px;
+            height: 300px;
+        }
+    </style>
+
+</head>
+<body class="text-center">
+<form class="form-signin"  method="post">
+   <!-- <img class="mb-4" th:src="@{image/bootstrap-solid.svg}" src="image/bootstrap-solid.svg" alt="" width="30" height="30">-->
+    <img src="image/login.jpg" style="align-content: center ">
+    <br><br><br>
+    <!--<h1 class="h3 mb-3 font-weight-normal" >请登录</h1>-->
+    <!--判断-->
+   <!-- <p style="color: red" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>-->
+    <label class="sr-only" >用户名</label>
+    <input type="text"  id="name" class="form-control" placeholder="请输入用户名" required="" autofocus="">
+    <br>
+    <label class="sr-only" >密码</label>
+    <input type="password" id="pwd" class="form-control" placeholder="请输入密码" required="">
+
+    <br>
+    <button class="btn btn-lg btn-primary btn-block" type="button" id="login">登录</button>
+    <p class="mt-5 mb-3 text-muted">© 2019-2020</p>
+</form>
+<script>
+    layui.use([ 'jquery', 'layer', 'form', 'table','laydate'], function() {
+        var $ = layui.jquery;
+        var layer = layui.layer;
+
+
+        $("#login").click(function () {
+                var un = $("#name").val();
+                var pwd = $("#pwd").val();
+
+
+                /*layer.msg("密码错误或用户不存在！",{time: 2000});*/
+            var udata = {
+                "rolename": un,
+                "password": pwd
+            };
+            $.ajax({
+                type:"post",
+                url:"http://myzuul.com:9527/scauly/role/consumer/role/checkpwd",
+                contentType: "application/json",
+                data: JSON.stringify(udata),
+                dataType: "json",
+                async:false,
+                success: function(data){
+                    console.log(data);
+                    if(data.role.roleid!=null){
+                        localStorage.setItem("token",data.token);
+                        localStorage.setItem("rid",data.role.roleid);
+                        console.log("token: "+ localStorage.getItem("token"));
+                        console.log("id: "+ localStorage.getItem("rid"));
+                        if(data.role.roletype == "1"){
+                            setTimeout(function () { layer.msg("登录成功",{time: 2000});
+                                $(location).attr('href', 'admin.html'); }, 2000);
+                        }
+                        if(data.role.roletype == "2"){
+                            setTimeout(function () { layer.msg("登录成功",{time: 2000});
+                                $(location).attr('href', 'company.html'); }, 2000);
+                        }
+                        if(data.role.roletype == "3"){
+                            setTimeout(function () { layer.msg("登录成功",{time: 2000});
+                                $(location).attr('href', 'user.html'); }, 2000);
+                        }
+
+                    }
+                    else {layer.msg("密码错误",{time: 2000});}
+
+                },
+                error: function(){
+                    console.log("服务器错误");
+
+                }
+            });
+            }
+        );
+    });
+
+
+</script>
+
+</body>
+</html>

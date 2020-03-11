@@ -21,7 +21,7 @@ public class RoleController {
     private RedisUtils redisUtils;
 
     //查找用户名返回ID
-    @RequestMapping(value = "/role/selectid", method = RequestMethod.GET)
+    @RequestMapping(value = "/role/selectid", method = RequestMethod.POST)
     public @ResponseBody Role selectid(@RequestBody Role role){
         List<Role> list = roleService.findName(role.getRolename());
         if(list.isEmpty())
@@ -31,7 +31,7 @@ public class RoleController {
     }
 
     //查找所有用户
-    @RequestMapping(value = "role/selectall", method = RequestMethod.GET)
+    @RequestMapping(value = "role/selectall", method = RequestMethod.POST)
     public @ResponseBody List<Role> selectall(){return roleService.selectall();}
 
     //插入User
@@ -43,14 +43,14 @@ public class RoleController {
     }
 
     //根据id查询用户
-    @RequestMapping(value="/role/get/{id}",method=RequestMethod.GET)
+    @RequestMapping(value="/role/get/{id}",method=RequestMethod.POST)
     public @ResponseBody  Role get(@PathVariable("id") Long id)
     {
         return roleService.get(id);
     }
 
     //验证密码
-    @RequestMapping(value= "/role/checkpwd", method= RequestMethod.GET)
+    @RequestMapping(value= "/role/checkpwd", method= RequestMethod.POST)
     public @ResponseBody RoleTO checkpwd(@RequestBody Role role ) throws Exception{
         RoleTO roleto = new RoleTO();
         Role role1 = roleService.checkPassword(role);
@@ -65,17 +65,27 @@ public class RoleController {
     }
 
     //用户名查重
-    @RequestMapping(value = "/role/findN", method = RequestMethod.GET)
+    @RequestMapping(value = "/role/findN", method = RequestMethod.POST)
     public int findN(@RequestBody Role role){
         List<Role> list = roleService.findName(role.getRolename());
+        System.out.println("测试测试");
         if(list.isEmpty())
             return 1;
         else
             return 0;
     }
 
+    @RequestMapping(value = "/role/findRole", method = RequestMethod.POST)
+    public @ResponseBody Role findRole(@RequestBody Role role){
+        List<Role> list = roleService.findName(role.getRolename());
+        if(list.isEmpty())
+            return new Role();
+        else
+            return list.get(0);
+    }
+
     //删除用户
-    @RequestMapping(value = "/role/delete", method = RequestMethod.GET)
+    @RequestMapping(value = "/role/delete", method = RequestMethod.POST)
     public int delete(@RequestBody Role role){
         return this.roleService.delete(role);
     }
@@ -87,8 +97,9 @@ public class RoleController {
     }*/
 
     //修改密码
-    @RequestMapping(value = "/role/update", method = RequestMethod.GET)
+    @RequestMapping(value = "/role/update", method = RequestMethod.POST)
     public int update(@RequestBody Role role) throws Exception{
+
         return  this.roleService.updatepassword(role);
     }
 

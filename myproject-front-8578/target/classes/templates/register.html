@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>注册</title>
+    <link rel="stylesheet" href="layui/css/layui.css" media="all">
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css"  rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="css/signin.css"  rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <!--<script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-2.1.4.min.js"></script>-->
+    <script src="http://cdn.bootcss.com/blueimp-md5/1.1.0/js/md5.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+    <script rel="stylesheet" src="layui/layui.js"></script>
+
+</head>
+<body class="text-center">
+<form class="form-signin"  >
+    <!--<img class="mb-4" th:src="@{image/bootstrap-solid.svg}" src="image/bootstrap-solid.svg" alt="" width="30" height="30">-->
+    <img src="image/register.jpg" style="align-content: center ">
+    <br><br>
+    <!--<h1 class="h3 mb-3 font-weight-normal" >请注册</h1>-->
+    <!--判断-->
+    <!-- <p style="color: red" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>-->
+    <label class="sr-only" >用户名</label>
+    <input type="text"   id="name" class="form-control" placeholder="请输入用户名" required="" autofocus="">
+    <br>
+    <label class="sr-only" >密码</label>
+    <input type="password"   id="pwd" class="form-control" placeholder="请输入密码" required="">
+    <br>
+    <label class="sr-only" >再次输入密码</label>
+    <input type="password"  id="pwd_again" class="form-control" placeholder="再次输入密码" required="">
+    <br>
+    <button class="btn btn-lg btn-primary btn-block" type="button"  id="register">注册</button>
+    <p class="mt-5 mb-3 text-muted">© 2019-2020</p>
+</form>
+<script type="text/javascript">
+
+
+        layui.use([ 'jquery', 'layer', 'form', 'table','laydate'], function() {
+        var $ = layui.jquery;
+        var layer = layui.layer;
+
+
+        $("#register").click(function () {
+
+                var un = $("#name").val();
+                var pwd = $("#pwd").val();
+                var pwd_again = $("#pwd_again").val();
+
+
+                 /*var find = flag;*/
+                var find = findun(un);
+                if(find==1){
+                    layer.msg("用户名已存在！",{time: 2000});
+                }
+                else{
+                    if(pwd == pwd_again){
+                        var re = rregister(un,pwd);
+                        if(re ==1){layer.msg("用户注册成功！",{time: 2000});}
+                        else{layer.msg("用户注册失败！",{time: 2000});}
+
+                        console.log("re: " + re);
+                        var rid = findid(un);
+                        console.log("rid: " + rid);
+                        var wal = createW(rid);
+                        if(wal == 1){
+                            setTimeout(function () { layer.msg("用户钱包创建成功！",{time: 2000});
+                                $(location).attr('href', 'index.html'); }, 1000);
+                        }
+                        else{layer.msg("用户钱包创建失败！",{time: 2000});}
+                    }
+                    else{
+                        layer.msg("输入两次密码不同",{time: 2000});
+                    }
+                }
+            }
+        );
+    });
+
+    function findun(un) {
+        var fflag =1;
+        var udata = {
+            "rolename": un
+        };
+        /*alert("用户名：" + udata.rolename);*/
+        $.ajax({
+            type:"post",
+            url:"http://myzuul.com:9527/scauly/role/consumer/role/findName",
+            contentType: "application/json",
+            data: JSON.stringify(udata),
+            dataType: "text",
+            async:false,
+            success: function(data){
+                /*console.log(data);*/
+                if(data == "0"){
+                    console.log("重名");
+                }
+                else{
+                    console.log("不重名");
+                     fflag =0;
+                }
+
+            },
+            error: function(){
+                console.log("服务器错误");
+            }
+        });
+
+        return fflag;
+    }
+
+    function rregister(un,pwd) {
+        var rflag = 0;
+        var udata = {
+            "rolename": un,
+            "password": md5(pwd+"857857"),
+            "roletype": 3
+        }
+        console.log("密码："+ udata.password);
+        $.ajax({
+            type:"post",
+            url:"http://myzuul.com:9527/scauly/role/consumer/role/add",
+            contentType: "application/json",
+            data: JSON.stringify(udata),
+            dataType: "text",
+            async:false,
+            success: function(data){
+                if(data == "1"){
+                    rflag = 1;
+                    console.log("用户创建成功");
+                }
+                else{console.log("用户创建失败");}
+
+
+            },
+            error: function(){
+                console.log("服务器错误");
+            }
+        });
+        return rflag;
+    }
+
+    function findid(un) {
+        var id = -1;
+        var udata = {
+            "rolename": un
+        }
+        $.ajax({
+            type:"post",
+            url:"http://myzuul.com:9527/scauly/role/consumer/role/findRole",
+            contentType: "application/json",
+            data: JSON.stringify(udata),
+            dataType: "json",
+            async:false,
+            success: function(data){
+                if(data.roleid!=null){
+                    id = data.roleid;
+                    console.log("id: "+ id);
+                }
+
+            },
+            error: function(){
+                console.log("服务器错误");
+            }
+        });
+        return id;
+    }
+
+    function createW(rid) {
+        var wflag = 0;
+        var udata = {
+            "ownerid": rid,
+            "withdrawimage": "2.jpg"
+        }
+        $.ajax({
+            type:"post",
+            url:"http://myzuul.com:9527/scauly/ow/consumer/wallet/add",
+            contentType: "application/json",
+            data: JSON.stringify(udata),
+            dataType: "text",
+            async:false,
+            success: function(data){
+                if(data == "1"){
+                    wflag = 1;
+                    console.log("wflag: "+ wflag);
+                }
+
+            },
+            error: function(){
+                console.log("服务器错误");
+            }
+        });
+        return wflag;
+    }
+</script>
+</body>
+</html>

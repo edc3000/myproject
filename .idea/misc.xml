@@ -8,6 +8,8 @@
     </option>
     <option name="ignoredFiles">
       <set>
+        <option value="$PROJECT_DIR$/myproject-consumer-dept-80/pom.xml" />
+        <option value="$PROJECT_DIR$/myproject-provider-dept-8001/pom.xml" />
         <option value="$PROJECT_DIR$/myproject-provider-role-hystrix-5001/pom.xml" />
       </set>
     </option>

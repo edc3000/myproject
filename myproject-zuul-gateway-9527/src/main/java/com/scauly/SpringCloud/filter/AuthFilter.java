@@ -39,7 +39,9 @@ public class AuthFilter extends ZuulFilter {
     //排除过滤的 uri 地址
     private static final String LOGIN_URI = "/scauly/role/consumer/role/checkpwd";
     private static final String REGISTER_URI = "/scauly/role/consumer/role/add";
-
+    private static final String FINDNAME_URI = "/scauly/role/consumer/role/findName";
+    private static final String FINDROLE_URI = "/scauly/role/consumer/role/findRole";
+    private static final String WALLETADD_URI = "/scauly/ow/consumer/wallet/add";
     //无权限时的提示语
     private static final String INVALID_TOKEN = "invalid token";
     private static final String INVALID_USERID = "invalid userId";
@@ -61,7 +63,7 @@ public class AuthFilter extends ZuulFilter {
 
         //注册和登录接口不拦截，其他接口都要拦截校验 token
         if (LOGIN_URI.equals(request.getRequestURI()) ||
-                REGISTER_URI.equals(request.getRequestURI())) {
+                REGISTER_URI.equals(request.getRequestURI()) || FINDNAME_URI.equals(request.getRequestURI()) || FINDROLE_URI.equals(request.getRequestURI())|| WALLETADD_URI.equals(request.getRequestURI())) {
             return false;
         }
         return true;

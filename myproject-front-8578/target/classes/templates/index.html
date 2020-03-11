@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>首页</title>
+    <link rel="stylesheet" href="layui/css/layui.css" media="all">
+    <link href="css/front.css" rel="stylesheet" type="text/css" />
+
+
+</head>
+<body>
+<ul class="layui-nav layui-bg-black">
+
+    <li class="layui-nav-item" id="ftitle"><a href="">私募基金交易平台</a></li>
+    <li class="layui-nav-item" id="fregister"><a href="register.html">注册</a></li>
+    <li class="layui-nav-item layui-this" id="flogin"><a href="login.html">登录</a></li>
+
+
+</ul>
+<br><br><br>
+<div class="layui-carousel" id="fuchang" style="margin: auto">
+    <div carousel-item>
+        <div><img src="image/front1.jpg"></div>
+        <div><img src="image/front2.jpg"></div>
+        <div><img src="image/front3.jpg"></div>
+
+    </div>
+</div>
+<!-- 条目中可以是任意内容，如：<img src=""> -->
+
+<script src="layui/layui.js" charset="utf-8"></script>
+<script>
+    layui.use('carousel', function(){
+        var carousel = layui.carousel;
+        //建造实例
+        carousel.render({
+            elem: '#fuchang'
+            ,width: '70%' //设置容器宽度
+            ,height: '500px'
+            ,arrow: 'always' //始终显示箭头
+            //,anim: 'updown' //切换动画方式
+        });
+    });
+</script>
+
+
+
+
+<
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+
+
+
+
+</body>
+</html>

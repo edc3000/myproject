@@ -39,3 +39,5 @@ zuul:
     fund.path: /fund/**
     ow.serviceId: myspringcloud-ow9003
     ow.path: /ow/**
+    sensitive-headers: Access-Control-Allow-Origin
+    ignored-headers: Access-Control-Allow-Origin,H-APP-Id,Token,APPToken

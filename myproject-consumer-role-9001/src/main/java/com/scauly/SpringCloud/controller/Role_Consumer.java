@@ -25,13 +25,13 @@ public class Role_Consumer {
 
 
     //用户查重
-    @RequestMapping(value = "consumer/role/findName", method = RequestMethod.GET)
+    @RequestMapping(value = "consumer/role/findName", method = RequestMethod.POST)
     public int findName(@RequestBody Role role){
         return this.roleClientService.findN(role);
     }
 
     //用户密码验证
-    @RequestMapping(value = "consumer/role/checkpwd", method = RequestMethod.GET)
+    @RequestMapping(value = "consumer/role/checkpwd", method = RequestMethod.POST)
     public @ResponseBody RoleTO checkpasswd(@RequestBody Role role){
         return this.roleClientService.checkpwd(role);
     }
@@ -43,14 +43,14 @@ public class Role_Consumer {
     }
 
     //根据ID查用户
-    @RequestMapping(value = "consumer/role/get/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "consumer/role/get/{id}", method = RequestMethod.POST)
     public @ResponseBody Role get(@PathVariable("id") long id){
         return this.roleClientService.get(id);
 
     }
 
     //注销用户
-    @RequestMapping(value = "consumer/role/delete", method = RequestMethod.GET)
+    @RequestMapping(value = "consumer/role/delete", method = RequestMethod.POST)
     public  int delete(@RequestBody Role role){
         return this.roleClientService.delete(role);
     }
@@ -62,13 +62,18 @@ public class Role_Consumer {
     }*/
 
     //根据用户名就可修改密码
-    @RequestMapping(value = "consumer/role/updatepwd", method = RequestMethod.GET)
+    @RequestMapping(value = "consumer/role/updatepwd", method = RequestMethod.POST)
     public  int updatepwd(@RequestBody Role role) throws Exception{
         return this.roleClientService.update(role);
     }
 
     //查找所有用户
-    @RequestMapping(value = "consumer/role/selectall", method = RequestMethod.GET)
+    @RequestMapping(value = "consumer/role/selectall", method = RequestMethod.POST)
     public @ResponseBody
     List<Role> selectall(){return roleClientService.selectall();}
+
+    @RequestMapping(value = "consumer/role/findRole", method = RequestMethod.POST)
+    public @ResponseBody Role findRole(@RequestBody Role role) {
+        return this.roleClientService.findRole(role);
+    }
 }
