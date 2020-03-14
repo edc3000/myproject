@@ -28,5 +28,6 @@ com\scauly\SpringCloud\entities\FundExample$Criteria.class
 com\scauly\SpringCloud\service\OWClientService.class
 com\scauly\SpringCloud\entities\FundorderExample$GeneratedCriteria.class
 com\scauly\SpringCloud\entities\RoleExample$Criteria.class
+com\scauly\SpringCloud\jsonForm\JsonForm.class
 com\scauly\SpringCloud\entities\FundorderExample$Criteria.class
 com\scauly\SpringCloud\entities\Role.class

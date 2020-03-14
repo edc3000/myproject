@@ -36,9 +36,9 @@
             <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
             <ul class="layui-nav layui-nav-tree"  lay-filter="test">
                 <li class="layui-nav-item layui-nav-itemed">
-                    <a class="" href="javascript:;">所有基金</a>
+                    <a class="" href="javascript:showfund();" >所有基金</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:;">上架</a></dd>
+                        <dd><a href="javascript:fundloadon();">上架</a></dd>
                         <dd><a href="javascript:;">下架</a></dd>
                     </dl>
                 </li>
@@ -53,12 +53,216 @@
 
     <div class="layui-body">
         <!-- 内容主体区域 -->
-        <div style="padding: 15px;">内容主体区域</div>
+        <div style="padding: 15px; text-align: center" align="center"><table id="demo" lay-filter="test" ></table></div>
+        <div class="site-text site-block" style="display: none;" id="loadonDiv" >
+            <form class="layui-form" action="" id="fundForm">
+
+                <div class="layui-form-item" style="padding: 3px;">
+                    <label class="layui-form-label" ><b>基金名:</b></label>
+                    <div class="layui-input-inline" >
+                        <input type="text" name="fundname"  placeholder="请输入基金名" autocomplete="off" class="layui-input"  id="fundname" style="width: 300px; ">
+                    </div>
+                </div>
+
+                <div class="layui-form-item" style="padding: 3px;">
+                    <label class="layui-form-label" ><b>基金简介:</b></label>
+                    <div class="layui-input-block" >
+                        <textarea type="text" name="fundbrief"  placeholder="请输入基金简介"  class="layui-textarea"  id="fundbrief" style="width: 300px; height: 150px;"></textarea>
+                    </div>
+                </div>
+
+                <div class="layui-form-item" style="padding: 3px;">
+                    <label class="layui-form-label" ><b>基金回报率:</b></label>
+                    <div class="layui-input-inline" >
+                        <input type="text" name="fundresponse"  placeholder="请输入回报率" autocomplete="off" class="layui-input"  id="fundresponse" style="width: 300px; ">
+                    </div>
+                </div>
+
+                <div class="layui-form-item" style="padding: 3px;">
+                    <label class="layui-form-label" ><b>基金份额:</b></label>
+                    <div class="layui-input-inline" >
+                        <input type="text" name="fundsupply"  placeholder="请输入数量" autocomplete="off" class="layui-input"  id="fundsupply" style="width: 300px; ">
+                    </div>
+                </div>
+
+                <div class="layui-form-item" style="padding: 3px;">
+                    <label class="layui-form-label" ><b>基金金额:</b></label>
+                    <div class="layui-input-inline" >
+                        <input type="text" name="fundprice"  placeholder="请输入金额" autocomplete="off" class="layui-input"  id="fundprice" style="width: 300px; ">
+                    </div>
+                </div>
+
+
+            </form>
+            <div class="layui-form-item" style="padding: 36px;">
+                <div class="layui-upload">
+                    <button type="button" class="layui-btn" id="loadimg">上传图片</button>
+                    <!-- <div class="layui-upload-list"> -->
+                    <img class="layui-upload-img" style="width: 180px; height: 200px; margin-left: 40px;" id="demo1">
+                    <p id="imgText"></p>
+                    <!-- </div> -->
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <div class="layui-footer">
 
     </div>
 </div>
+<script>
+
+    function showfund(){
+        layui.use([ 'jquery', 'layer', 'form', 'table','laydate'], function(){
+            var table = layui.table;
+            console.log(localStorage.getItem("rid"))
+            console.log(localStorage.getItem("token"))
+            var cid = localStorage.getItem("rid");
+            var t = localStorage.getItem("token");
+            //第一个实例
+            table.render({
+                elem: '#demo'
+                ,height: 450
+                ,width:1000
+                ,url: 'http://myzuul.com:9527/scauly/fund/consumer/fund/selectall/'+ cid //数据接口
+                ,headers:{token: t,id: cid}
+                ,page: true //开启分页
+                ,totalRow: true
+                ,method:'get'
+                ,cols: [[ //表头
+                {field: 'fundid', title: 'ID', width:80, sort: true, fixed: 'left',align:'center'}
+                ,{field: 'fundname', title: '基金名', width:140}
+                ,{field: 'fundbrief', title: '简介', width:170}
+                ,{field: 'fundsupply', title: '份额', width:140}
+                ,{field: 'fundprice', title: '价格', width: 140}
+                ,{field: 'fundresponse', title: '回报率', width: 140}
+                ,{field: 'fundstatus', title: '状态', width: 140}
+                 ]]
+
+        });
+        });
+    }
+    var imgfile = "C:\\uploadFile\\";
+    function fundloadon(){
+        layui.use([ 'jquery', 'layer', 'form', 'table','laydate'], function(){
+            page = layer.open({
+                type:1,
+                content: $('#loadonDiv'),
+                area:['500px','800px'],
+                title:"上架"	,
+                btn: ['上架', '取消'],
+                btnAlign: 'c',
+                shade: 0,
+                success: function(layero, index){
+                    $("#demo1").attr('src',"");
+                    $("#fundForm")[0].reset();
+                },
+                yes:function(index,layero){
+
+                    console.log(imgfile);
+                    var fname = $("#fundname").val();
+                    var fbrief = $("#fundbrief").val();
+                    var fsupply = $("#fundsupply").val();
+                    var fprice = $("#fundprice").val();
+                    var fresponse = $("#fundresponse").val();
+                    console.log(fname);
+                    console.log(fbrief);
+                    console.log(fresponse);
+                    console.log(fsupply);
+                    console.log(fprice);
+                    /*if(/^([1-9][\d]{0,7}|0)(\.[\d]{1,2})?$/.test(fsupply) && /^([1-9][\d]{0,7}|0)(\.[\d]{1,2})?$/.test(fprice) ){
+                        layer.msg('输入格式不对，请重试',{time: 2000});
+                        alert("sb");
+                    }
+                    else{
+                        alert("nsb");
+                    }*/
+                    var fdata = {
+                        "fundname": fname,
+                        "fundbrief": fbrief,
+                        "fundsupply": fsupply,
+                        "fundprice": fprice,
+                        "fundcompanyid": localStorage.getItem("rid"),
+                        "fundresponse": fresponse,
+                        "fundmageurl": imgfile
+                    };
+                    $.ajax({
+                        type:"post",
+                        url:"http://myzuul.com:9527/scauly/fund/consumer/fund/add",
+                        contentType: "application/json",
+                        data: JSON.stringify(fdata),
+                        dataType: "text",
+                        async:false,
+                        headers: {token:localStorage.getItem("token"), id: localStorage.getItem("rid")},
+                        success: function(data){
+                            /*console.log(data);*/
+                            if(data == "1"){
+                                console.log("上架成功");
+                                setTimeout(function () { layer.msg("上架成功但仍需审核",{time: 2000});
+                                    layer.close(index); }, 2000);
+                            }
+                            else{
+                                console.log("上架失败");
+                                setTimeout(function () { layer.msg("上架失败",{time: 2000});
+                                    layer.close(index); }, 2000);
+                            }
+
+                        },
+                        error: function(){
+                            layer.msg("服务器错误");
+                            console.log("服务器错误");
+                        }
+                    });
+
+                },
+                btn2:function(index){layer.close(index);}
+
+
+            });
+        });
+    }
+
+
+
+    layui.use('upload', function(){
+        var $ = layui.jquery
+            ,upload = layui.upload;
+
+        //普通图片上传
+        var uploadInst = upload.render({
+            elem: '#loadimg'
+            ,url: 'http://myzuul.com:9527/scauly/upl/upload' //改成您自己的上传接口
+
+            ,before: function(obj){
+                //预读本地文件示例，不支持ie8
+                obj.preview(function(index, file, result){
+                    $('#demo1').attr('src', result); //图片链接（base64）
+                    imgfile += file.name;
+                    console.log(imgfile.name);
+                });
+
+            }
+            ,done: function(res){
+                //如果上传失败
+                if(res.code > 0){
+                    return layer.msg('上传失败',{time: 2000});
+                    imgfile = 0;
+                }
+                //上传成功
+                layer.msg('上传成功',{time: 2000});
+            }
+            ,error: function(){
+                //演示失败状态，并实现重传
+                imgfile = 0;
+                var demoText = $('#demoText');
+                demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+                demoText.find('.demo-reload').on('click', function(){
+                    uploadInst.upload();
+                });
+            }
+        });
+    });
+</script>
 </body>
 </html>

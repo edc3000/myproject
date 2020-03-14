@@ -70,8 +70,14 @@
                     if(data.role.roleid!=null){
                         localStorage.setItem("token",data.token);
                         localStorage.setItem("rid",data.role.roleid);
+                        localStorage.setItem("rtype",data.role.roletype);
+                        localStorage.setItem("rname",data.role.rolename);
+
                         console.log("token: "+ localStorage.getItem("token"));
                         console.log("id: "+ localStorage.getItem("rid"));
+                        console.log("rname: "+ localStorage.getItem("rname"));
+                        console.log("rtype: "+ localStorage.getItem("rtype"));
+
                         if(data.role.roletype == "1"){
                             setTimeout(function () { layer.msg("登录成功",{time: 2000});
                                 $(location).attr('href', 'admin.html'); }, 2000);

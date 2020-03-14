@@ -21,6 +21,7 @@
         <module>myproject-provider-role-hystrix-5004</module>
         <module>myproject-consumer-ow-9003</module>
         <module>myproject-front-8578</module>
+        <module>myproject-upload-8868</module>
 
 
     </modules>

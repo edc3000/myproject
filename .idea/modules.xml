@@ -17,6 +17,7 @@
       <module fileurl="file://$PROJECT_DIR$/myproject-provider-role-hystrix-5001/myproject-provider-role-hystrix-5001.iml" filepath="$PROJECT_DIR$/myproject-provider-role-hystrix-5001/myproject-provider-role-hystrix-5001.iml" />
       <module fileurl="file://$PROJECT_DIR$/myproject-provider-role-hystrix-5004/myproject-provider-role-hystrix-5004.iml" filepath="$PROJECT_DIR$/myproject-provider-role-hystrix-5004/myproject-provider-role-hystrix-5004.iml" />
       <module fileurl="file://$PROJECT_DIR$/myproject-provider-role-hystrix-6001/myproject-provider-role-hystrix-6001.iml" filepath="$PROJECT_DIR$/myproject-provider-role-hystrix-6001/myproject-provider-role-hystrix-6001.iml" />
+      <module fileurl="file://$PROJECT_DIR$/myproject-upload-8868/myproject-upload-8868.iml" filepath="$PROJECT_DIR$/myproject-upload-8868/myproject-upload-8868.iml" />
       <module fileurl="file://$PROJECT_DIR$/myproject-zuul-gateway-9527/myproject-zuul-gateway-9527.iml" filepath="$PROJECT_DIR$/myproject-zuul-gateway-9527/myproject-zuul-gateway-9527.iml" />
       <module fileurl="file://$PROJECT_DIR$/myproject-provider-role-hystrix-5001/mypropject-provider-role-hystrix-5001.iml" filepath="$PROJECT_DIR$/myproject-provider-role-hystrix-5001/mypropject-provider-role-hystrix-5001.iml" />
     </modules>

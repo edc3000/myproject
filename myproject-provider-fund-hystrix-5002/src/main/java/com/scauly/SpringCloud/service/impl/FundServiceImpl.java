@@ -7,7 +7,7 @@ import com.scauly.SpringCloud.dao.FundDao;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import com.scauly.SpringCloud.jsonForm.JsonForm;
 
 @Service
 public class FundServiceImpl implements FundService {
@@ -17,7 +17,7 @@ public class FundServiceImpl implements FundService {
 
     @Override
     public int add(Fund fund) {
-        fund.setFundstatus("1");
+        fund.setFundstatus("上架未审核");
         return fundDao.insert(fund);
     }
 
@@ -111,5 +111,20 @@ public class FundServiceImpl implements FundService {
             }
         }
 
+    }
+
+    @Override
+    public JsonForm selectall(Long id,String page, String limit) {
+        FundExample ex = new FundExample();
+        FundExample.Criteria c = ex.createCriteria();
+        c.andFundcompanyidEqualTo(id);
+        JsonForm jsonForm = new JsonForm();
+        jsonForm.setCode("0");
+        jsonForm.setMsg("");
+        jsonForm.setCount(fundDao.selectByExample(ex).size()+"");
+        int page2 = (Integer.parseInt(page)-1)*Integer.parseInt(limit);
+        ex.setOrderByClause("fundid limit "+page2+","+limit);
+        jsonForm.setData(fundDao.selectByExample(ex));
+        return jsonForm;
     }
 }

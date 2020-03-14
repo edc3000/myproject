@@ -1,6 +1,7 @@
 package com.scauly.SpringCloud.service;
 
 import com.scauly.SpringCloud.entities.Fund;
+import com.scauly.SpringCloud.jsonForm.JsonForm;
 
 import java.util.List;
 
@@ -22,4 +23,6 @@ public interface FundService {
     public  List<Fund> selectStatus(String status);
 
     public  int buy(Fund fund);
+
+    public JsonForm selectall(Long id, String page, String limit);
 }

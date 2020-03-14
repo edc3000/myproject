@@ -42,6 +42,7 @@ public class AuthFilter extends ZuulFilter {
     private static final String FINDNAME_URI = "/scauly/role/consumer/role/findName";
     private static final String FINDROLE_URI = "/scauly/role/consumer/role/findRole";
     private static final String WALLETADD_URI = "/scauly/ow/consumer/wallet/add";
+    private static final String UPLOAD_URI = "/scauly/upl/upload";
     //无权限时的提示语
     private static final String INVALID_TOKEN = "invalid token";
     private static final String INVALID_USERID = "invalid userId";
@@ -63,7 +64,7 @@ public class AuthFilter extends ZuulFilter {
 
         //注册和登录接口不拦截，其他接口都要拦截校验 token
         if (LOGIN_URI.equals(request.getRequestURI()) ||
-                REGISTER_URI.equals(request.getRequestURI()) || FINDNAME_URI.equals(request.getRequestURI()) || FINDROLE_URI.equals(request.getRequestURI())|| WALLETADD_URI.equals(request.getRequestURI())) {
+                REGISTER_URI.equals(request.getRequestURI()) || FINDNAME_URI.equals(request.getRequestURI()) || FINDROLE_URI.equals(request.getRequestURI())|| WALLETADD_URI.equals(request.getRequestURI()) || UPLOAD_URI.equals(request.getRequestURI())) {
             return false;
         }
         return true;
@@ -77,6 +78,7 @@ public class AuthFilter extends ZuulFilter {
         //先从 cookie 中取 token，cookie 中取失败再从 header 中取，两重校验
         //通过工具类从 Cookie 中取出 token
         String tokenCookie = CookieUtils.getCookieValue(request, "token");
+        System.out.println(tokenCookie);
         if (tokenCookie == null || StringUtils.isEmpty(tokenCookie)) {
             readTokenFromHeader(requestContext, request);
         } else {
@@ -92,6 +94,7 @@ public class AuthFilter extends ZuulFilter {
     private void readTokenFromHeader(RequestContext requestContext, HttpServletRequest request) {
         //从 header 中读取
         String headerToken = request.getHeader("token");
+        System.out.println(headerToken);
         if (StringUtils.isEmpty(headerToken)) {
             setUnauthorizedResponse(requestContext, INVALID_TOKEN);
         } else {
@@ -107,10 +110,12 @@ public class AuthFilter extends ZuulFilter {
         System.out.println(id);
         //验证后台是否存在该token
         if (redisUtils.get(token) == null) {
+            System.out.println("是否有token");
             setUnauthorizedResponse(requestContext, INVALID_TOKEN);
         }
         //验证token和id是否匹配
         if(!redisUtils.get(token).toString().equals(id)){
+            System.out.println("是否匹配");
             setUnauthorizedResponse(requestContext, INVALID_USERID);
         }
     }

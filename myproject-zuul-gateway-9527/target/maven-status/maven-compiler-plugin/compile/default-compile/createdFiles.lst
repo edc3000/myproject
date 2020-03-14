@@ -1,4 +1,5 @@
 com\scauly\SpringCloud\fallback\SrpingCLoudFallBack.class
+com\scauly\SpringCloud\filter\CorsConfig.class
 com\scauly\SpringCloud\filter\AuthFilter.class
 com\scauly\SpringCloud\Zuul_9527_StartSpringCloudApp.class
 com\scauly\SpringCloud\fallback\SrpingCLoudFallBack$1.class
