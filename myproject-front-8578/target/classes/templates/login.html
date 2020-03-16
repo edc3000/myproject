@@ -56,7 +56,7 @@
                 /*layer.msg("密码错误或用户不存在！",{time: 2000});*/
             var udata = {
                 "rolename": un,
-                "password": pwd
+                "rolepassword": md5(pwd+"857857")
             };
             $.ajax({
                 type:"post",

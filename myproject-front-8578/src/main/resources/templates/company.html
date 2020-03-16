@@ -16,6 +16,8 @@
 </head>
 <body class="layui-layout-body">
 
+
+
 <div class="layui-layout layui-layout-admin">
     <div class="layui-header">
         <div class="layui-logo">私募基金公司管理后台</div>
@@ -25,7 +27,7 @@
             <li class="layui-nav-item">
                 <a href="javascript:;">
                     <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
-                    陈浩南
+                    <h id = "hhh">sb</h>
                 </a>
 
         </ul>
@@ -36,14 +38,15 @@
             <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
             <ul class="layui-nav layui-nav-tree"  lay-filter="test">
                 <li class="layui-nav-item layui-nav-itemed">
-                    <a class="" href="javascript:showfund();" >所有基金</a>
+                    <a class="" href="javascript:showfund();" >基金表格</a>
                     <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">修改基金</a></dd>
                         <dd><a href="javascript:fundloadon();">上架</a></dd>
                         <dd><a href="javascript:;">下架</a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item">
-                    <a href="javascript:;">公司钱包</a>
+                    <a href="javascript:walletloadon();">公司钱包</a>
 
                 </li>
 
@@ -91,8 +94,6 @@
                         <input type="text" name="fundprice"  placeholder="请输入金额" autocomplete="off" class="layui-input"  id="fundprice" style="width: 300px; ">
                     </div>
                 </div>
-
-
             </form>
             <div class="layui-form-item" style="padding: 36px;">
                 <div class="layui-upload">
@@ -104,15 +105,51 @@
                 </div>
             </div>
         </div>
+        <div class="site-text site-block"  style="display: none;" id="walletDiv" >
+            <form class="layui-form" action="" id="walletForm">
 
+                <div class="layui-form-item" style="padding: 3px;">
+                    <label class="layui-form-label" ><b>钱包余额:</b></label>
+                    <label class="layui-form-label" id="money"><b>10000</b></label>
+                </div>
+
+                <div class="layui-form-item" style="padding: 3px;">
+                    <label class="layui-form-label" ><b>待充值金额:</b></label>
+                    <label class="layui-form-label" id="putmoney"><b>10000</b></label>
+                </div>
+
+                <div class="layui-form-item" style="padding: 3px;">
+                    <label class="layui-form-label" ><b>待提现金额:</b></label>
+                    <label class="layui-form-label" id="popmoney"><b>0</b></label>
+                </div>
+
+                <div class="layui-form-item" style="padding: 3px;">
+                    <label class="layui-form-label" ><b>银行卡号:</b></label>
+                    <div class="layui-input-inline" >
+                        <label class="layui-form-label" id="bandid"><b>0</b></label>
+                    </div>
+                </div>
+
+                <div class="layui-form-item" style="padding: 3px;">
+                    <label class="layui-form-label" ><b>提现金额:</b></label>
+                    <div class="layui-input-inline" >
+                        <input type="text" name="outmoney"  placeholder="请输入金额" autocomplete="off" class="layui-input"  id="outmoney" style="width: 250px; ">
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
 
-    <div class="layui-footer">
-
-    </div>
+    <div class="layui-footer"></div>
 </div>
-<script>
 
+<script type="text/html" id="barDemo">
+    <a class="layui-btn layui-btn-xs" lay-event="edit" >自动保存</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">下架</a>
+
+</script>
+<script>
+    $('#hhh').text(localStorage.getItem("rname"));
     function showfund(){
         layui.use([ 'jquery', 'layer', 'form', 'table','laydate'], function(){
             var table = layui.table;
@@ -123,21 +160,23 @@
             //第一个实例
             table.render({
                 elem: '#demo'
-                ,height: 450
-                ,width:1000
+                ,height: 500
+                ,width:1150
                 ,url: 'http://myzuul.com:9527/scauly/fund/consumer/fund/selectall/'+ cid //数据接口
                 ,headers:{token: t,id: cid}
                 ,page: true //开启分页
                 ,totalRow: true
                 ,method:'get'
-                ,cols: [[ //表头
-                {field: 'fundid', title: 'ID', width:80, sort: true, fixed: 'left',align:'center'}
+                ,cols: [[
+                    {type:'radio'}//表头
+                ,{field: 'fundid', title: 'ID', width:80, sort: true}
                 ,{field: 'fundname', title: '基金名', width:140}
-                ,{field: 'fundbrief', title: '简介', width:170}
-                ,{field: 'fundsupply', title: '份额', width:140}
+                ,{field: 'fundbrief', title: '简介', width:170 ,edit: 'text'}
+                ,{field: 'fundsupply', title: '份额', width:140 ,edit: 'text'}
                 ,{field: 'fundprice', title: '价格', width: 140}
                 ,{field: 'fundresponse', title: '回报率', width: 140}
                 ,{field: 'fundstatus', title: '状态', width: 140}
+                ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width:150}
                  ]]
 
         });
@@ -263,7 +302,188 @@
     });
 
 
+    layui.use('table', function () {
+        var $ = layui.jquery;
+        var table = layui.table;
+        //监听单元格编辑
 
+        table.on('edit(test)', function (obj) {
+            var value = obj.value //得到修改后的值,
+
+                , field = obj.field; //得到字段
+
+            console.log(obj.data);
+            $.ajax({
+                type: "post",
+                url: "http://myzuul.com:9527/scauly/fund/consumer/fund/update",
+                contentType: "application/json",
+                data: JSON.stringify(obj.data),
+                headers: {token: localStorage.getItem("token"), id: localStorage.getItem("rid")},
+                dataType: "text",
+                async: false,
+                success: function (data) {
+                    /*console.log(data);*/
+                    if (data == "1") {
+                        console.log("保存成功");
+                        layer.msg('保存成功',{time: 2000});
+                    }
+                    else{
+                        console.log("保存失败");
+                        layer.msg('保存失败',{time: 2000});
+                    }
+
+
+                },
+                error: function () {
+                    console.log("服务器错误");
+                    layer.msg('服务器错误',{time: 2000});
+                }
+            });
+        });
+
+    });
+
+    layui.use('table', function () {
+        var $ = layui.jquery;
+        var table = layui.table;
+        table.on('tool(test)', function(obj){
+            var data = obj.data;
+            console.log(data);
+           if(obj.event === 'del'){
+                layer.confirm('真的下架吗', function(index){
+                    //obj.del();
+                    layer.close(index);
+                    data.fundstatus = "下架未审核";
+                    console.log(data);
+                    $.ajax({
+                        type: "post",
+                        url: "http://myzuul.com:9527/scauly/fund/consumer/fund/update",
+                        contentType: "application/json",
+                        data: JSON.stringify(data),
+                        headers: {token: localStorage.getItem("token"), id: localStorage.getItem("rid")},
+                        dataType: "text",
+                        async: false,
+                        success: function (data) {
+                            /*console.log(data);*/
+                            if (data == "1") {
+                                console.log("下架成功");
+                                layer.msg('下架成功待审核',{time: 2000});
+                            }
+                            else{
+                                console.log("下架失败");
+                                layer.msg('下架失败',{time: 2000});
+                            }
+
+
+                        },
+                        error: function () {
+                            console.log("服务器错误");
+                            layer.msg('服务器错误',{time: 2000});
+                        }
+                    });
+                });
+            }
+        });
+    });
+
+    function walletloadon(){
+        layui.use([ 'jquery', 'layer', 'form', 'table','laydate'], function(){
+            var m;
+            page = layer.open({
+                type:1,
+                content: $('#walletDiv'),
+                area:['420px','500px'],
+                title:"我的钱包"	,
+                btn: ['提现', '取消'],
+                btnAlign: 'c',
+                shade: 0,
+                success: function(layero, index){
+                    $("#walletForm")[0].reset();
+                    $.ajax({
+                        type:"post",
+                        url:"http://myzuul.com:9527/scauly/ow/consumer/wallet/findwallet/" + localStorage.getItem("rid"),
+                        contentType: "application/json",
+                        dataType: "json",
+                        async:false,
+                        headers: {token:localStorage.getItem("token"), id: localStorage.getItem("rid")},
+                        success: function(data){
+                            /*console.log(data);*/
+                            if(data.walletid!=null){
+                                console.log("钱包查找成功");
+                                console.log(data);
+                                m = data.walletmoney;
+                                $("#money").text(data.walletmoney);
+                                $("#putmoney").text(data.remoney);
+                                $("#popmoney").text(data.wdmoney);
+                                $("#bandid").text(data.withdrawimage);
+                            }
+                            else{
+                                console.log("钱包查找失败");
+
+                            }
+
+                        },
+                        error: function(){
+                            layer.msg("服务器错误");
+                            console.log("服务器错误");
+                        }
+                    });
+
+                },
+                yes:function(index,layero){
+                    var wdm = $("#outmoney").val();
+
+                    console.log(wdm);
+                    console.log(m);
+
+                            if(wdm > m){
+                                layer.msg("提现金额超出钱包余额！",{time: 2000});
+                            }
+                            else{
+                                m = m-wdm;
+                                var wdata  = {
+                                    "ownerid": localStorage.getItem("rid"),
+                                    "walletmoney": m,
+                                    "wdmoney": wdm
+                                }
+                                console.log(m);
+                                $.ajax({
+                                    type:"post",
+                                    url:"http://myzuul.com:9527/scauly/ow/consumer/wallet/upwithdraw",
+                                    contentType: "application/json",
+                                    data: JSON.stringify(wdata),
+                                    dataType: "text",
+                                    async:false,
+                                    headers: {token:localStorage.getItem("token"), id: localStorage.getItem("rid")},
+                                    success: function(data){
+                                        /*console.log(data);*/
+                                        if(data==1){
+                                            console.log("提现成功但需审核");
+                                            console.log(data);
+                                            layer.msg("提现成功但需审核",{time: 2000});
+                                        }
+                                        else{
+                                            console.log("提现失败");
+                                            console.log(data);
+                                            layer.msg("提现失败",{time: 2000});
+
+                                        }
+
+                                    },
+                                    error: function(){
+                                        layer.msg("服务器错误");
+                                        console.log("服务器错误");
+                                    }
+                                });
+                            }
+
+                },
+                btn2:function(index){layer.close(index);}
+
+
+            });
+        });
+    }
 </script>
 </body>
 </html>

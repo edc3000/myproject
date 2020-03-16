@@ -68,4 +68,8 @@ public class OdandW_Consumer {
     //查找所有提现未审核的
     @RequestMapping(value = "consumer/wallet/selectwstatus", method = RequestMethod.POST)
     public @ResponseBody List<Wallet> selectwstatus(){return owClientService.selectwstatus();}
+
+    //修改银行卡号
+    @RequestMapping(value = "consumer/wallet/updatebandcard", method = RequestMethod.POST)
+    public int changebandid(@RequestBody Wallet wallet){return owClientService.changebandid(wallet);}
 }

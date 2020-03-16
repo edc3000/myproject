@@ -14,7 +14,481 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
     <script rel="stylesheet" src="layui/layui.js"></script>
 </head>
-<body>
-    <h>牛掰</h>
+
+<body >
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+        <div class="layui-logo">私募基金交易平台</div>
+        <!-- 头部区域（可配合layui已有的水平导航） -->
+        <ul class="layui-nav layui-layout-left">
+            <li class="layui-nav-item">
+                <a href="javascript:;">个人信息</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="javascript:newpwd();">修改密码</a></dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item">
+                <a href="javascript:;">我的钱包</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="javascript:walletshow();">钱包信息</a></dd>
+                    <dd><a href="javascript:changebandid();">修改银行卡号</a></dd>
+                    <dd><a href="javascript:nowput();">充值</a></dd>
+                    <dd><a href="javascript:nowpop();">提现</a></dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item"><a href="">我的订单</a></li>
+
+        </ul>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+                    贤心
+                </a>
+            </li>
+        </ul>
+    </div>
+
+
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+
+            </ul>
+        </div>
+    </div>
+
+    <div class="layui-body">
+        <!-- 内容主体区域 -->
+        <div style="padding: 15px;">内容主体区域</div>
+
+        <div class="site-text site-block" style="display: none; margin-top: 45px" id="pwdDiv" >
+            <form class="layui-form" action="" id="newpwdForm">
+
+                <div class="layui-form-item" style="padding: 3px;">
+                    <label class="layui-form-label" ><b>新密码:</b></label>
+                    <div class="layui-input-inline" >
+                        <input type="password" name="pwd1"  placeholder="请输入密码" autocomplete="off" class="layui-input"  id="pwd1" style="width: 300px; ">
+                    </div>
+                </div>
+
+                <div class="layui-form-item" style="padding: 3px;">
+                    <label class="layui-form-label" ><b>再次输入:</b></label>
+                    <div class="layui-input-inline" >
+                        <input type="password" name="pwd2"  placeholder="请再次输入密码" autocomplete="off" class="layui-input"  id="pwd2" style="width: 300px; ">
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="site-text site-block" style="display: none; margin-top: 45px"  id="walletDiv" >
+            <form class="layui-form" action="" id="walletForm">
+
+                <div class="layui-form-item" style="padding: 3px;">
+                    <label class="layui-form-label" ><b>钱包余额:</b></label>
+                    <label class="layui-form-label" id="money"><b>0</b></label>
+                </div>
+
+                <div class="layui-form-item" style="padding: 3px;">
+                    <label class="layui-form-label" ><b>待充值金额:</b></label>
+                    <label class="layui-form-label" id="putmoney"><b>0</b></label>
+                </div>
+
+                <div class="layui-form-item" style="padding: 3px;">
+                    <label class="layui-form-label" ><b>待提现金额:</b></label>
+                    <label class="layui-form-label" id="popmoney"><b>0</b></label>
+                </div>
+
+                <div class="layui-form-item" style="padding: 3px;">
+                    <label class="layui-form-label" ><b>银行卡号:</b></label>
+                    <div class="layui-input-inline" >
+                        <label class="layui-form-label" id="bandid"><b>0</b></label>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="site-text site-block" style="display: none; margin-top: 50px" id="bandDiv" >
+            <form class="layui-form" action="" id="bandForm">
+                <div class="layui-form-item" style="padding: 3px;">
+                    <label class="layui-form-label" ><b>新银行卡号:</b></label>
+                    <div class="layui-input-inline" >
+                        <input type="text" name="newbandid"  placeholder="请输入卡号" autocomplete="off" class="layui-input"  id="newbandid" style="width: 300px; ">
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+        <div class="site-text site-block"  style="display: none; margin-top: 50px" id="putDiv" >
+            <form class="layui-form" action="" id="putForm">
+
+                <div class="layui-form-item" style="padding: 3px;">
+                    <label class="layui-form-label" ><b>充值银行卡:</b></label>
+                    <label class="layui-form-label" ><b>4392250013857857</b></label>
+                </div>
+
+                <div class="layui-form-item" style="padding: 3px;">
+                    <label class="layui-form-label" ><b>充值金额:</b></label>
+                    <div class="layui-input-inline" >
+                        <input type="text" name="getputmoney"  placeholder="请输入金额" autocomplete="off" class="layui-input"  id="getputmoney" style="width: 300px; ">
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+        <div class="site-text site-block"  style="display: none; margin-top: 50px" id="popDiv" >
+            <form class="layui-form" action="" id="popForm">
+
+                <div class="layui-form-item" style="padding: 3px;">
+                    <label class="layui-form-label" ><b>提现银行卡:</b></label>
+                    <label class="layui-form-label" id="popbandcard"><b>null</b></label>
+                </div>
+
+                <div class="layui-form-item" style="padding: 3px;">
+                    <label class="layui-form-label" ><b>可提余额:</b></label>
+                    <label class="layui-form-label" id="canmoney"><b>null</b></label>
+                </div>
+
+                <div class="layui-form-item" style="padding: 3px;">
+                    <label class="layui-form-label" ><b>提现金额:</b></label>
+                    <div class="layui-input-inline" >
+                        <input type="text" name="getpopmoney"  placeholder="请输入金额" autocomplete="off" class="layui-input"  id="getpopmoney" style="width: 300px; ">
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <div class="layui-footer"></div>
+</div>
+<script>
+    //JavaScript代码区域
+    layui.use('element', function(){
+        var element = layui.element;
+    });
+
+    function newpwd(){
+        layui.use([ 'jquery', 'layer', 'form', 'table','laydate'], function(){
+            page = layer.open({
+                type:1,
+                content: $('#pwdDiv'),
+                area:['450px','320px'],
+                title:"修改密码"	,
+                btn: ['确定', '取消'],
+                btnAlign: 'c',
+                shade: 0,
+                success: function(layero, index){
+
+                    $("#newpwdForm")[0].reset();
+
+                },
+                yes:function(index,layero){
+
+                   var pwd1 = $("#pwd1").val();
+                   var pwd2 = $("#pwd2").val();
+                   if(pwd1!=pwd2){
+                       layer.msg("两次密码不对",{time: 2000});
+                   }
+                   else{
+                       var pwddata = {
+                           "rolename": localStorage.getItem("rname"),
+                           "rolepassword": md5(pwd1+"857857")
+                       };
+                       $.ajax({
+                           type:"post",
+                           url:"http://myzuul.com:9527/scauly/role/consumer/role/updatepwd",
+                           contentType: "application/json",
+                           data: JSON.stringify(pwddata),
+                           dataType: "text",
+                           async:false,
+                           headers: {token:localStorage.getItem("token"), id: localStorage.getItem("rid")},
+                           success: function(data){
+                               /*console.log(data);*/
+                               if(data == "1"){
+                                   console.log("修改密码成功");
+                                   setTimeout(function () { layer.msg("修改密码",{time: 2000});
+                                       layer.close(index); }, 2000);
+                               }
+                               else{
+                                   console.log("修改密码失败");
+                                   setTimeout(function () { layer.msg("修改密码失败",{time: 2000});
+                                       layer.close(index); }, 2000);
+                               }
+
+                           },
+                           error: function(){
+                               layer.msg("服务器错误");
+                               console.log("服务器错误");
+                           }
+                       });
+                   }
+                },
+                btn2:function(index){layer.close(index);}
+            });
+        });
+    }
+
+    function walletshow(){
+        layui.use([ 'jquery', 'layer', 'form', 'table','laydate'], function(){
+            page = layer.open({
+                type:1,
+                content: $('#walletDiv'),
+                area:['450px','380px'],
+                title:"钱包信息"	,
+                btn: ['关闭'],
+                btnAlign: 'c',
+                shade: 0,
+                success: function(layero, index){
+                    $("#walletForm")[0].reset();
+                    $.ajax({
+                        type:"post",
+                        url:"http://myzuul.com:9527/scauly/ow/consumer/wallet/findwallet/" + localStorage.getItem("rid"),
+                        contentType: "application/json",
+                        dataType: "json",
+                        async:false,
+                        headers: {token:localStorage.getItem("token"), id: localStorage.getItem("rid")},
+                        success: function(data){
+                            /*console.log(data);*/
+                            if(data.walletid!=null){
+                                console.log("钱包查找成功");
+                                console.log(data);
+                                m = data.walletmoney;
+                                $("#money").text(data.walletmoney);
+                                $("#putmoney").text(data.remoney);
+                                $("#popmoney").text(data.wdmoney);
+                                $("#bandid").text(data.withdrawimage);
+                            }
+                            else{
+                                console.log("钱包查找失败");
+
+                            }
+
+                        },
+                        error: function(){
+                            layer.msg("服务器错误");
+                            console.log("服务器错误");
+                        }
+                    });
+
+                },
+                yes:function(index,layero){
+                    layer.close(index);
+                }
+
+            });
+        });
+    }
+
+    function changebandid(){
+        layui.use([ 'jquery', 'layer', 'form', 'table','laydate'], function(){
+            page = layer.open({
+                type:1,
+                content: $('#bandDiv'),
+                area:['450px','320px'],
+                title:"修改银行卡号"	,
+                btn: ['确定', '取消'],
+                btnAlign: 'c',
+                shade: 0,
+                success: function(layero, index){
+
+                    $("#bandForm")[0].reset();
+
+                },
+                yes:function(index,layero){
+                    var bcarddata = {
+                        "ownerid": localStorage.getItem("rid"),
+                        "withdrawimage": $("#newbandid").val()
+                    }
+                    $.ajax({
+                        type:"post",
+                        url:"http://myzuul.com:9527/scauly/ow/consumer/wallet/updatebandcard",
+                        contentType: "application/json",
+                        data: JSON.stringify(bcarddata),
+                        dataType: "text",
+                        async:false,
+                        headers: {token:localStorage.getItem("token"), id: localStorage.getItem("rid")},
+                        success: function(data){
+                            /*console.log(data);*/
+                            if(data == "1"){
+                                console.log("修改卡号成功");
+                                setTimeout(function () { layer.msg("修改卡号成功",{time: 2000});
+                                    layer.close(index); }, 2000);
+                            }
+                            else{
+                                console.log("修改卡号失败");
+                                setTimeout(function () { layer.msg("修改卡号失败",{time: 2000});
+                                    layer.close(index); }, 2000);
+                            }
+
+                        },
+                        error: function(){
+                            layer.msg("服务器错误");
+                            console.log("服务器错误");
+                        }
+                    });
+
+                },
+                btn2:function(index){layer.close(index);}
+            });
+        });
+    }
+
+    function nowput(){
+        layui.use([ 'jquery', 'layer', 'form', 'table','laydate'], function(){
+            page = layer.open({
+                type:1,
+                content: $('#putDiv'),
+                area:['450px','320px'],
+                title:"充值"	,
+                btn: ['确定', '取消'],
+                btnAlign: 'c',
+                shade: 0,
+                success: function(layero, index){
+
+                    $("#putForm")[0].reset();
+
+                },
+                yes:function(index,layero){
+                    var putdata = {
+                        "ownerid": localStorage.getItem("rid"),
+                        "remoney": $("#getputmoney").val()
+                    }
+                    $.ajax({
+                        type:"post",
+                        url:"http://myzuul.com:9527/scauly/ow/consumer/wallet/uprecharge",
+                        contentType: "application/json",
+                        data: JSON.stringify(putdata),
+                        dataType: "text",
+                        async:false,
+                        headers: {token:localStorage.getItem("token"), id: localStorage.getItem("rid")},
+                        success: function(data){
+                            /*console.log(data);*/
+                            if(data == "1"){
+                                console.log("充值成功未审核");
+                                setTimeout(function () { layer.msg("充值成功未审核",{time: 2000});
+                                    layer.close(index); }, 2000);
+                            }
+                            else{
+                                console.log("充值失败");
+                                setTimeout(function () { layer.msg("充值失败",{time: 2000});
+                                    layer.close(index); }, 2000);
+                            }
+
+                        },
+                        error: function(){
+                            layer.msg("服务器错误");
+                            console.log("服务器错误");
+                        }
+                    });
+
+                },
+                btn2:function(index){layer.close(index);}
+            });
+        });
+    }
+
+    function nowpop(){
+        layui.use([ 'jquery', 'layer', 'form', 'table','laydate'], function(){
+            var m;
+            page = layer.open({
+                type:1,
+                content: $('#popDiv'),
+                area:['420px','500px'],
+                title:"提现"	,
+                btn: ['提现', '取消'],
+                btnAlign: 'c',
+                shade: 0,
+                success: function(layero, index){
+                    $("#popForm")[0].reset();
+                    $.ajax({
+                        type:"post",
+                        url:"http://myzuul.com:9527/scauly/ow/consumer/wallet/findwallet/" + localStorage.getItem("rid"),
+                        contentType: "application/json",
+                        dataType: "json",
+                        async:false,
+                        headers: {token:localStorage.getItem("token"), id: localStorage.getItem("rid")},
+                        success: function(data){
+                            /*console.log(data);*/
+                            if(data.walletid!=null){
+                                console.log("钱包查找成功");
+                                console.log(data);
+                                m = data.walletmoney;
+                                $("#canmoney").text(data.walletmoney);
+                                $("#popbandcard").text(data.withdrawimage);
+                            }
+                            else{
+                                console.log("钱包查找失败");
+                                layer.msg("钱包查找失败",{time: 2000});
+                            }
+
+                        },
+                        error: function(){
+                            layer.msg("服务器错误");
+                            console.log("服务器错误");
+                        }
+                    });
+
+                },
+                yes:function(index,layero){
+                    var wdm = $("#getpopmoney").val();
+
+                    console.log(wdm);
+                    console.log(m);
+
+                    if(wdm > m){
+                        layer.msg("提现金额超出钱包余额！",{time: 2000});
+                    }
+                    else{
+                        m = m-wdm;
+                        var wdata  = {
+                            "ownerid": localStorage.getItem("rid"),
+                            "walletmoney": m,
+                            "wdmoney": wdm
+                        }
+                        console.log(m);
+                        $.ajax({
+                            type:"post",
+                            url:"http://myzuul.com:9527/scauly/ow/consumer/wallet/upwithdraw",
+                            contentType: "application/json",
+                            data: JSON.stringify(wdata),
+                            dataType: "text",
+                            async:false,
+                            headers: {token:localStorage.getItem("token"), id: localStorage.getItem("rid")},
+                            success: function(data){
+                                /*console.log(data);*/
+                                if(data==1){
+                                    console.log("提现成功但需审核");
+                                    console.log(data);
+                                    layer.msg("提现成功但需审核",{time: 2000});
+                                }
+                                else{
+                                    console.log("提现失败");
+                                    console.log(data);
+                                    layer.msg("提现失败",{time: 2000});
+
+                                }
+
+                            },
+                            error: function(){
+                                layer.msg("服务器错误");
+                                console.log("服务器错误");
+                            }
+                        });
+                    }
+
+                },
+                btn2:function(index){layer.close(index);}
+
+
+            });
+        });
+    }
+</script>
+
+
 </body>
 </html>

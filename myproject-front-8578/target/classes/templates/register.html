@@ -29,6 +29,9 @@
     <label class="sr-only" >用户名</label>
     <input type="text"   id="name" class="form-control" placeholder="请输入用户名" required="" autofocus="">
     <br>
+    <label class="sr-only" >银行卡号</label>
+    <input type="text"   id="band" class="form-control" placeholder="请输入卡号" required="" autofocus="">
+    <br>
     <label class="sr-only" >密码</label>
     <input type="password"   id="pwd" class="form-control" placeholder="请输入密码" required="">
     <br>
@@ -66,8 +69,10 @@
 
                         console.log("re: " + re);
                         var rid = findid(un);
+                        var bid = $("#band").val();
                         console.log("rid: " + rid);
-                        var wal = createW(rid);
+                        console.log("bid: " + bid);
+                        var wal = createW(rid,bid);
                         if(wal == 1){
                             setTimeout(function () { layer.msg("用户钱包创建成功！",{time: 2000});
                                 $(location).attr('href', 'index.html'); }, 1000);
@@ -118,10 +123,10 @@
         var rflag = 0;
         var udata = {
             "rolename": un,
-            "password": md5(pwd+"857857"),
+            "rolepassword": md5(pwd+"857857"),
             "roletype": 3
         }
-        console.log("密码："+ udata.password);
+        console.log("密码："+ udata.rolepassword);
         $.ajax({
             type:"post",
             url:"http://myzuul.com:9527/scauly/role/consumer/role/add",
@@ -171,11 +176,11 @@
         return id;
     }
 
-    function createW(rid) {
+    function createW(rid,bid) {
         var wflag = 0;
         var udata = {
             "ownerid": rid,
-            "withdrawimage": "2.jpg"
+            "withdrawimage": bid
         }
         $.ajax({
             type:"post",

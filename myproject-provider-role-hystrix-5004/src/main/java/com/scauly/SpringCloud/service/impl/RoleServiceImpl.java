@@ -21,7 +21,9 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     public int add(Role role) throws Exception {
+        System.out.println("密码："+role.getRolepassword());
        role.setRolepassword( Md5Util.md5(role.getRolepassword(),"abcd4321"));
+
         return roleDao.insert(role);
     }
 

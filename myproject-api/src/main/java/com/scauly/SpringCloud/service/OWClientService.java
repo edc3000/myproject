@@ -58,4 +58,7 @@ public interface OWClientService {
     //查找所有提现未审核的
     @RequestMapping(value = "wallet/selectwstatus", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody List<Wallet> selectwstatus();
+
+    @RequestMapping(value = "wallet/updatebandcard", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public int changebandid(@RequestBody Wallet wallet);
 }

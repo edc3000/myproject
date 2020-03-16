@@ -74,4 +74,8 @@ public class OWController {
     @RequestMapping(value = "wallet/selectwstatus", method = RequestMethod.POST)
     public @ResponseBody List<Wallet> selectwstatus(){return walletService.selectwstatus();}
 
+    //修改银行卡号
+    @RequestMapping(value = "wallet/updatebandcard", method = RequestMethod.POST)
+    public int changebandid(@RequestBody Wallet wallet){return walletService.updatebandcard(wallet);}
+
 }

@@ -23,4 +23,6 @@ public interface WalletService {
 
     public List<Wallet> selectwstatus();
 
+    public int updatebandcard(Wallet wallet);
+
 }
