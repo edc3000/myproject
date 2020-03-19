@@ -2,6 +2,7 @@ package com.scauly.SpringCloud.service;
 
 import com.scauly.SpringCloud.entities.Role;
 import com.scauly.SpringCloud.entities.RoleTO;
+import com.scauly.SpringCloud.jsonForm.JsonForm;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -44,8 +45,8 @@ public interface RoleClientService {
     public int update(@RequestBody Role role) throws Exception;
 
     //查找所有用户
-    @RequestMapping(value = "role/selectall", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public @ResponseBody List<Role> selectall();
+    @RequestMapping(value = "role/selectall", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public @ResponseBody JsonForm selectall(@RequestParam(value = "page") String page, @RequestParam(value = "limit") String limit);
 
     //根据名字返回对象
     @RequestMapping(value = "/role/findRole", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)

@@ -10,6 +10,7 @@ import com.scauly.SpringCloud.service.FundClientService;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -20,8 +21,12 @@ public class Fund_Consumer {
 
     //根据名字查找
     @RequestMapping(value = "consumer/fund/selectN", method = RequestMethod.POST)
-    public  @ResponseBody List<Fund> selectN(@RequestBody Fund fund){
-        return fundClientService.selectName(fund);
+    public  @ResponseBody Fund selectN(@RequestBody Fund fund){
+        List<Fund> list = fundClientService.selectName(fund);
+        if(list.get(0).getFundid()==null){
+            return new Fund();
+        }
+        return list.get(0);
     }
 
     //根据状态查找
@@ -55,5 +60,10 @@ public class Fund_Consumer {
     public @ResponseBody JsonForm selectall(@PathVariable("id") Long id, @RequestParam(value = "page") String page, @RequestParam(value = "limit") String limit){
         System.out.println("json");
         return fundClientService.selectall(id,page,limit);
+    }
+
+    @RequestMapping(value = "consumer/fund/adselectStatus/{status}", method = RequestMethod.GET)
+    public @ResponseBody JsonForm adselectStatus(@PathVariable("status") String status, @RequestParam(value = "page") String page, @RequestParam(value = "limit") String limit){
+        return fundClientService.adselectStatus(status,page,limit);
     }
 }

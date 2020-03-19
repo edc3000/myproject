@@ -1,5 +1,6 @@
 package com.scauly.SpringCloud.controller;
 
+import com.scauly.SpringCloud.jsonForm.JsonForm;
 import com.scauly.SpringCloud.service.RoleService;
 import com.scauly.SpringCloud.entities.Role;
 import com.scauly.SpringCloud.entities.RoleTO;
@@ -31,8 +32,8 @@ public class RoleController {
     }
 
     //查找所有用户
-    @RequestMapping(value = "role/selectall", method = RequestMethod.POST)
-    public @ResponseBody List<Role> selectall(){return roleService.selectall();}
+    @RequestMapping(value = "role/selectall", method = RequestMethod.GET)
+    public @ResponseBody JsonForm selectall(@RequestParam(value = "page") String page, @RequestParam(value = "limit") String limit){return roleService.selectall(page,limit);}
 
     //插入User
     @RequestMapping(value="/role/add",method= RequestMethod.POST)

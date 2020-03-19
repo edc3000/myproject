@@ -78,15 +78,15 @@
                         console.log("rname: "+ localStorage.getItem("rname"));
                         console.log("rtype: "+ localStorage.getItem("rtype"));
 
-                        if(data.role.roletype == "1"){
+                        if(data.role.roletype == "管理员"){
                             setTimeout(function () { layer.msg("登录成功",{time: 2000});
                                 $(location).attr('href', 'admin.html'); }, 2000);
                         }
-                        if(data.role.roletype == "2"){
+                        if(data.role.roletype == "基金公司"){
                             setTimeout(function () { layer.msg("登录成功",{time: 2000});
                                 $(location).attr('href', 'company.html'); }, 2000);
                         }
-                        if(data.role.roletype == "3"){
+                        if(data.role.roletype == "用户"){
                             setTimeout(function () { layer.msg("登录成功",{time: 2000});
                                 $(location).attr('href', 'user.html'); }, 2000);
                         }

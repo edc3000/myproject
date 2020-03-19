@@ -1,6 +1,7 @@
 package com.scauly.SpringCloud.service;
 
 import com.scauly.SpringCloud.entities.Role;
+import com.scauly.SpringCloud.jsonForm.JsonForm;
 
 import java.util.List;
 
@@ -22,5 +23,5 @@ public interface RoleService {
 
     public int updatepassword(Role role) throws Exception;
 
-    public List<Role> selectall();
+    public JsonForm selectall(String page, String limit);
 }

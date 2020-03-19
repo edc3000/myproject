@@ -25,4 +25,6 @@ public interface FundService {
     public  int buy(Fund fund);
 
     public JsonForm selectall(Long id, String page, String limit);
+
+    public JsonForm adminselectSta(String status,String page, String limit);
 }

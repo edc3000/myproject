@@ -24,7 +24,7 @@
             <li class="layui-nav-item">
                 <a href="javascript:;">
                     <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
-                    贤心
+                    <h id="adtitle"></h>
                 </a>
             </li>
         </ul>
@@ -37,14 +37,14 @@
                 <li class="layui-nav-item layui-nav-itemed">
                     <a class="" href="javascript:;">审核菜单</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:;">上架审核</a></dd>
-                        <dd><a href="javascript:;">下架审核</a></dd>
-                        <dd><a href="javascript:;">充值审核</a></dd>
-                        <dd><a href="javascript:;">提现审核</a></dd>
+                        <dd><a href="javascript:putexe();">上架审核</a></dd>
+                        <dd><a href="javascript:popexe();">下架审核</a></dd>
+                        <dd><a href="javascript:rechargexe();">充值审核</a></dd>
+                        <dd><a href="javascript:withdrawexe();">提现审核</a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item">
-                    <a href="javascript:;">用户管理</a>
+                    <a href="javascript:roleexe();">用户管理</a>
                 </li>
 
             </ul>
@@ -53,21 +53,450 @@
 
     <div class="layui-body">
         <!-- 内容主体区域 -->
-        <div style="padding: 15px;">内容主体区域</div>
+        <div style="padding: 15px; text-align: center; display: none" align="center" id="putdiv"><table id="putdemo" lay-filter="test" ></table></div>
+        <div style="padding: 15px; text-align: center; display: none" align="center" id="popdiv"><table id="popdemo" lay-filter="test1" ></table></div>
+        <div style="padding: 15px; text-align: center; display: none" align="center" id="rediv"><table id="redemo" lay-filter="test2" ></table></div>
+        <div style="padding: 15px; text-align: center; display: none" align="center" id="wddiv"><table id="wddemo" lay-filter="test3" ></table></div>
+        <div style="padding: 15px; text-align: center; display: none" align="center" id="rolediv"><table id="roledemo" lay-filter="test4" ></table></div>
     </div>
 
     <div class="layui-footer">
 
     </div>
 </div>
+<script type="text/html" id="putbarDemo">
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="load">批准上架</a>
+</script>
+<script type="text/html" id="popbarDemo">
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">批准下架</a>
+</script>
+<script type="text/html" id="rebarDemo">
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="re">批准充值</a>
+</script>
+<script type="text/html" id="wdbarDemo">
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="wd">批准提现</a>
+</script>
+<script type="text/html" id="rolebarDemo">
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="roleout">注销</a>
+</script>
 <script>
     //JavaScript代码区域
     layui.use('element', function(){
         var element = layui.element;
+        $("#adtitle").text(localStorage.getItem("rname"));
+    });
+    function putexe(){
+        layui.use([ 'jquery', 'layer', 'form', 'table','laydate'], function(){
+            $("#popdiv").css("display","none");
+            $("#rediv").css("display","none");
+            $("#wddiv").css("display","none");
+            $("#rolediv").css("display","none");
+            $("#putdiv").removeAttr("style","display");
+            var table = layui.table;
+            var cid = localStorage.getItem("rid");
+            var t = localStorage.getItem("token");
+            //第一个实例
+            table.render({
+                elem: '#putdemo'
+                ,height: 700
+                ,width:1150
+                ,url: 'http://myzuul.com:9527/scauly/fund/consumer/fund/adselectStatus/'+ "上架未审核" //数据接口
+                ,headers:{token: t,id: cid}
+                ,page: true //开启分页
+                ,totalRow: true
+                ,method:'get'
+                ,cols: [[
+                    {field: 'fundid', title: 'ID', width:80, sort: true}
+                    ,{field: 'fundname', title: '基金名', width:140}
+                    ,{field: 'fundbrief', title: '简介', width:170 }
+                    ,{field: 'fundsupply', title: '份额', width:140 }
+                    ,{field: 'fundprice', title: '价格', width: 140}
+                    ,{field: 'fundresponse', title: '回报率', width: 140}
+                    ,{field: 'fundstatus', title: '状态', width: 140}
+                    ,{fixed: 'right', title:'操作', toolbar: '#putbarDemo', width:150}
+                ]]
+
+            });
+        });
+    }
+
+    layui.use('table', function () {
+        var $ = layui.jquery;
+        var table = layui.table;
+        table.on('tool(test)', function(obj){
+            var data = obj.data;
+            console.log(data);
+            if(obj.event === 'load'){
+                layer.confirm('真的上架吗', function(index){
+                    //obj.del();
+                    layer.close(index);
+                    data.fundstatus = "在售";
+                    console.log(data);
+                    $.ajax({
+                        type: "post",
+                        url: "http://myzuul.com:9527/scauly/fund/consumer/fund/update",
+                        contentType: "application/json",
+                        data: JSON.stringify(data),
+                        headers: {token: localStorage.getItem("token"), id: localStorage.getItem("rid")},
+                        dataType: "text",
+                        async: false,
+                        success: function (data) {
+                            /*console.log(data);*/
+                            if (data == "1") {
+                                console.log("上架成功");
+                                layer.msg('上架成功',{time: 2000});
+                            }
+                            else{
+                                console.log("上架失败");
+                                layer.msg('上架失败',{time: 2000});
+                            }
+
+
+                        },
+                        error: function () {
+                            console.log("服务器错误");
+                            layer.msg('服务器错误',{time: 2000});
+                        }
+                    });
+                });
+            }
+        });
+    });
+
+    function popexe(){
+        layui.use([ 'jquery', 'layer', 'form', 'table','laydate'], function(){
+            $("#putdiv").css("display","none");
+            $("#rediv").css("display","none");
+            $("#wddiv").css("display","none");
+            $("#rolediv").css("display","none");
+            $("#popdiv").removeAttr("style","display");
+            var table = layui.table;
+            var cid = localStorage.getItem("rid");
+            var t = localStorage.getItem("token");
+            //第一个实例
+            table.render({
+                elem: '#popdemo'
+                ,height: 700
+                ,width:1150
+                ,url: 'http://myzuul.com:9527/scauly/fund/consumer/fund/adselectStatus/'+ "下架未审核" //数据接口
+                ,headers:{token: t,id: cid}
+                ,page: true //开启分页
+                ,totalRow: true
+                ,method:'get'
+                ,cols: [[
+                    {field: 'fundid', title: 'ID', width:80, sort: true}
+                    ,{field: 'fundname', title: '基金名', width:140}
+                    ,{field: 'fundbrief', title: '简介', width:170 }
+                    ,{field: 'fundsupply', title: '份额', width:140 }
+                    ,{field: 'fundprice', title: '价格', width: 140}
+                    ,{field: 'fundresponse', title: '回报率', width: 140}
+                    ,{field: 'fundstatus', title: '状态', width: 140}
+                    ,{fixed: 'right', title:'操作', toolbar: '#popbarDemo', width:150}
+                ]]
+
+            });
+        });
+    }
+
+    layui.use('table', function () {
+        var $ = layui.jquery;
+        var table = layui.table;
+        table.on('tool(test1)', function(obj){
+            var data = obj.data;
+            console.log(data);
+            if(obj.event === 'del'){
+                layer.confirm('真的下架吗', function(index){
+                    //obj.del();
+                    layer.close(index);
+                    console.log(data);
+                    $.ajax({
+                        type: "post",
+                        url: "http://myzuul.com:9527/scauly/fund/consumer/fund/delete",
+                        contentType: "application/json",
+                        data: JSON.stringify(data),
+                        headers: {token: localStorage.getItem("token"), id: localStorage.getItem("rid")},
+                        dataType: "text",
+                        async: false,
+                        success: function (data) {
+                            /*console.log(data);*/
+                            if (data == "1") {
+                                console.log("下架成功");
+                                layer.msg('下架成功',{time: 2000});
+                            }
+                            else{
+                                console.log("下架失败");
+                                layer.msg('下架失败',{time: 2000});
+                            }
+
+
+                        },
+                        error: function () {
+                            console.log("服务器错误");
+                            layer.msg('服务器错误',{time: 2000});
+                        }
+                    });
+                });
+            }
+        });
+    });
+
+    function rechargexe() {
+        layui.use([ 'jquery', 'layer', 'form', 'table','laydate'], function(){
+            $("#pupdiv").css("display","none");
+            $("#popdiv").css("display","none");
+            $("#wddiv").css("display","none");
+            $("#rolediv").css("display","none");
+            $("#rediv").removeAttr("style","display");
+            var table = layui.table;
+            var cid = localStorage.getItem("rid");
+            var t = localStorage.getItem("token");
+            //第一个实例
+            table.render({
+                elem: '#redemo'
+                ,height: 700
+                ,width:1150
+                ,url: 'http://myzuul.com:9527/scauly/ow/consumer/wallet/selectrstatus' //数据接口
+                ,headers:{token: t,id: cid}
+                ,page: true //开启分页
+                ,totalRow: true
+                ,method:'get'
+                ,cols: [[
+                    {field: 'walletid', title: 'ID', width:140, sort: true}
+                    ,{field: 'ownerid', title: '拥有者ID', width:140}
+                    ,{field: 'walletmoney', title: '钱包余额', width:140}
+                    ,{field: 'rechargestatus', title: '充值状态', width:170 }
+                    ,{field: 'remoney', title: '充值金额', width:140 }
+                    ,{fixed: 'right', title:'操作', toolbar: '#rebarDemo', width:150}
+                ]]
+
+            });
+        });
+    }
+
+    layui.use('table', function () {
+        var $ = layui.jquery;
+        var table = layui.table;
+        table.on('tool(test2)', function(obj){
+            var data = obj.data;
+            console.log(data);
+            if(obj.event === 're'){
+                layer.confirm('确定银行卡已到账？', function(index){
+                    //obj.del();
+                    layer.close(index);
+                    console.log(data);
+                    $.ajax({
+                        type: "post",
+                        url: "http://myzuul.com:9527/scauly/ow/consumer/wallet/recharge",
+                        contentType: "application/json",
+                        data: JSON.stringify(data),
+                        headers: {token: localStorage.getItem("token"), id: localStorage.getItem("rid")},
+                        dataType: "text",
+                        async: false,
+                        success: function (data) {
+                            /*console.log(data);*/
+                            if (data == "1") {
+                                console.log("充值成功");
+                                layer.msg('充值成功',{time: 2000});
+                            }
+                            else{
+                                console.log("充值失败");
+                                layer.msg('充值失败',{time: 2000});
+                            }
+
+
+                        },
+                        error: function () {
+                            console.log("服务器错误");
+                            layer.msg('服务器错误',{time: 2000});
+                        }
+                    });
+                });
+            }
+        });
     });
 
 
+    function withdrawexe() {
+        layui.use([ 'jquery', 'layer', 'form', 'table','laydate'], function(){
+            $("#pupdiv").css("display","none");
+            $("#popdiv").css("display","none");
+            $("#rediv").css("display","none");
+            $("#rolediv").css("display","none");
+            $("#wddiv").removeAttr("style","display");
+            var table = layui.table;
+            var cid = localStorage.getItem("rid");
+            var t = localStorage.getItem("token");
+            //第一个实例
+            table.render({
+                elem: '#wddemo'
+                ,height: 700
+                ,width:1150
+                ,url: 'http://myzuul.com:9527/scauly/ow/consumer/wallet/selectwstatus' //数据接口
+                ,headers:{token: t,id: cid}
+                ,page: true //开启分页
+                ,totalRow: true
+                ,method:'get'
+                ,cols: [[
+                    {field: 'walletid', title: 'ID', width:140, sort: true}
+                    ,{field: 'ownerid', title: '拥有者ID', width:140}
+                    ,{field: 'walletmoney', title: '钱包余额', width:140}
+                    ,{field: 'withdrawstatus', title: '提现状态', width:170 }
+                    ,{field: 'wdmoney', title: '提现金额', width:140 }
+                    ,{fixed: 'right', title:'操作', toolbar: '#wdbarDemo', width:150}
+                ]]
 
+            });
+        });
+    }
+
+    layui.use('table', function () {
+        var $ = layui.jquery;
+        var table = layui.table;
+        table.on('tool(test3)', function(obj){
+            var data = obj.data;
+            console.log(data);
+            if(obj.event === 'wd'){
+                layer.confirm('确定对方已到账？', function(index){
+                    //obj.del();
+                    layer.close(index);
+                    console.log(data);
+                    $.ajax({
+                        type: "post",
+                        url: "http://myzuul.com:9527/scauly/ow/consumer/wallet/withdraw",
+                        contentType: "application/json",
+                        data: JSON.stringify(data),
+                        headers: {token: localStorage.getItem("token"), id: localStorage.getItem("rid")},
+                        dataType: "text",
+                        async: false,
+                        success: function (data) {
+                            /*console.log(data);*/
+                            if (data == "1") {
+                                console.log("提现成功");
+                                layer.msg('提现成功',{time: 2000});
+                            }
+                            else{
+                                console.log("提现失败");
+                                layer.msg('提现失败',{time: 2000});
+                            }
+
+
+                        },
+                        error: function () {
+                            console.log("服务器错误");
+                            layer.msg('服务器错误',{time: 2000});
+                        }
+                    });
+                });
+            }
+        });
+    });
+
+    function roleexe() {
+        layui.use([ 'jquery', 'layer', 'form', 'table','laydate'], function(){
+            $("#pupdiv").css("display","none");
+            $("#popdiv").css("display","none");
+            $("#rediv").css("display","none");
+            $("#wddiv").css("display","none");
+            $("#rolediv").removeAttr("style","display");
+            var table = layui.table;
+            var cid = localStorage.getItem("rid");
+            var t = localStorage.getItem("token");
+            //第一个实例
+            table.render({
+                elem: '#roledemo'
+                ,height: 700
+                ,width:1150
+                ,url: 'http://myzuul.com:9527/scauly/role/consumer/role/selectall' //数据接口
+                ,headers:{token: t,id: cid}
+                ,page: true //开启分页
+                ,totalRow: true
+                ,method:'get'
+                ,cols: [[
+                    {field: 'roleid', title: 'ID', width:140, sort: true}
+                    ,{field: 'rolename', title: '姓名', width:140}
+                    ,{field: 'rolepassword', title: '密码', width:140}
+                    ,{field: 'roletype', title: '用户类型', width:170 }
+                    ,{fixed: 'right', title:'操作', toolbar: '#rolebarDemo', width:150}
+                ]]
+
+            });
+        });
+    }
+
+    function walletdel(owid) {
+        var owdata = {
+            "ownerid": owid
+        };
+        $.ajax({
+            type: "post",
+            url: "http://myzuul.com:9527/scauly/ow/consumer/wallet/delwallet",
+            contentType: "application/json",
+            data: JSON.stringify(owdata),
+            headers: {token: localStorage.getItem("token"), id: localStorage.getItem("rid")},
+            dataType: "text",
+            async: false,
+            success: function (data) {
+                /*console.log(data);*/
+                if (data == "1") {
+                    console.log("钱包删除成功");
+                    layer.msg('钱包删除成功',{time: 2000});
+                }
+                else{
+                    console.log("钱包删除失败");
+                    layer.msg('钱包删除失败',{time: 2000});
+                }
+
+
+            },
+            error: function () {
+                console.log("服务器错误");
+                layer.msg('服务器错误',{time: 2000});
+            }
+        });
+    }
+
+    layui.use('table', function () {
+        var $ = layui.jquery;
+        var table = layui.table;
+        table.on('tool(test4)', function(obj){
+            var data = obj.data;
+            console.log(data);
+            if(obj.event === 'roleout'){
+                layer.confirm('确定注销？', function(index){
+                    //obj.del();
+                    layer.close(index);
+                    console.log(data);
+                    walletdel(data.roleid);
+                    $.ajax({
+                        type: "post",
+                        url: "http://myzuul.com:9527/scauly/role/consumer/role/delete",
+                        contentType: "application/json",
+                        data: JSON.stringify(data),
+                        headers: {token: localStorage.getItem("token"), id: localStorage.getItem("rid")},
+                        dataType: "text",
+                        async: false,
+                        success: function (data) {
+                            /*console.log(data);*/
+                            if (data == "1") {
+                                console.log("注销成功");
+                                layer.msg('注销成功',{time: 2000});
+                            }
+                            else{
+                                console.log("注销失败");
+                                layer.msg('注销失败',{time: 2000});
+                            }
+
+
+                        },
+                        error: function () {
+                            console.log("服务器错误");
+                            layer.msg('服务器错误',{time: 2000});
+                        }
+                    });
+                });
+            }
+        });
+    });
 </script>
 </body>
 </html>

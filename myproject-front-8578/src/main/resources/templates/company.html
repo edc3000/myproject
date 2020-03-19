@@ -22,6 +22,14 @@
     <div class="layui-header">
         <div class="layui-logo">私募基金公司管理后台</div>
         <!-- 头部区域（可配合layui已有的水平导航） -->
+        <ul class="layui-nav layui-layout-left">
+            <li class="layui-nav-item">
+                <a href="javascript:;">个人信息</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="javascript:newpwd();">修改密码</a></dd>
+                </dl>
+            </li>
+            </ul>
 
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item">
@@ -53,7 +61,24 @@
             </ul>
         </div>
     </div>
+    <div class="site-text site-block" style="display: none; margin-top: 45px" id="pwdDiv" >
+        <form class="layui-form" action="" id="newpwdForm">
 
+            <div class="layui-form-item" style="padding: 3px;">
+                <label class="layui-form-label" ><b>新密码:</b></label>
+                <div class="layui-input-inline" >
+                    <input type="password" name="pwd1"  placeholder="请输入密码" autocomplete="off" class="layui-input"  id="pwd1" style="width: 300px; ">
+                </div>
+            </div>
+
+            <div class="layui-form-item" style="padding: 3px;">
+                <label class="layui-form-label" ><b>再次输入:</b></label>
+                <div class="layui-input-inline" >
+                    <input type="password" name="pwd2"  placeholder="请再次输入密码" autocomplete="off" class="layui-input"  id="pwd2" style="width: 300px; ">
+                </div>
+            </div>
+        </form>
+    </div>
     <div class="layui-body">
         <!-- 内容主体区域 -->
         <div style="padding: 15px; text-align: center" align="center"><table id="demo" lay-filter="test" ></table></div>
@@ -146,9 +171,10 @@
 <script type="text/html" id="barDemo">
     <a class="layui-btn layui-btn-xs" lay-event="edit" >自动保存</a>
     <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">下架</a>
-
 </script>
 <script>
+    layui.use('element', function(){
+        var element = layui.element;});
     $('#hhh').text(localStorage.getItem("rname"));
     function showfund(){
         layui.use([ 'jquery', 'layer', 'form', 'table','laydate'], function(){
@@ -182,7 +208,7 @@
         });
         });
     }
-    var imgfile = "C:\\uploadFile\\";
+    var imgfile = "/image/";
     function fundloadon(){
         layui.use([ 'jquery', 'layer', 'form', 'table','laydate'], function(){
             page = layer.open({
@@ -481,6 +507,66 @@
                 btn2:function(index){layer.close(index);}
 
 
+            });
+        });
+    }
+    function newpwd(){
+        layui.use([ 'jquery', 'layer', 'form', 'table','laydate'], function(){
+            page = layer.open({
+                type:1,
+                content: $('#pwdDiv'),
+                area:['450px','320px'],
+                title:"修改密码"	,
+                btn: ['确定', '取消'],
+                btnAlign: 'c',
+                shade: 0,
+                success: function(layero, index){
+
+                    $("#newpwdForm")[0].reset();
+
+                },
+                yes:function(index,layero){
+
+                    var pwd1 = $("#pwd1").val();
+                    var pwd2 = $("#pwd2").val();
+                    if(pwd1!=pwd2){
+                        layer.msg("两次密码不对",{time: 2000});
+                    }
+                    else{
+                        var pwddata = {
+                            "rolename": localStorage.getItem("rname"),
+                            "rolepassword": md5(pwd1+"857857")
+                        };
+                        $.ajax({
+                            type:"post",
+                            url:"http://myzuul.com:9527/scauly/role/consumer/role/updatepwd",
+                            contentType: "application/json",
+                            data: JSON.stringify(pwddata),
+                            dataType: "text",
+                            async:false,
+                            headers: {token:localStorage.getItem("token"), id: localStorage.getItem("rid")},
+                            success: function(data){
+                                /*console.log(data);*/
+                                if(data == "1"){
+                                    console.log("修改密码成功");
+                                    setTimeout(function () { layer.msg("修改密码",{time: 2000});
+                                        layer.close(index); }, 2000);
+                                }
+                                else{
+                                    console.log("修改密码失败");
+                                    setTimeout(function () { layer.msg("修改密码失败",{time: 2000});
+                                        layer.close(index); }, 2000);
+                                }
+
+                            },
+                            error: function(){
+                                layer.msg("服务器错误");
+                                console.log("服务器错误");
+                            }
+                        });
+                    }
+                },
+                btn2:function(index){layer.close(index);}
             });
         });
     }

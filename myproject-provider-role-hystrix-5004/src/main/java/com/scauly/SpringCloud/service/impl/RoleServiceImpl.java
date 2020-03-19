@@ -2,6 +2,7 @@ package com.scauly.SpringCloud.service.impl;
 
 import com.scauly.SpringCloud.entities.Role;
 import com.scauly.SpringCloud.entities.RoleExample;
+import com.scauly.SpringCloud.jsonForm.JsonForm;
 import com.scauly.SpringCloud.service.RoleService;
 import com.scauly.SpringCloud.dao.RoleDao;
 import com.scauly.SpringCloud.utils.Md5Util;
@@ -103,11 +104,18 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
-    public List<Role> selectall() {
+    public JsonForm selectall(String page, String limit) {
         RoleExample ex = new RoleExample();
         RoleExample.Criteria c = ex.createCriteria();
-        c.andRoleidIsNotNull();
-        return roleDao.selectByExample(ex);
+        c.andRoleidNotEqualTo((long)8);
+        JsonForm jsonForm = new JsonForm();
+        jsonForm.setCode("0");
+        jsonForm.setMsg("");
+        jsonForm.setCount(roleDao.selectByExample(ex).size()+"");
+        int page2 = (Integer.parseInt(page)-1)*Integer.parseInt(limit);
+        ex.setOrderByClause("roleid limit "+page2+","+limit);
+        jsonForm.setData(roleDao.selectByExample(ex));
+        return jsonForm;
     }
 
 

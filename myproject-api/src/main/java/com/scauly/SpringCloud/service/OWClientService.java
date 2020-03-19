@@ -2,6 +2,8 @@ package com.scauly.SpringCloud.service;
 
 import com.scauly.SpringCloud.entities.Fundorder;
 import com.scauly.SpringCloud.entities.Wallet;
+import com.scauly.SpringCloud.entities.neworder;
+import com.scauly.SpringCloud.jsonForm.JsonForm;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -20,8 +22,8 @@ public interface OWClientService {
     public @ResponseBody List<Fundorder> selectall();
 
     //查找所有自己订单
-    @RequestMapping(value = "order/selectorder/{id}",method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public @ResponseBody List<Fundorder> selectorder(@PathVariable("id") Long id);
+    @RequestMapping(value = "order/selectorder/{id}",method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public @ResponseBody List<neworder> selectorder(@PathVariable("id") Long id);
 
     //创建钱包
     @RequestMapping(value = "wallet/add",method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -52,13 +54,16 @@ public interface OWClientService {
     public int withdraw(@RequestBody Wallet wallet);
 
     //查找所有充值未审核的
-    @RequestMapping(value = "wallet/selectrstatus", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public @ResponseBody List<Wallet> selectrstatus();
+    @RequestMapping(value = "wallet/selectrstatus", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public @ResponseBody JsonForm selectrstatus(@RequestParam(value = "page") String page, @RequestParam(value = "limit") String limit);
 
     //查找所有提现未审核的
-    @RequestMapping(value = "wallet/selectwstatus", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public @ResponseBody List<Wallet> selectwstatus();
+    @RequestMapping(value = "wallet/selectwstatus", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public @ResponseBody JsonForm selectwstatus(@RequestParam(value = "page") String page, @RequestParam(value = "limit") String limit);
 
     @RequestMapping(value = "wallet/updatebandcard", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public int changebandid(@RequestBody Wallet wallet);
+
+    @RequestMapping(value = "wallet/delwallet", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public int delwallet(@RequestBody Wallet wallet);
 }

@@ -127,4 +127,18 @@ public class FundServiceImpl implements FundService {
         jsonForm.setData(fundDao.selectByExample(ex));
         return jsonForm;
     }
+    @Override
+    public JsonForm adminselectSta(String status,String page, String limit){
+        FundExample ex = new FundExample();
+        FundExample.Criteria c = ex.createCriteria();
+        c.andFundstatusEqualTo(status);
+        JsonForm jsonForm = new JsonForm();
+        jsonForm.setCode("0");
+        jsonForm.setMsg("");
+        jsonForm.setCount(fundDao.selectByExample(ex).size()+"");
+        int page2 = (Integer.parseInt(page)-1)*Integer.parseInt(limit);
+        ex.setOrderByClause("fundid limit "+page2+","+limit);
+        jsonForm.setData(fundDao.selectByExample(ex));
+        return jsonForm;
+    }
 }

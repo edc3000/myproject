@@ -65,4 +65,11 @@ public class FundController {
         System.out.println("sbsb");
         return jsonForm;
     }
+
+    //根据status查基金(table)
+    @RequestMapping(value = "fund/adselectStatus/{status}", method = RequestMethod.GET)
+    public @ResponseBody JsonForm adselectStatus(@PathVariable("status") String status, @RequestParam(value = "page") String page, @RequestParam(value = "limit") String limit){
+        JsonForm jsonForm = fundService.adminselectSta(status,page,limit);
+        return jsonForm;
+    }
 }

@@ -1,6 +1,8 @@
 package com.scauly.SpringCloud.service;
 
 import com.scauly.SpringCloud.entities.Wallet;
+import com.scauly.SpringCloud.jsonForm.JsonForm;
+
 import java.util.List;
 
 public interface WalletService {
@@ -19,10 +21,11 @@ public interface WalletService {
 
     public int withdraw(Wallet wallet);
 
-    public List<Wallet> selectrstatus();
+    public JsonForm selectrstatus(String page, String limit);
 
-    public List<Wallet> selectwstatus();
+    public JsonForm selectwstatus(String page, String limit);
 
     public int updatebandcard(Wallet wallet);
 
+    public int delwallet(Wallet wallet);
 }

@@ -27,7 +27,7 @@ public interface FundClientService {
     @RequestMapping(value = "fund/update",method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public int update(@RequestBody Fund fund);
 
-    @RequestMapping(value = "fund/get{id}", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "fund/get/{id}", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody Fund get(@PathVariable("id") Long id);
 
     @RequestMapping(value = "fund/buy",method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -35,4 +35,7 @@ public interface FundClientService {
 
     @RequestMapping(value = "fund/selectall/{id}", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody JsonForm selectall(@PathVariable("id") Long id, @RequestParam(value = "page") String page, @RequestParam(value = "limit") String limit);
+
+    @RequestMapping(value = "fund/adselectStatus/{status}", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public @ResponseBody JsonForm adselectStatus(@PathVariable("status") String status, @RequestParam(value = "page") String page, @RequestParam(value = "limit") String limit);
 }

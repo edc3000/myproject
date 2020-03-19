@@ -1,6 +1,8 @@
 package com.scauly.SpringCloud.service;
 
 import com.scauly.SpringCloud.entities.Fundorder;
+
+
 import java.util.List;
 
 public interface OrderService {
@@ -12,5 +14,6 @@ public interface OrderService {
     public List<Fundorder> selectall();
 
     public List<Fundorder> selectorder(Long id);
+
 
 }

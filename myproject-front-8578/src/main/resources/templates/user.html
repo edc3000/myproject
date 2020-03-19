@@ -22,7 +22,7 @@
         <!-- 头部区域（可配合layui已有的水平导航） -->
         <ul class="layui-nav layui-layout-left">
             <li class="layui-nav-item">
-                <a href="javascript:;">个人信息</a>
+                <a href="javascript:showfund();">个人信息</a>
                 <dl class="layui-nav-child">
                     <dd><a href="javascript:newpwd();">修改密码</a></dd>
                 </dl>
@@ -36,14 +36,14 @@
                     <dd><a href="javascript:nowpop();">提现</a></dd>
                 </dl>
             </li>
-            <li class="layui-nav-item"><a href="">我的订单</a></li>
+            <li class="layui-nav-item"><a href="javascript:showOrder();">我的订单</a></li>
 
         </ul>
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item">
                 <a href="javascript:;">
                     <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
-                    贤心
+                    <h id="utitle"></h>
                 </a>
             </li>
         </ul>
@@ -58,109 +58,140 @@
             </ul>
         </div>
     </div>
+    <div style="padding: 15px; text-align: center ; display: none" align="center" id="orderdiv" ><table id="demo" lay-filter="test" ></table></div>
 
-    <div class="layui-body">
+    <div class="site-text site-block" style="display: none; margin-top: 45px" id="pwdDiv" >
+        <form class="layui-form" action="" id="newpwdForm">
+
+            <div class="layui-form-item" style="padding: 3px;">
+                <label class="layui-form-label" ><b>新密码:</b></label>
+                <div class="layui-input-inline" >
+                    <input type="password" name="pwd1"  placeholder="请输入密码" autocomplete="off" class="layui-input"  id="pwd1" style="width: 300px; ">
+                </div>
+            </div>
+
+            <div class="layui-form-item" style="padding: 3px;">
+                <label class="layui-form-label" ><b>再次输入:</b></label>
+                <div class="layui-input-inline" >
+                    <input type="password" name="pwd2"  placeholder="请再次输入密码" autocomplete="off" class="layui-input"  id="pwd2" style="width: 300px; ">
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="site-text site-block" style="display: none; margin-top: 45px"  id="walletDiv" >
+        <form class="layui-form" action="" id="walletForm">
+
+            <div class="layui-form-item" style="padding: 3px;">
+                <label class="layui-form-label" ><b>钱包余额:</b></label>
+                <label class="layui-form-label" id="money"><b>0</b></label>
+            </div>
+
+            <div class="layui-form-item" style="padding: 3px;">
+                <label class="layui-form-label" ><b>待充值金额:</b></label>
+                <label class="layui-form-label" id="putmoney"><b>0</b></label>
+            </div>
+
+            <div class="layui-form-item" style="padding: 3px;">
+                <label class="layui-form-label" ><b>待提现金额:</b></label>
+                <label class="layui-form-label" id="popmoney"><b>0</b></label>
+            </div>
+
+            <div class="layui-form-item" style="padding: 3px;">
+                <label class="layui-form-label" ><b>银行卡号:</b></label>
+                <div class="layui-input-inline" >
+                    <label class="layui-form-label" id="bandid"><b>0</b></label>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="site-text site-block" style="display: none; margin-top: 50px" id="bandDiv" >
+        <form class="layui-form" action="" id="bandForm">
+            <div class="layui-form-item" style="padding: 3px;">
+                <label class="layui-form-label" ><b>新银行卡号:</b></label>
+                <div class="layui-input-inline" >
+                    <input type="text" name="newbandid"  placeholder="请输入卡号" autocomplete="off" class="layui-input"  id="newbandid" style="width: 300px; ">
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+    <div class="site-text site-block"  style="display: none; margin-top: 50px" id="putDiv" >
+        <form class="layui-form" action="" id="putForm">
+
+            <div class="layui-form-item" style="padding: 3px;">
+                <label class="layui-form-label" ><b>充值银行卡:</b></label>
+                <label class="layui-form-label" ><b>4392250013857857</b></label>
+            </div>
+
+            <div class="layui-form-item" style="padding: 3px;">
+                <label class="layui-form-label" ><b>充值金额:</b></label>
+                <div class="layui-input-inline" >
+                    <input type="text" name="getputmoney"  placeholder="请输入金额" autocomplete="off" class="layui-input"  id="getputmoney" style="width: 300px; ">
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+    <div class="site-text site-block"  style="display: none; margin-top: 50px" id="popDiv" >
+        <form class="layui-form" action="" id="popForm">
+
+            <div class="layui-form-item" style="padding: 3px;">
+                <label class="layui-form-label" ><b>提现银行卡:</b></label>
+                <label class="layui-form-label" id="popbandcard"><b>null</b></label>
+            </div>
+
+            <div class="layui-form-item" style="padding: 3px;">
+                <label class="layui-form-label" ><b>可提余额:</b></label>
+                <label class="layui-form-label" id="canmoney"><b>null</b></label>
+            </div>
+
+            <div class="layui-form-item" style="padding: 3px;">
+                <label class="layui-form-label" ><b>提现金额:</b></label>
+                <div class="layui-input-inline" >
+                    <input type="text" name="getpopmoney"  placeholder="请输入金额" autocomplete="off" class="layui-input"  id="getpopmoney" style="width: 300px; ">
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+
+
+    <div class="layui-body" id="mainbody">
         <!-- 内容主体区域 -->
-        <div style="padding: 15px;">内容主体区域</div>
 
-        <div class="site-text site-block" style="display: none; margin-top: 45px" id="pwdDiv" >
-            <form class="layui-form" action="" id="newpwdForm">
+        <div class="site-text site-block"   id="fundDiv" style="width: 300px; height: 500px;margin-top: 38px; float: left; margin-left: 70px" >
 
-                <div class="layui-form-item" style="padding: 3px;">
-                    <label class="layui-form-label" ><b>新密码:</b></label>
-                    <div class="layui-input-inline" >
-                        <input type="password" name="pwd1"  placeholder="请输入密码" autocomplete="off" class="layui-input"  id="pwd1" style="width: 300px; ">
-                    </div>
-                </div>
+            <img class="layui-upload-img" style="width: 180px; height: 200px; margin-left: 40px;" id="fundimg" >
+            <div class="layui-form-item" style="padding: 3px; margin-bottom: -5px;" id="div1">
+                <label class="layui-form-label" ><b>基金名:</b></label>
+                <label class="layui-form-label" id="fundname"><b>天弘</b></label>
+            </div>
+            <div class="layui-form-item" style="padding: 3px;margin-bottom: -5px;" id="div2">
+                <label class="layui-form-label" ><b>基金简介:</b></label>
+                <label class="layui-form-label" id="fundbrief"><b>fit</b></label>
+            </div>
+            <div class="layui-form-item" style="padding: 3px;margin-bottom: -5px;" id="div3">
+                <label class="layui-form-label" ><b>年回报率:</b></label>
+                <label class="layui-form-label" id="fundresponse"><b>0%</b></label>
+            </div>
+            <div class="layui-form-item" style="padding: 3px;" id="div4">
+                <label class="layui-form-label" ><b>投资金额:</b></label>
+                <label class="layui-form-label" id="fundprice"><b>0</b></label>
+            </div>
+            <div class="layui-form-item"  style="padding: 3px; text-align: center"  id="div5">
+                <button type="button" class="layui-btn layui-bg-red" id="buy" >购买</button>
+            </div>
 
-                <div class="layui-form-item" style="padding: 3px;">
-                    <label class="layui-form-label" ><b>再次输入:</b></label>
-                    <div class="layui-input-inline" >
-                        <input type="password" name="pwd2"  placeholder="请再次输入密码" autocomplete="off" class="layui-input"  id="pwd2" style="width: 300px; ">
-                    </div>
-                </div>
-            </form>
+
         </div>
 
-        <div class="site-text site-block" style="display: none; margin-top: 45px"  id="walletDiv" >
-            <form class="layui-form" action="" id="walletForm">
 
-                <div class="layui-form-item" style="padding: 3px;">
-                    <label class="layui-form-label" ><b>钱包余额:</b></label>
-                    <label class="layui-form-label" id="money"><b>0</b></label>
-                </div>
 
-                <div class="layui-form-item" style="padding: 3px;">
-                    <label class="layui-form-label" ><b>待充值金额:</b></label>
-                    <label class="layui-form-label" id="putmoney"><b>0</b></label>
-                </div>
-
-                <div class="layui-form-item" style="padding: 3px;">
-                    <label class="layui-form-label" ><b>待提现金额:</b></label>
-                    <label class="layui-form-label" id="popmoney"><b>0</b></label>
-                </div>
-
-                <div class="layui-form-item" style="padding: 3px;">
-                    <label class="layui-form-label" ><b>银行卡号:</b></label>
-                    <div class="layui-input-inline" >
-                        <label class="layui-form-label" id="bandid"><b>0</b></label>
-                    </div>
-                </div>
-            </form>
-        </div>
-
-        <div class="site-text site-block" style="display: none; margin-top: 50px" id="bandDiv" >
-            <form class="layui-form" action="" id="bandForm">
-                <div class="layui-form-item" style="padding: 3px;">
-                    <label class="layui-form-label" ><b>新银行卡号:</b></label>
-                    <div class="layui-input-inline" >
-                        <input type="text" name="newbandid"  placeholder="请输入卡号" autocomplete="off" class="layui-input"  id="newbandid" style="width: 300px; ">
-                    </div>
-                </div>
-
-            </form>
-        </div>
-
-        <div class="site-text site-block"  style="display: none; margin-top: 50px" id="putDiv" >
-            <form class="layui-form" action="" id="putForm">
-
-                <div class="layui-form-item" style="padding: 3px;">
-                    <label class="layui-form-label" ><b>充值银行卡:</b></label>
-                    <label class="layui-form-label" ><b>4392250013857857</b></label>
-                </div>
-
-                <div class="layui-form-item" style="padding: 3px;">
-                    <label class="layui-form-label" ><b>充值金额:</b></label>
-                    <div class="layui-input-inline" >
-                        <input type="text" name="getputmoney"  placeholder="请输入金额" autocomplete="off" class="layui-input"  id="getputmoney" style="width: 300px; ">
-                    </div>
-                </div>
-
-            </form>
-        </div>
-
-        <div class="site-text site-block"  style="display: none; margin-top: 50px" id="popDiv" >
-            <form class="layui-form" action="" id="popForm">
-
-                <div class="layui-form-item" style="padding: 3px;">
-                    <label class="layui-form-label" ><b>提现银行卡:</b></label>
-                    <label class="layui-form-label" id="popbandcard"><b>null</b></label>
-                </div>
-
-                <div class="layui-form-item" style="padding: 3px;">
-                    <label class="layui-form-label" ><b>可提余额:</b></label>
-                    <label class="layui-form-label" id="canmoney"><b>null</b></label>
-                </div>
-
-                <div class="layui-form-item" style="padding: 3px;">
-                    <label class="layui-form-label" ><b>提现金额:</b></label>
-                    <div class="layui-input-inline" >
-                        <input type="text" name="getpopmoney"  placeholder="请输入金额" autocomplete="off" class="layui-input"  id="getpopmoney" style="width: 300px; ">
-                    </div>
-                </div>
-
-            </form>
-        </div>
     </div>
 
     <div class="layui-footer"></div>
@@ -169,6 +200,55 @@
     //JavaScript代码区域
     layui.use('element', function(){
         var element = layui.element;
+        $("#utitle").text(localStorage.getItem("rname"));
+        var fdata = {
+            "fundstatus": "在售"
+        };
+        $.ajax({
+            type:"post",
+            url:"http://myzuul.com:9527/scauly/fund/consumer/fund/selectStatus",
+            contentType: "application/json",
+            data: JSON.stringify(fdata),
+            dataType: "json",
+            async:false,
+            headers: {token:localStorage.getItem("token"), id: localStorage.getItem("rid")},
+            success: function(data){
+                console.log(data);
+                console.log(data[0]);
+                console.log(data.length);
+                for(var i =0;i<data.length;i++){
+                    if(i == 0){
+                        $("#fundDiv").children("#fundimg").attr("src",data[i].fundmageurl);
+                        $("#fundDiv").children("#div1").children("#fundname").text(data[i].fundname);
+                        $("#fundDiv").children("#div2").children("#fundbrief").text(data[i].fundbrief);
+                        $("#fundDiv").children("#div3").children("#fundresponse").text(data[i].fundresponse);
+                        $("#fundDiv").children("#div4").children("#fundprice").text(data[i].fundprice);
+
+                    }
+                    else{
+                        var t = $("#fundDiv").clone(true);
+
+                        t.children("#fundimg").attr("src",data[i].fundmageurl);
+                        t.children("#div1").children("#fundname").text(data[i].fundname);
+                        t.children("#div2").children("#fundbrief").text(data[i].fundbrief);
+                        t.children("#div3").children("#fundresponse").text(data[i].fundresponse);
+                        t.children("#div4").children("#fundprice").text(data[i].fundprice);
+                        t.attr("id","fundDiv"+i);
+                        console.log(t.attr("id"));
+                        $("#mainbody").append(t);
+                    }
+
+                }
+                $("#fundDiv").attr("id","fundDiv0");
+                console.log($("#fundDiv").attr("id"));
+                /*$("#mainbody").append($("#fundDiv").clone(true));*/
+
+            },
+            error: function(){
+                layer.msg("服务器错误");
+                console.log("服务器错误");
+            }
+        });
     });
 
     function newpwd(){
@@ -485,6 +565,266 @@
 
 
             });
+        });
+    }
+
+    function showOrder(){
+        layui.use([ 'jquery', 'layer', 'form', 'table','laydate'], function(){
+            var table = layui.table;
+            page = layer.open({
+                type:1,
+                content: $('#orderdiv'),
+                area:['750px','520px'],
+                title:"订单"	,
+                btn: ['关闭'],
+                btnAlign: 'c',
+                shade: 0,
+                success: function(layero, index){
+
+                    table.render({
+                        elem: '#demo'
+                        ,height: 420
+                        ,width:750
+                        ,url: 'http://myzuul.com:9527/scauly/ow/consumer/order/selectorder/'+ localStorage.getItem("rid") //数据接口
+                        ,headers:{token: localStorage.getItem("token"),id: localStorage.getItem("rid")}
+                        ,page: false //开启分页
+                        ,totalRow: true
+                        ,method:'get'
+                        ,cols: [[
+                            {field: 'orderid', title: '订单号', width:80, sort: true}
+                            ,{field: 'fundname', title: '基金名', width:140}
+                            ,{field: 'fundprice', title: '价格', width: 140}
+                            ,{field: 'fundresponse', title: '回报率', width: 140}
+                            ,{field: 'ordertime', title: '订单时间', width: 160}
+                        ]]
+
+                    });
+
+                },
+                yes:function(index,layero){
+                    $("#orderdiv").attr("display","none");
+                    layer.close(index);
+                }
+
+            });
+        });
+    }
+
+    var fund_id;
+    var fund_cid;
+    var wallet_m;
+    var walletflag;
+    var buyflag;
+    var orderflag;
+
+    $("#buy").click(function (){
+
+            walletflag = 0;
+            buyflag = 0;
+            orderflag = 0;
+            var d = $(this).parent().parent().attr("id");
+            var fn = $(this).parent().parent().children("#div1").children("#fundname").text();
+            var fm = $(this).parent().parent().children("#div4").children("#fundprice").text();
+
+            console.log("基金名"+fn);
+            console.log("价格"+fm);
+            findwallet(localStorage.getItem("rid"));
+            console.log("自己钱包余额：" + wallet_m);
+            findcompany(fn);
+            console.log(fund_id);
+            console.log(fund_cid);
+            if (wallet_m >= fm) {
+                console.log("够钱买");
+                buyfund(fn);
+                if(buyflag==1){
+                    var pay_m = parseInt(wallet_m) - parseInt(fm);
+                    exewallet(localStorage.getItem("rid"), pay_m);
+                    if(walletflag==1){
+                        findwallet(fund_cid);
+                        pay_m = parseInt(wallet_m) + parseInt(fm);
+                        console.log("pay_m: " + pay_m);
+                        walletflag=0;
+                        exewallet(fund_cid, pay_m);
+                        if(walletflag==1){
+                            exeorder(localStorage.getItem("rid"), fund_cid, fund_id);
+                            if(orderflag==1){
+                                layui.use('table', function () {layer.msg("购买成功", {time: 2000});});
+                            }
+                            else{layui.use('table', function () {layer.msg("购买失败", {time: 2000});});}
+                        }
+                        else{layui.use('table', function () {layer.msg("购买失败", {time: 2000});});}
+                    }
+                    else{layui.use('table', function () {layer.msg("购买失败", {time: 2000});});}
+                }
+                else{layui.use('table', function () {layer.msg("购买失败", {time: 2000});});}
+
+            }
+            else {
+                layui.use('table', function () {layer.msg("余额不足", {time: 2000});});
+            }
+
+    });
+
+    function findwallet(wid) {
+        $.ajax({
+            type:"post",
+            url:"http://myzuul.com:9527/scauly/ow/consumer/wallet/findwallet/" + wid,
+            contentType: "application/json",
+            dataType: "json",
+            async:false,
+            headers: {token:localStorage.getItem("token"), id: localStorage.getItem("rid")},
+            success: function(data){
+                /*console.log(data);*/
+                if(data.walletid!=null){
+                    console.log("钱包查找成功");
+                    console.log(data);
+                    wallet_m =  data.walletmoney;
+
+                }
+                else{
+                    console.log("钱包查找失败");
+
+                }
+
+            },
+            error: function(){
+                layer.msg("服务器错误");
+                console.log("服务器错误");
+            }
+        });
+    }
+
+    function findcompany(fundname) {
+
+        var fund = {
+          "fundname": fundname
+        };
+        $.ajax({
+            type:"post",
+            url:"http://myzuul.com:9527/scauly/fund/consumer/fund/selectN" ,
+            contentType: "application/json",
+            data: JSON.stringify(fund),
+            dataType: "json",
+            async:false,
+            headers: {token:localStorage.getItem("token"), id: localStorage.getItem("rid")},
+            success: function(data){
+                /*console.log(data);*/
+                if(data.fundid!=null){
+                    console.log("基金查找成功");
+                    console.log(data);
+                    fund_id = data.fundid;
+                    fund_cid = data.fundcompanyid;
+                }
+                else{
+                    console.log("基金查找失败");
+
+                }
+
+            },
+            error: function(){
+                layer.msg("服务器错误");
+                console.log("服务器错误");
+            }
+        });
+    }
+
+    function buyfund(fundname) {
+        var fund = {
+            "fundname": fundname
+        };
+        $.ajax({
+            type:"post",
+            url:"http://myzuul.com:9527/scauly/fund/consumer/fund/buy" ,
+            contentType: "application/json",
+            data: JSON.stringify(fund),
+            dataType: "text",
+            async:false,
+            headers: {token:localStorage.getItem("token"), id: localStorage.getItem("rid")},
+            success: function(data){
+                /*console.log(data);*/
+                if(data == 1){
+                    console.log("基金购买成功");
+                    buyflag =1;
+
+                }
+                else{
+                    console.log("基金购买失败");
+
+                }
+
+            },
+            error: function(){
+                layer.msg("服务器错误");
+                console.log("服务器错误");
+            }
+        });
+
+    }
+
+    function exewallet(oid,mon) {
+        var ow = {
+            "ownerid": oid,
+            "walletmoney": mon
+        };
+        $.ajax({
+            type:"post",
+            url:"http://myzuul.com:9527/scauly/ow/consumer/wallet/pay" ,
+            contentType: "application/json",
+            data: JSON.stringify(ow),
+            dataType: "text",
+            async:false,
+            headers: {token:localStorage.getItem("token"), id: localStorage.getItem("rid")},
+            success: function(data){
+                /*console.log(data);*/
+                if(data == 1){
+                    console.log("付款成功");
+                    walletflag =1;
+
+                }
+                else{
+                    console.log("付款失败");
+
+                }
+
+            },
+            error: function(){
+                layer.msg("服务器错误");
+                console.log("服务器错误");
+            }
+        });
+    }
+
+    function exeorder(bid,sid,fid) {
+        var forder = {
+            "buyerid": bid,
+            "sellerid": sid,
+            "fundid": fid
+        };
+        $.ajax({
+            type:"post",
+            url:"http://myzuul.com:9527/scauly/ow/consumer/order/add" ,
+            contentType: "application/json",
+            data: JSON.stringify(forder),
+            dataType: "text",
+            async:false,
+            headers: {token:localStorage.getItem("token"), id: localStorage.getItem("rid")},
+            success: function(data){
+                /*console.log(data);*/
+                if(data == 1){
+                    console.log("创建订单成功");
+                    orderflag =1;
+
+                }
+                else{
+                    console.log("创建订单失败");
+
+                }
+
+            },
+            error: function(){
+                layer.msg("服务器错误");
+                console.log("服务器错误");
+            }
         });
     }
 </script>

@@ -18,7 +18,7 @@ public class uploadController {
         if (!file.isEmpty()) {
             try {
                 byte[] bytes = file.getBytes();
-                fileToSave = new File("C:\\uploadFile\\"+ file.getOriginalFilename());
+                fileToSave = new File("C:\\Users\\LEON\\IdeaProjects\\myproject\\myproject-front-8578\\src\\main\\resources\\static\\image\\"+file.getOriginalFilename());
                 //fileToSave = new File("D:\\测绘管理系统\\文件系统\\文件存储" + file.getOriginalFilename()); 自定义存储路径
                 FileCopyUtils.copy(bytes, fileToSave);
             } catch (IOException e) {

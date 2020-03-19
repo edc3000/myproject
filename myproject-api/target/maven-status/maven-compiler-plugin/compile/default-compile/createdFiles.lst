@@ -1,6 +1,7 @@
 com\scauly\SpringCloud\entities\WalletExample.class
 com\scauly\SpringCloud\utils\Md5Util.class
 com\scauly\SpringCloud\utils\TokenUtil.class
+com\scauly\SpringCloud\entities\neworder.class
 com\scauly\SpringCloud\service\RoleClientService.class
 com\scauly\SpringCloud\entities\FundorderExample.class
 com\scauly\SpringCloud\entities\FundExample$Criterion.class

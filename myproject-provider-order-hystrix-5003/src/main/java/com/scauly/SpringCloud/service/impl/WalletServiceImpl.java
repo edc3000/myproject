@@ -1,5 +1,7 @@
 package com.scauly.SpringCloud.service.impl;
 import java.util.List;
+
+import com.scauly.SpringCloud.jsonForm.JsonForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.scauly.SpringCloud.entities.Wallet;
@@ -107,7 +109,7 @@ public class WalletServiceImpl implements WalletService {
         Wallet wallet1 = this.findwallet(wallet.getOwnerid());
 
         if(wallet1.getWithdrawstatus().equals("提现未审核")){
-            wallet1.setWalletmoney(wallet1.getWalletmoney()-wallet1.getWdmoney());
+
             wallet1.setWithdrawstatus("未提现");
             long i = 0;
             wallet1.setWdmoney(i);
@@ -117,20 +119,33 @@ public class WalletServiceImpl implements WalletService {
     }
 
     @Override
-    public List<Wallet> selectrstatus() {          //查找所有充值未审核的
+    public JsonForm selectrstatus(String page, String limit) {          //查找所有充值未审核的
         WalletExample ex = new WalletExample();
         WalletExample.Criteria c = ex.createCriteria();
         c.andRechargestatusEqualTo("充值未审核");
-
-        return walletDao.selectByExample(ex);
+        JsonForm jsonForm = new JsonForm();
+        jsonForm.setCode("0");
+        jsonForm.setMsg("");
+        jsonForm.setCount(walletDao.selectByExample(ex).size()+"");
+        int page2 = (Integer.parseInt(page)-1)*Integer.parseInt(limit);
+        ex.setOrderByClause("walletid limit "+page2+","+limit);
+        jsonForm.setData(walletDao.selectByExample(ex));
+        return jsonForm;
     }
 
     @Override
-    public List<Wallet> selectwstatus() {       //查找所有提现未审核的
+    public JsonForm selectwstatus(String page, String limit) {       //查找所有提现未审核的
         WalletExample ex = new WalletExample();
         WalletExample.Criteria c = ex.createCriteria();
         c.andWithdrawstatusEqualTo("提现未审核");
-        return walletDao.selectByExample(ex);
+        JsonForm jsonForm = new JsonForm();
+        jsonForm.setCode("0");
+        jsonForm.setMsg("");
+        jsonForm.setCount(walletDao.selectByExample(ex).size()+"");
+        int page2 = (Integer.parseInt(page)-1)*Integer.parseInt(limit);
+        ex.setOrderByClause("walletid limit "+page2+","+limit);
+        jsonForm.setData(walletDao.selectByExample(ex));
+        return jsonForm;
     }
 
     @Override
@@ -138,6 +153,12 @@ public class WalletServiceImpl implements WalletService {
         Wallet wallet1 = this.findwallet(wallet.getOwnerid());
         wallet1.setWithdrawimage(wallet.getWithdrawimage());
         return walletDao.updateByPrimaryKey(wallet1);
+    }
+
+    @Override
+    public int delwallet(Wallet wallet) {
+        Wallet w = findwallet(wallet.getOwnerid());
+        return walletDao.deleteByPrimaryKey(w.getWalletid());
     }
 
 

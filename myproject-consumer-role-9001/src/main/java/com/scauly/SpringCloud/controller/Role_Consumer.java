@@ -1,5 +1,6 @@
 package com.scauly.SpringCloud.controller;
 
+import com.scauly.SpringCloud.jsonForm.JsonForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -68,9 +69,8 @@ public class Role_Consumer {
     }
 
     //查找所有用户
-    @RequestMapping(value = "consumer/role/selectall", method = RequestMethod.POST)
-    public @ResponseBody
-    List<Role> selectall(){return roleClientService.selectall();}
+    @RequestMapping(value = "consumer/role/selectall", method = RequestMethod.GET)
+    public @ResponseBody JsonForm selectall(@RequestParam(value = "page") String page, @RequestParam(value = "limit") String limit){return roleClientService.selectall(page,limit);}
 
     @RequestMapping(value = "consumer/role/findRole", method = RequestMethod.POST)
     public @ResponseBody Role findRole(@RequestBody Role role) {
