@@ -1,3 +1,4 @@
+com\scauly\SpringCloud\entities\cmyorder.class
 com\scauly\SpringCloud\entities\WalletExample.class
 com\scauly\SpringCloud\utils\Md5Util.class
 com\scauly\SpringCloud\utils\TokenUtil.class

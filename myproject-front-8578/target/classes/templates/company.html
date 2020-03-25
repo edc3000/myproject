@@ -57,7 +57,10 @@
                     <a href="javascript:walletloadon();">公司钱包</a>
 
                 </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:showcmyOrder();">订单</a>
 
+                </li>
             </ul>
         </div>
     </div>
@@ -79,6 +82,7 @@
             </div>
         </form>
     </div>
+    <div style="padding: 15px; text-align: center ; display: none" align="center" id="cmyorderdiv" ><table id="orderdemo" lay-filter="test" ></table></div>
     <div class="layui-body">
         <!-- 内容主体区域 -->
         <div style="padding: 15px; text-align: center" align="center"><table id="demo" lay-filter="test" ></table></div>
@@ -567,6 +571,49 @@
                     }
                 },
                 btn2:function(index){layer.close(index);}
+            });
+        });
+    }
+
+    function showcmyOrder(){
+        layui.use([ 'jquery', 'layer', 'form', 'table','laydate'], function(){
+            var table = layui.table;
+            page = layer.open({
+                type:1,
+                content: $('#cmyorderdiv'),
+                area:['850px','520px'],
+                title:"订单"	,
+                btn: ['关闭'],
+                btnAlign: 'c',
+                shade: 0,
+                success: function(layero, index){
+
+                    table.render({
+                        elem: '#orderdemo'
+                        ,height: 420
+                        ,width:850
+                        ,url: 'http://myzuul.com:9527/scauly/ow/consumer/order/selectcmyorder/'+ localStorage.getItem("rid") //数据接口
+                        ,headers:{token: localStorage.getItem("token"),id: localStorage.getItem("rid")}
+                        ,page: false //开启分页
+                        ,totalRow: true
+                        ,method:'get'
+                        ,cols: [[
+                            {field: 'orderid', title: '订单号', width:80, sort: true}
+                            ,{field: 'rolename', title: '用户名', width:140}
+                            ,{field: 'fundname', title: '基金名', width:140}
+                            ,{field: 'fundprice', title: '价格', width: 140}
+                            ,{field: 'fundresponse', title: '回报率', width: 140}
+                            ,{field: 'ordertime', title: '订单时间', width: 160}
+                        ]]
+
+                    });
+
+                },
+                yes:function(index,layero){
+                    $("#cmyorderdiv").attr("display","none");
+                    layer.close(index);
+                }
+
             });
         });
     }

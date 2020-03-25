@@ -1,16 +1,14 @@
 package com.scauly.SpringCloud.controller;
 
-import com.scauly.SpringCloud.entities.Fund;
-import com.scauly.SpringCloud.entities.Wallet;
+import com.scauly.SpringCloud.entities.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
-import com.scauly.SpringCloud.entities.Fundorder;
 import com.scauly.SpringCloud.service.OWClientService;
-import com.scauly.SpringCloud.entities.neworder;
 import com.scauly.SpringCloud.service.FundClientService;
+import com.scauly.SpringCloud.service.RoleClientService;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import com.scauly.SpringCloud.jsonForm.JsonForm;
@@ -26,6 +24,9 @@ public class OdandW_Consumer {
 
     @Autowired
     private FundClientService fundClientService;
+
+    @Autowired
+    private RoleClientService roleClientService;
 
     //创建订单
     @RequestMapping(value = "consumer/order/add", method = RequestMethod.POST)
@@ -55,6 +56,28 @@ public class OdandW_Consumer {
         jsonForm.setMsg("");
         jsonForm.setCount(neworders.size()+"");
         jsonForm.setData(neworders);
+        return jsonForm;
+    }
+
+    //查找自己的订单
+    @RequestMapping(value = "consumer/order/selectcmyorder/{id}",method = RequestMethod.GET)
+    public @ResponseBody JsonForm selectcmyorder(@PathVariable("id") Long id){
+        List<cmyorder> cmyorders = owClientService.selectcmyorder(id);
+        for(int i =0;i<cmyorders.size();i++){
+            long bid = cmyorders.get(i).getBuyerid();
+            long fid = cmyorders.get(i).getFundid();
+            Fund f = fundClientService.get(fid);
+            Role r = roleClientService.get(bid);
+            cmyorders.get(i).setRolename(r.getRolename());
+            cmyorders.get(i).setFundname(f.getFundname());
+            cmyorders.get(i).setFundprice(f.getFundprice());
+            cmyorders.get(i).setFundresponse(f.getFundresponse());
+        }
+        JsonForm jsonForm = new JsonForm();
+        jsonForm.setCode("0");
+        jsonForm.setMsg("");
+        jsonForm.setCount(cmyorders.size()+"");
+        jsonForm.setData(cmyorders);
         return jsonForm;
     }
 

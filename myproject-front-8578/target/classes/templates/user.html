@@ -363,7 +363,9 @@
         });
     }
 
+    var bankcheckflag;
     function changebandid(){
+        bankcheckflag = 0;
         layui.use([ 'jquery', 'layer', 'form', 'table','laydate'], function(){
             page = layer.open({
                 type:1,
@@ -379,37 +381,41 @@
 
                 },
                 yes:function(index,layero){
-                    var bcarddata = {
-                        "ownerid": localStorage.getItem("rid"),
-                        "withdrawimage": $("#newbandid").val()
-                    }
-                    $.ajax({
-                        type:"post",
-                        url:"http://myzuul.com:9527/scauly/ow/consumer/wallet/updatebandcard",
-                        contentType: "application/json",
-                        data: JSON.stringify(bcarddata),
-                        dataType: "text",
-                        async:false,
-                        headers: {token:localStorage.getItem("token"), id: localStorage.getItem("rid")},
-                        success: function(data){
-                            /*console.log(data);*/
-                            if(data == "1"){
-                                console.log("修改卡号成功");
-                                setTimeout(function () { layer.msg("修改卡号成功",{time: 2000});
-                                    layer.close(index); }, 2000);
-                            }
-                            else{
-                                console.log("修改卡号失败");
-                                setTimeout(function () { layer.msg("修改卡号失败",{time: 2000});
-                                    layer.close(index); }, 2000);
-                            }
-
-                        },
-                        error: function(){
-                            layer.msg("服务器错误");
-                            console.log("服务器错误");
+                    bandcheck($("#newbandid").val());
+                    if(bankcheckflag==1){
+                        var bcarddata = {
+                            "ownerid": localStorage.getItem("rid"),
+                            "withdrawimage": $("#newbandid").val()
                         }
-                    });
+                        $.ajax({
+                            type:"post",
+                            url:"http://myzuul.com:9527/scauly/ow/consumer/wallet/updatebandcard",
+                            contentType: "application/json",
+                            data: JSON.stringify(bcarddata),
+                            dataType: "text",
+                            async:false,
+                            headers: {token:localStorage.getItem("token"), id: localStorage.getItem("rid")},
+                            success: function(data){
+                                /*console.log(data);*/
+                                if(data == "1"){
+                                    console.log("修改卡号成功");
+                                    setTimeout(function () { layer.msg("修改卡号成功",{time: 2000});
+                                        layer.close(index); }, 2000);
+                                }
+                                else{
+                                    console.log("修改卡号失败");
+                                    setTimeout(function () { layer.msg("修改卡号失败",{time: 2000});
+                                        layer.close(index); }, 2000);
+                                }
+
+                            },
+                            error: function(){
+                                layer.msg("服务器错误");
+                                console.log("服务器错误");
+                            }
+                        });
+                    }
+
 
                 },
                 btn2:function(index){layer.close(index);}
@@ -826,6 +832,31 @@
                 console.log("服务器错误");
             }
         });
+    }
+
+    function bandcheck(value) {
+
+        $.ajax({
+            type: "post",
+            url: "https://ccdcapi.alipay.com/validateAndCacheCardInfo.json",
+            data: {cardNo:value,cardBinCheck:'true'},
+            dataType: "json",
+            async:false,
+            success: function(res){
+                if(res.validated){
+                    layer.msg('银行卡号正确',{icon:6});
+                    bankcheckflag =1;
+                }else{
+                    layer.msg('银行卡号错误',{icon:5});
+
+                }
+            },
+            error: function(){
+                layer.msg("服务器错误");
+                console.log("服务器错误");
+            }
+        });
+
     }
 </script>
 

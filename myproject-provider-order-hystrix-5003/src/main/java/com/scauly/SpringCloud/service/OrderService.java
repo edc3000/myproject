@@ -16,4 +16,5 @@ public interface OrderService {
     public List<Fundorder> selectorder(Long id);
 
 
+    public List<Fundorder> selectcmporder(Long id);
 }

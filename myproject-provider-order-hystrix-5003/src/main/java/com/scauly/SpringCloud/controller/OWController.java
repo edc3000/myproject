@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.scauly.SpringCloud.entities.Fundorder;
 import com.scauly.SpringCloud.entities.neworder;
+import com.scauly.SpringCloud.entities.cmyorder;
 import com.scauly.SpringCloud.service.OrderService;
 import com.scauly.SpringCloud.service.WalletService;
 import javax.xml.ws.RequestWrapper;
@@ -52,7 +53,24 @@ public class OWController {
         return neworders;
     }
 
-
+    //查找所有自己订单
+    @RequestMapping(value = "order/selectcmyorder/{id}",method = RequestMethod.GET)
+    public @ResponseBody List<cmyorder> selectcmyorder(@PathVariable("id") Long id){
+        List<Fundorder> fundorders = orderService.selectcmporder(id);
+        List<cmyorder> cmyorders = new ArrayList<>();
+        Iterator<Fundorder> it = fundorders.iterator();
+        while (it.hasNext()){
+            Fundorder f = it.next();
+            cmyorder n = new cmyorder();
+            n.setBuyerid(f.getBuyerid());
+            n.setFundid(f.getFundid());
+            n.setOrderid(f.getOrderid());
+            n.setOrdertime(f.getOrdertime());
+            System.out.println(f.getOrdertime());
+            cmyorders.add(n);
+        }
+        return cmyorders;
+    }
 
     //创建钱包
     @RequestMapping(value = "wallet/add",method = RequestMethod.POST)

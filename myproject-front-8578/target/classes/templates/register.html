@@ -43,7 +43,7 @@
 </form>
 <script type="text/javascript">
 
-
+         var  bankcheckflag;
         layui.use([ 'jquery', 'layer', 'form', 'table','laydate'], function() {
         var $ = layui.jquery;
         var layer = layui.layer;
@@ -54,7 +54,7 @@
                 var un = $("#name").val();
                 var pwd = $("#pwd").val();
                 var pwd_again = $("#pwd_again").val();
-
+                 bankcheckflag = 0;
 
                  /*var find = flag;*/
                 var find = findun(un);
@@ -63,6 +63,8 @@
                 }
                 else{
                     if(pwd == pwd_again){
+                        bandcheck(bid);
+                        if(bankcheckflag==1){
                         var re = rregister(un,pwd);
                         if(re ==1){layer.msg("用户注册成功！",{time: 2000});}
                         else{layer.msg("用户注册失败！",{time: 2000});}
@@ -70,14 +72,18 @@
                         console.log("re: " + re);
                         var rid = findid(un);
                         var bid = $("#band").val();
-                        console.log("rid: " + rid);
-                        console.log("bid: " + bid);
-                        var wal = createW(rid,bid);
-                        if(wal == 1){
-                            setTimeout(function () { layer.msg("用户钱包创建成功！",{time: 2000});
-                                $(location).attr('href', 'index.html'); }, 1000);
+
+
+                            console.log("rid: " + rid);
+                            console.log("bid: " + bid);
+                            var wal = createW(rid,bid);
+                            if(wal == 1){
+                                setTimeout(function () { layer.msg("用户钱包创建成功！",{time: 2000});
+                                    $(location).attr('href', 'index.html'); }, 1000);
+                            }
+                            else{layer.msg("用户钱包创建失败！",{time: 2000});}
                         }
-                        else{layer.msg("用户钱包创建失败！",{time: 2000});}
+
                     }
                     else{
                         layer.msg("输入两次密码不同",{time: 2000});
@@ -202,6 +208,31 @@
         });
         return wflag;
     }
+
+        function bandcheck(value) {
+
+            $.ajax({
+                type: "post",
+                url: "https://ccdcapi.alipay.com/validateAndCacheCardInfo.json",
+                data: {cardNo:value,cardBinCheck:'true'},
+                dataType: "json",
+                async:false,
+                success: function(res){
+                    if(res.validated){
+                        layer.msg('银行卡号正确',{icon:6});
+                        bankcheckflag =1;
+                    }else{
+                        layer.msg('银行卡号错误',{icon:5});
+
+                    }
+                },
+                error: function(){
+                    layer.msg("服务器错误");
+                    console.log("服务器错误");
+                }
+            });
+
+        }
 </script>
 </body>
 </html>

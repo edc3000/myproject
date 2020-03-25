@@ -44,4 +44,12 @@ public class OrderServiceImpl implements OrderService{
         c.andBuyeridEqualTo(id);
         return orderDao.selectByExample(ex);
     }
+
+    @Override
+    public List<Fundorder> selectcmporder(Long id) {
+        FundorderExample ex = new FundorderExample();
+        FundorderExample.Criteria c = ex.createCriteria();
+        c.andSelleridEqualTo(id);
+        return orderDao.selectByExample(ex);
+    }
 }

@@ -2,6 +2,7 @@ package com.scauly.SpringCloud.service;
 
 import com.scauly.SpringCloud.entities.Fundorder;
 import com.scauly.SpringCloud.entities.Wallet;
+import com.scauly.SpringCloud.entities.cmyorder;
 import com.scauly.SpringCloud.entities.neworder;
 import com.scauly.SpringCloud.jsonForm.JsonForm;
 import org.springframework.cloud.netflix.feign.FeignClient;
@@ -24,6 +25,9 @@ public interface OWClientService {
     //查找所有自己订单
     @RequestMapping(value = "order/selectorder/{id}",method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody List<neworder> selectorder(@PathVariable("id") Long id);
+
+    @RequestMapping(value = "order/selectcmyorder/{id}",method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public @ResponseBody List<cmyorder> selectcmyorder(@PathVariable("id") Long id);
 
     //创建钱包
     @RequestMapping(value = "wallet/add",method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
